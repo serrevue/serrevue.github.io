@@ -24,7 +24,7 @@ const INTEGRATIONS_CSS = `
     background: var(--panel);
     border: 1px solid var(--line);
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    cursor: default;
+    cursor: var(--cursor-glove-point);
   }
   .int-card:hover {
     transform: translateY(-3px);

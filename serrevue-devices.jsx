@@ -67,7 +67,7 @@ const DEVICES_CSS = `
     display: flex; align-items: center; gap: 8px;
     padding: 8px 10px; border-radius: 10px;
     border: 1px solid var(--line); background: var(--panel-2);
-    font-size: 12px; cursor: pointer;
+    font-size: 12px; cursor: var(--cursor-glove-point);
     transition: background .15s, border-color .15s;
   }
   .ipad-zone-chip:hover { background: var(--bg-2); }
@@ -187,7 +187,7 @@ const DEVICES_CSS = `
     width: 64px; height: 64px; border-radius: 50%;
     background: var(--leaf); color: #fff;
     display: grid; place-items: center;
-    cursor: pointer;
+    cursor: var(--cursor-glove-point);
     transition: transform .15s, background .15s;
     border: 0;
     -webkit-tap-highlight-color: transparent;
@@ -216,7 +216,7 @@ const DEVICES_CSS = `
     padding: 5px 9px; border-radius: 999px; background: var(--panel);
     border: 1px solid var(--line);
     font-size: 10px; color: var(--ink);
-    cursor: pointer;
+    cursor: var(--cursor-glove-point);
   }
   .phone-quick button:hover { background: var(--bg-2); }
 `;

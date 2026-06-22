@@ -23,7 +23,7 @@ const PROMPTS = {
   humidity: {
     text_en: "Why is it getting muggy in Zone B?",
     text_fr: "Pourquoi c'est humide en Zone B?",
-    path: ['climate', 'camera', 'ingest', 'ai', 'risk', 'fan', 'alert'],
+    path: ['climate', 'camera', 'ingest', 'ai', 'risk', 'policy', 'fan', 'alert'],
     answer_en: "Humidity in Zone B jumped from 72% to 84% over the last 40 minutes. One of your exhaust fans is running weaker than usual, and the canopy is denser since pruning. I'd turn up Vent Loop B by 30% for half an hour.",
     answer_fr: "L'humidité en Zone B est passée de 72 à 84% en 40 minutes. Un de vos ventilateurs tourne plus faiblement que d'habitude, et le feuillage est plus dense depuis la taille. Je monterais la Boucle Vent B de 30% pendant 30 min.",
     action_en: "Turn up Vent Loop B · 30 min",
@@ -32,7 +32,7 @@ const PROMPTS = {
   irrigate: {
     text_en: "Water Bay 2 for 6 minutes.",
     text_fr: "Arrose la baie 2 pendant 6 minutes.",
-    path: ['notes', 'soil', 'ingest', 'policy', 'pump', 'valve', 'report'],
+    path: ['notes', 'soil', 'ingest', 'ai', 'risk', 'policy', 'pump', 'valve', 'alert', 'report'],
     answer_en: "Ready to water Bay 2 for 6 minutes, about 42 L. The root zone is a bit low on fertilizer, so I'll use your \"Tomato Week 3\" recipe. I need your OK to start.",
     answer_fr: "Prêt à arroser la Baie 2 pendant 6 minutes, environ 42 L. Le sol est un peu pauvre en engrais, je vais utiliser votre recette « Tomate Semaine 3 ». J'attends votre accord.",
     action_en: "Water Bay 2 · 6 min · recipe Tomato-W3",
@@ -136,14 +136,16 @@ function Pipeline({ lang }) {
 
   const recomputeGeom = React.useCallback(() => {
     if (!canvasRef.current) return;
-    const canvasRect = canvasRef.current.getBoundingClientRect();
+    const canvas = canvasRef.current;
+    const canvasRect = canvas.getBoundingClientRect();
+    const sx = canvas.scrollLeft, sy = canvas.scrollTop;
     const entries = Object.entries(NODES).map(([id]) => {
       const el = nodeRefs.current[id];
       if (!el) return null;
       const r = el.getBoundingClientRect();
-      return { id, left: r.left - canvasRect.left, right: r.right - canvasRect.left, top: r.top - canvasRect.top + r.height / 2 };
+      return { id, left: r.left - canvasRect.left + sx, right: r.right - canvasRect.left + sx, top: r.top - canvasRect.top + sy + r.height / 2 };
     }).filter(Boolean);
-    setGeom({ width: canvasRect.width, height: canvasRect.height, nodes: Object.fromEntries(entries.map(e => [e.id, e])) });
+    setGeom({ width: canvas.scrollWidth, height: canvas.scrollHeight, nodes: Object.fromEntries(entries.map(e => [e.id, e])) });
   }, []);
 
   React.useLayoutEffect(() => {
@@ -427,7 +429,7 @@ function MyRules({ lang, rules, setRules }) {
           key={r.id}
           className={`rule ${rules[r.id] ? '' : 'off'}`}
           onClick={() => setRules(v => ({ ...v, [r.id]: !v[r.id] }))}
-          style={{cursor:'pointer'}}
+          style={{cursor:'var(--cursor-glove-point)'}}
         >
           <div className="num">{i+1}</div>
           <div className="body">

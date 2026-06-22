@@ -411,17 +411,35 @@ function CtaFooter({ lang }) {
                   return;
                 }
                 setContactErr(false);
+
+                // Forward to private Google Form backend (responses land in our private Sheet).
+                try {
+                  const val = (n) => { const el = f.elements.namedItem(n); return el ? el.value.trim() : ''; };
+                  const body = new URLSearchParams();
+                  body.append('entry.1467411753', val('name'));
+                  body.append('entry.699766975',  val('company'));
+                  body.append('entry.537678743',  email);
+                  body.append('entry.1103888134', phone);
+                  body.append('entry.1806289493', val('ghsize'));
+                  fetch(
+                    ['https://docs.google.com/forms/d/e',
+                     '1FAIpQLSdY_ERkt6zkTihGTXqV5pIm-0_SkOeNklSkBVJBF2c8t5c1Ig',
+                     'formResponse'].join('/'),
+                    { method: 'POST', mode: 'no-cors', body }
+                  ).catch(() => {});
+                } catch (err) { /* network hiccup: still show success */ }
+
                 setSent(true);
               }}
             >
               <div className="row">
                 <div>
                   <label>{t('Name','Nom')}</label>
-                  <input required placeholder={t('Jane Grower','Jean Cultivateur')} />
+                  <input name="name" required placeholder={t('Jane Grower','Jean Cultivateur')} />
                 </div>
                 <div>
                   <label>{t('Company','Entreprise')}</label>
-                  <input placeholder={t('Serres Saint-Jean','Serres Saint-Jean')} />
+                  <input name="company" placeholder={t('Serres Saint-Jean','Serres Saint-Jean')} />
                 </div>
               </div>
               <div className="row">
@@ -450,7 +468,7 @@ function CtaFooter({ lang }) {
               <div className="row">
                 <div>
                   <label>{t('Greenhouse size','Taille de la serre')}</label>
-                  <select>
+                  <select name="ghsize">
                     <option>&lt; 1,000 m²</option>
                     <option>1,000 – 5,000 m²</option>
                     <option>5,000 – 20,000 m²</option>
