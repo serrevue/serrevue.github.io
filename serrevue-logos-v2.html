@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SERREVUE · Logo exploration v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F6F3EC;
+    --bg-2:      #EEE9DC;
+    --panel:     #FFFFFF;
+    --ink:       #1E2C24;
+    --ink-dim:   #5A6B62;
+    --ink-dimmer:#8A968F;
+    --leaf:      #3F8E5B;
+    --leaf-deep: #2C6B43;
+    --leaf-soft: rgba(63,142,91,0.12);
+    --honey:     #D58B3A;
+    --honey-soft:rgba(213,139,58,0.14);
+    --line:      rgba(30,44,36,0.10);
+    --line-2:    rgba(30,44,36,0.18);
+    --sans:      'Inter', system-ui, sans-serif;
+    --display:   'Space Grotesk', 'Inter', sans-serif;
+    --serif:     'Fraunces', Georgia, serif;
+    --mono:      'JetBrains Mono', ui-monospace, monospace;
+    --mark:        var(--leaf);
+    --mark-detail: var(--bg);
+    --mark-accent: var(--honey);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(1000px 500px at 82% -5%, rgba(127,179,163,0.16), transparent 60%),
+      radial-gradient(900px 500px at -5% 92%, rgba(213,139,58,0.07), transparent 60%);
+  }
+
+  /* mark paint helpers (penetrate <use> shadow tree via CSS vars) */
+  .mk-fill   { fill: var(--mark); }
+  .mk-detail { fill: var(--mark-detail); }
+  .mk-accent { fill: var(--mark-accent); }
+  .mk-stroke { fill: none; stroke: var(--mark); stroke-linecap: round; stroke-linejoin: round; }
+  .mk-stroke-detail { fill: none; stroke: var(--mark-detail); stroke-linecap: round; stroke-linejoin: round; }
+  .mk-stroke-accent { fill: none; stroke: var(--mark-accent); stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---- Header ---- */
+  .page-head {
+    max-width: 1300px; margin: 0 auto; padding: 56px 40px 24px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-head .id {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-dim); margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-family: var(--display); font-weight: 600; letter-spacing: -0.02em;
+    font-size: clamp(34px, 4.4vw, 58px); line-height: 1.05; margin: 0; max-width: 720px;
+  }
+  .page-head h1 em { font-style: italic; font-family: var(--serif); font-weight: 500; color: var(--leaf-deep); }
+  .page-head .meta {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-dim);
+    letter-spacing: 0.06em; text-align: right; display: grid; gap: 6px;
+  }
+  .page-head .meta .k { color: var(--ink-dimmer); }
+
+  .page-intro {
+    max-width: 1300px; margin: 0 auto; padding: 24px 40px 8px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    font-size: 14px; color: var(--ink-dim); line-height: 1.6;
+  }
+  @media (max-width: 760px) { .page-intro { grid-template-columns: 1fr; } }
+  .page-intro p { margin: 0; max-width: 540px; }
+  .page-intro strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Grid ---- */
+  .logos {
+    max-width: 1300px; margin: 0 auto; padding: 32px 40px 60px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  @media (max-width: 1080px) { .logos { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px)  { .logos { grid-template-columns: 1fr; padding: 24px 20px 40px; } }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; display: grid;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--leaf); box-shadow: 0 18px 40px rgba(30,44,36,0.08); }
+
+  .card .head {
+    padding: 16px 20px; display: flex; align-items: baseline; gap: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .card .num { font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer); letter-spacing: 0.08em; }
+  .card .name { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .card .pose {
+    margin-left: auto; font-family: var(--mono); font-size: 10px; color: var(--leaf-deep);
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--leaf-soft);
+  }
+
+  .card .stage {
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle at 50% 45%, var(--panel), var(--bg-2) 96%);
+    display: grid; place-items: center; position: relative;
+  }
+  .card .stage::before {
+    content:''; position: absolute; inset: 24px;
+    border: 1px dashed rgba(30,44,36,0.08); border-radius: 12px; pointer-events: none;
+  }
+  .card .stage svg.mark { width: 54%; height: 54%; overflow: visible; }
+
+  .card .lockup {
+    padding: 20px 24px; display: flex; align-items: center; gap: 14px;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg);
+  }
+  .card .lockup svg { width: 40px; height: 40px; overflow: visible; }
+  .card .lockup .word { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; font-size: 22px; color: var(--ink); }
+  .card .lockup .word em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--leaf-deep); }
+
+  .card .variants {
+    padding: 16px 20px; display: grid; grid-template-columns: 1fr 1fr 1fr 50px; gap: 10px; align-items: stretch;
+  }
+  .swatch { aspect-ratio: 1/1; border-radius: 10px; display: grid; place-items: center; }
+  .swatch svg { width: 58%; height: 58%; overflow: visible; }
+  .swatch.sage { background: var(--leaf); --mark: var(--bg); --mark-detail: var(--leaf); --mark-accent: #F6E2C4; }
+  .swatch.forest { background: var(--leaf-deep); --mark: var(--bg); --mark-detail: var(--leaf-deep); --mark-accent: #F6E2C4; }
+  .swatch.mono { background: var(--bg-2); border: 1px solid var(--line); --mark: var(--ink); --mark-detail: var(--bg-2); --mark-accent: var(--ink); }
+  .swatch.fav { background: var(--leaf); border-radius: 24%; --mark: var(--bg); --mark-detail: var(--leaf); --mark-accent: #F6E2C4; }
+  .swatch.fav svg { width: 66%; height: 66%; }
+
+  .card .note { padding: 16px 20px 22px; display: grid; gap: 8px; font-size: 13px; line-height: 1.55; color: var(--ink-dim); }
+  .card .note h4 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 13px; color: var(--ink); }
+  .card .note em { font-style: italic; }
+
+  /* ---- Footer ---- */
+  .foot-note {
+    max-width: 1300px; margin: 0 auto; padding: 32px 40px 90px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    font-size: 12px; color: var(--ink-dim); line-height: 1.6; border-top: 1px solid var(--line);
+  }
+  @media (max-width: 760px) { .foot-note { grid-template-columns: 1fr; } }
+  .foot-note .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-dimmer); margin-bottom: 8px;
+  }
+  .foot-note strong { color: var(--ink); font-weight: 600; }
+  .palette { display: flex; gap: 6px; margin-bottom: 12px; }
+  .palette span { width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<!-- ============ MARK DEFINITIONS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+
+    <!-- 01 · AURORE — rising sun over field rows -->
+    <symbol id="m-aurore" viewBox="0 0 140 124">
+      <!-- sun: upper half disc -->
+      <path class="mk-accent" d="M38 64 A32 32 0 0 1 102 64 Z"/>
+      <!-- rays -->
+      <g class="mk-stroke-accent" stroke-width="5">
+        <line x1="70" y1="14" x2="70" y2="26"/>
+        <line x1="44" y1="22" x2="51" y2="32"/>
+        <line x1="96" y1="22" x2="89" y2="32"/>
+      </g>
+      <!-- field rows (perspective) -->
+      <g class="mk-stroke" stroke-width="7">
+        <line x1="48" y1="80"  x2="92"  y2="80"/>
+        <line x1="36" y1="94"  x2="104" y2="94"/>
+        <line x1="24" y1="108" x2="116" y2="108"/>
+      </g>
+    </symbol>
+
+    <!-- 02 · POUSSE-V — V monogram that sprouts a leaf -->
+    <symbol id="m-poussev" viewBox="0 0 120 124">
+      <!-- the V -->
+      <path class="mk-stroke" stroke-width="13" d="M30 36 L60 100 L90 36"/>
+      <!-- leaf budding from right arm tip -->
+      <path class="mk-fill" d="M90 36
+        C 108 30, 118 36, 116 52
+        C 114 66, 100 70, 88 64
+        C 86 54, 86 44, 90 36 Z"/>
+      <!-- little vein -->
+      <path class="mk-stroke-detail" stroke-width="2.4" d="M94 44 L108 52"/>
+    </symbol>
+
+    <!-- 03 · VOIX — voice bars rising from a furrow line -->
+    <symbol id="m-voix" viewBox="0 0 140 116">
+      <g class="mk-fill">
+        <rect x="32"  y="58" width="10" height="30" rx="5"/>
+        <rect x="51"  y="42" width="10" height="46" rx="5"/>
+        <rect x="70"  y="30" width="10" height="58" rx="5"/>
+        <rect x="89"  y="48" width="10" height="40" rx="5"/>
+        <rect x="108" y="62" width="10" height="26" rx="5"/>
+      </g>
+      <!-- ground / furrow -->
+      <line class="mk-stroke" stroke-width="7" x1="26" y1="96" x2="124" y2="96"/>
+    </symbol>
+
+    <!-- 04 · CARREAUX — greenhouse windowpane with a sprout -->
+    <symbol id="m-carreaux" viewBox="0 0 120 124">
+      <!-- glass frame -->
+      <rect class="mk-stroke" stroke-width="8" x="20" y="22" width="80" height="80" rx="16"/>
+      <!-- mullions -->
+      <g class="mk-stroke" stroke-width="6">
+        <line x1="60" y1="26" x2="60" y2="98"/>
+        <line x1="24" y1="62" x2="96" y2="62"/>
+      </g>
+      <!-- sprout in lower-left pane -->
+      <path class="mk-stroke-accent" stroke-width="5" d="M40 90 L40 74"/>
+      <path class="mk-accent" d="M40 74 C 30 74, 26 82, 30 88 C 38 88, 42 82, 40 74 Z"/>
+      <path class="mk-accent" d="M40 76 C 50 74, 54 80, 51 86 C 43 86, 39 82, 40 76 Z"/>
+    </symbol>
+
+    <!-- 05 · GOUTTE — dewdrop with a negative-space leaf -->
+    <symbol id="m-goutte" viewBox="0 0 100 130">
+      <path class="mk-fill" d="M50 10
+        C 50 10, 86 56, 86 86
+        A 36 36 0 0 1 14 86
+        C 14 56, 50 10, 50 10 Z"/>
+      <!-- leaf cutout -->
+      <path class="mk-detail" d="M50 66
+        C 66 66, 72 78, 66 92
+        C 60 102, 48 100, 42 96
+        C 40 84, 42 72, 50 66 Z"/>
+      <path class="mk-stroke" stroke-width="2.6" d="M58 74 L46 96"/>
+    </symbol>
+
+    <!-- 06 · BOUSSOLE — compass star with a leaf axis -->
+    <symbol id="m-boussole" viewBox="0 0 120 120">
+      <!-- 4-point compass star -->
+      <path class="mk-fill" d="M60 8
+        L70 50 L112 60 L70 70 L60 112 L50 70 L8 60 L50 50 Z"/>
+      <!-- leaf midrib on the N-S axis (negative) -->
+      <line class="mk-stroke-detail" stroke-width="3" x1="60" y1="20" x2="60" y2="100"/>
+      <line class="mk-stroke-detail" stroke-width="2.4" x1="60" y1="46" x2="72" y2="38"/>
+      <line class="mk-stroke-detail" stroke-width="2.4" x1="60" y1="62" x2="48" y2="54"/>
+    </symbol>
+
+  </defs>
+</svg>
+
+<header class="page-head">
+  <div>
+    <p class="id">Brand · Logo exploration · v2</p>
+    <h1>Six fresh marks for <em>serrevue</em>.</h1>
+  </div>
+  <div class="meta">
+    <span><span class="k">kept</span> &nbsp; type system + warm palette</span>
+    <span><span class="k">new</span> &nbsp; concepts, none repeated from v1</span>
+    <span><span class="k">test</span> &nbsp; favicon · mono · reversed</span>
+  </div>
+</header>
+
+<section class="page-intro">
+  <p>
+    A second pass that holds onto what you liked — <strong>Space Grotesk + Fraunces italic</strong> and the sage / cream / honey palette — but reaches for new ideas: the daily rhythm of a farm, voice, glass, water, and guidance.
+  </p>
+  <p>
+    Each mark is drawn to survive a 16-pixel favicon, reverse cleanly on a dark field, and hold in a single colour. Honey shows up only as a secondary accent inside the mark, never alone.
+  </p>
+</section>
+
+<main class="logos">
+
+  <!-- 01 AURORE -->
+  <article class="card">
+    <div class="head"><span class="num">01</span><span class="name">AURORE</span><span class="pose">sunrise + rows</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 140 124"><use href="#m-aurore"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 140 124"><use href="#m-aurore"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 140 124"><use href="#m-aurore"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 140 124"><use href="#m-aurore"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 140 124"><use href="#m-aurore"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 140 124"><use href="#m-aurore"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>The morning briefing, as a logo.</h4>
+      A sun rising over field rows. It nods at the product's best habit — the daily summary waiting for you at dawn — and reads instantly as <em>growing season</em>. Honey sun, sage rows.
+    </div>
+  </article>
+
+  <!-- 02 POUSSE-V -->
+  <article class="card">
+    <div class="head"><span class="num">02</span><span class="name">POUSSE·V</span><span class="pose">monogram + sprout</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 120 124"><use href="#m-poussev"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 124"><use href="#m-poussev"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 120 124"><use href="#m-poussev"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 120 124"><use href="#m-poussev"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 120 124"><use href="#m-poussev"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 120 124"><use href="#m-poussev"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>The “V” of vue, growing a leaf.</h4>
+      A confident V — for <em>vue</em>, and for a young shoot pushing up from a seed — that buds a single leaf off its right arm. The most ownable as a standalone letter for app icons and merch.
+    </div>
+  </article>
+
+  <!-- 03 VOIX -->
+  <article class="card">
+    <div class="head"><span class="num">03</span><span class="name">VOIX</span><span class="pose">voice + crop rows</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 140 116"><use href="#m-voix"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 140 116"><use href="#m-voix"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 140 116"><use href="#m-voix"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 140 116"><use href="#m-voix"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 140 116"><use href="#m-voix"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 140 116"><use href="#m-voix"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A voice waveform that is also a field.</h4>
+      Five bars rising from a furrow line: read it as the sound of you talking to your greenhouse, or as crops standing in a row. Animates beautifully when the mic is listening.
+    </div>
+  </article>
+
+  <!-- 04 CARREAUX -->
+  <article class="card">
+    <div class="head"><span class="num">04</span><span class="name">CARREAUX</span><span class="pose">glass + sprout</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 120 124"><use href="#m-carreaux"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 124"><use href="#m-carreaux"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 120 124"><use href="#m-carreaux"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 120 124"><use href="#m-carreaux"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 120 124"><use href="#m-carreaux"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 120 124"><use href="#m-carreaux"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A pane of greenhouse glass.</h4>
+      The most literal nod to <em>serre</em>: a window divided into panes, one of which is quietly growing a sprout. Architectural and calm — strong on signage and the side of a building.
+    </div>
+  </article>
+
+  <!-- 05 GOUTTE -->
+  <article class="card">
+    <div class="head"><span class="num">05</span><span class="name">GOUTTE</span><span class="pose">water + leaf</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 100 130"><use href="#m-goutte"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 100 130"><use href="#m-goutte"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 100 130"><use href="#m-goutte"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 100 130"><use href="#m-goutte"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 100 130"><use href="#m-goutte"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 100 130"><use href="#m-goutte"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A drop of water with a leaf inside.</h4>
+      Irrigation is half of what SERREVUE controls. The dewdrop carries a negative-space leaf — water and growth in one shape, and a hint of a lens for the <em>vue</em>.
+    </div>
+  </article>
+
+  <!-- 06 BOUSSOLE -->
+  <article class="card">
+    <div class="head"><span class="num">06</span><span class="name">BOUSSOLE</span><span class="pose">compass + leaf</span></div>
+    <div class="stage"><svg class="mark" viewBox="0 0 120 120"><use href="#m-boussole"/></svg></div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 120"><use href="#m-boussole"/></svg>
+      <span class="word">serre<em>vue</em></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 120 120"><use href="#m-boussole"/></svg></div>
+      <div class="swatch forest"><svg viewBox="0 0 120 120"><use href="#m-boussole"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 120 120"><use href="#m-boussole"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 120 120"><use href="#m-boussole"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A north star that's also a leaf.</h4>
+      SERREVUE is the operator that points the way. A four-point compass star with a leaf vein down its axis — guidance and growth. Reads as confident and a little premium.
+    </div>
+  </article>
+
+</main>
+
+<section class="foot-note">
+  <div>
+    <div class="label">Palette (unchanged)</div>
+    <div class="palette">
+      <span style="background:#3F8E5B" title="Sage / Leaf"></span>
+      <span style="background:#2C6B43" title="Deep forest"></span>
+      <span style="background:#1E2C24" title="Ink"></span>
+      <span style="background:#F6F3EC" title="Cream"></span>
+      <span style="background:#D58B3A" title="Honey"></span>
+    </div>
+    Same five tones as the landing page. Honey is an accent only, never the whole mark.
+  </div>
+  <div>
+    <div class="label">Typography (unchanged)</div>
+    Wordmark stays <strong>serre</strong> in Space Grotesk + <strong><em>vue</em></strong> in Fraunces italic — the bilingual wink you liked.
+  </div>
+  <div>
+    <div class="label">Next</div>
+    Point me at one or two favourites and I'll push them to a full sheet — favicon, app icon, social avatar, monogram, signage, patch — same as the leaf-bubble sheet.
+  </div>
+</section>
+
+</body>
+</html>

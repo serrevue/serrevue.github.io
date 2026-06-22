@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SERREVUE — Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F6F3EC;
+    --bg-2:      #EEE9DC;
+    --panel:     #FFFFFF;
+    --ink:       #1E2C24;
+    --ink-dim:   #5A6B62;
+    --ink-dimmer:#8A968F;
+    --leaf:      #3F8E5B;
+    --leaf-deep: #2C6B43;
+    --leaf-soft: rgba(63,142,91,0.12);
+    --honey:     #D58B3A;
+    --line:      rgba(30,44,36,0.10);
+    --line-2:    rgba(30,44,36,0.18);
+    --sans:      'Inter', system-ui, sans-serif;
+    --display:   'Space Grotesk', 'Inter', sans-serif;
+    --serif:     'Fraunces', Georgia, serif;
+    --mono:      'JetBrains Mono', ui-monospace, monospace;
+    /* Mark colours propagated into <symbol> shadow trees */
+    --mark: var(--leaf);
+    --mark-detail: var(--bg);
+  }
+
+  /* Mark fills/strokes via CSS custom property (penetrates symbol shadow tree) */
+  .leaf-fill { fill: var(--mark); }
+  .leaf-stroke-outline {
+    fill: none;
+    stroke: var(--mark);
+    stroke-width: 7;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .leaf-dot { fill: var(--mark-detail); }
+  .leaf-bar { fill: var(--mark-detail); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(1100px 500px at 80% -5%, rgba(127,179,163,0.16), transparent 60%),
+      radial-gradient(900px 500px at -5% 90%, rgba(213,139,58,0.06), transparent 60%);
+  }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 600px) { .wrap { padding: 0 20px; } }
+
+  /* ---- Page nav ---- */
+  .page-nav {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+  .page-nav .wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .page-nav .mini-mark {
+    width: 22px; height: 22px;
+    --mark: var(--leaf);
+    color: var(--leaf);
+    display: inline-block;
+  }
+  .page-nav .mini-mark svg { display: block; width: 100%; height: 100%; }
+  .page-nav .crumbs { color: var(--ink-dimmer); }
+  .page-nav .crumbs strong { color: var(--ink); font-weight: 600; letter-spacing: 0.12em; }
+  .page-nav .id { margin-left: auto; }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 80px 0 40px;
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  @media (max-width: 920px) { .hero { grid-template-columns: 1fr; gap: 40px; } }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dim);
+    padding: 6px 12px; border: 1px solid var(--line);
+    border-radius: 999px; background: var(--panel);
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--leaf); }
+
+  h1 {
+    font-family: var(--display); font-weight: 600; letter-spacing: -0.025em;
+    font-size: clamp(44px, 6vw, 80px); line-height: 1.0;
+    margin: 22px 0 22px;
+  }
+  h1 em {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    color: var(--leaf-deep);
+  }
+  .hero p {
+    margin: 0; max-width: 540px;
+    font-size: 17px; line-height: 1.6; color: var(--ink-dim);
+  }
+  .hero .meta {
+    margin-top: 28px;
+    display: flex; gap: 26px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-dimmer); letter-spacing: 0.06em;
+  }
+  .hero .meta strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Hero mark display ---- */
+  .hero-mark {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--panel);
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(30,44,36,0.07);
+  }
+  .hero-mark::before {
+    content:''; position: absolute; inset: 30px;
+    border: 1px dashed rgba(30,44,36,0.08); border-radius: 16px;
+  }
+  .hero-mark .breathe {
+    width: 60%; --mark: var(--leaf);
+    animation: breathe 4.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .hero-mark .breathe svg { display: block; width: 100%; height: auto; }
+  @keyframes breathe {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.04); }
+  }
+  .hero-mark .label {
+    position: absolute; bottom: 18px; left: 22px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+  }
+  .hero-mark .label .live {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--leaf); margin-right: 6px; vertical-align: 1px;
+    animation: blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1;} 50% { opacity: 0.3;} }
+
+  /* ---- Section ---- */
+  section.s { padding: 80px 0; border-top: 1px solid var(--line); }
+  section.s .s-head {
+    display: grid; grid-template-columns: 0.55fr 1fr; gap: 40px;
+    align-items: baseline; margin-bottom: 36px;
+  }
+  @media (max-width: 760px) { section.s .s-head { grid-template-columns: 1fr; gap: 8px; } }
+  .s-head .id {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+  }
+  .s-head h2 {
+    margin: 0; font-family: var(--display); font-weight: 600;
+    letter-spacing: -0.015em;
+    font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15;
+    max-width: 640px;
+  }
+  .s-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--leaf-deep); }
+
+  /* ---- Construction ---- */
+  .construction {
+    display: grid; grid-template-columns: 1fr 0.9fr;
+    gap: 36px; align-items: center;
+  }
+  @media (max-width: 860px) { .construction { grid-template-columns: 1fr; } }
+  .construction-stage {
+    aspect-ratio: 1 / 1;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .construction-stage svg { position: absolute; inset: 8%; width: 84%; height: 84%; --mark: var(--leaf); }
+  .construction-stage .grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(30,44,36,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,44,36,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .construction-stage .cross {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .construction-stage .cross::before,
+  .construction-stage .cross::after {
+    content:''; position: absolute; background: rgba(30,44,36,0.15);
+  }
+  .construction-stage .cross::before { left: 50%; top: 8%; bottom: 8%; width: 1px; }
+  .construction-stage .cross::after  { top: 50%; left: 8%; right: 8%; height: 1px; }
+
+  .construction-notes ul {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 14px;
+  }
+  .construction-notes li {
+    display: grid; grid-template-columns: 28px 1fr; gap: 14px;
+    font-size: 14px; line-height: 1.55; color: var(--ink-dim);
+  }
+  .construction-notes .num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--leaf-soft); color: var(--leaf-deep);
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+  }
+  .construction-notes strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Studies grid ---- */
+  .studies {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  @media (max-width: 920px) { .studies { grid-template-columns: repeat(2, 1fr); } }
+  .study {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px; padding: 22px;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .study.cream { background: var(--panel); }
+  .study.cream-2 { background: var(--bg-2); }
+  .study.sage { background: var(--leaf); border-color: var(--leaf-deep); --mark: var(--bg); --mark-detail: var(--leaf-deep); }
+  .study.forest { background: var(--leaf-deep); border-color: transparent; --mark: var(--bg); --mark-detail: var(--leaf-deep); }
+  .study.ink { background: var(--ink); border-color: transparent; --mark: var(--leaf); --mark-detail: var(--ink); }
+  .study svg { width: 56%; height: 56%; }
+  .study .tag {
+    position: absolute; bottom: 10px; left: 12px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+  }
+  .study.sage .tag, .study.forest .tag, .study.ink .tag { color: rgba(255,255,255,0.65); }
+
+  /* ---- Lockup row ---- */
+  .lockups {
+    display: grid; grid-template-columns: 1.5fr 1fr 0.7fr; gap: 14px;
+  }
+  @media (max-width: 920px) { .lockups { grid-template-columns: 1fr; } }
+  .lockup-cell {
+    aspect-ratio: 16/9;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    display: grid; place-items: center;
+    position: relative;
+    padding: 30px;
+  }
+  .lockup-cell.stack { aspect-ratio: 1/1; }
+  .lockup-cell.mono { aspect-ratio: 1/1; }
+  .lockup-cell .tag {
+    position: absolute; bottom: 12px; left: 16px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+  }
+  .lockup-horizontal {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .lockup-horizontal svg { width: 80px; height: 72px; --mark: var(--leaf); flex-shrink: 0; }
+  .lockup-horizontal .word {
+    font-family: var(--display); font-weight: 600; font-size: 38px;
+    letter-spacing: -0.02em; color: var(--ink);
+    line-height: 1;
+  }
+  .lockup-horizontal .word em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--leaf-deep); }
+
+  .lockup-stacked { display: grid; place-items: center; gap: 16px; }
+  .lockup-stacked svg { width: 110px; height: 100px; --mark: var(--leaf); }
+  .lockup-stacked .word {
+    font-family: var(--display); font-weight: 600; font-size: 30px;
+    letter-spacing: -0.02em;
+  }
+
+  .lockup-mono { display: grid; place-items: center; }
+  .lockup-mono svg { width: 140px; height: 126px; --mark: var(--leaf); }
+
+  /* ---- App icon row ---- */
+  .icons-row {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 36px; align-items: stretch;
+  }
+  @media (max-width: 860px) { .icons-row { grid-template-columns: 1fr; } }
+  .app-tile {
+    aspect-ratio: 1/1;
+    border-radius: 22%;
+    background: linear-gradient(160deg, #4FA86C 0%, var(--leaf) 50%, var(--leaf-deep) 100%);
+    display: grid; place-items: center;
+    box-shadow:
+      0 30px 60px rgba(30,44,36,0.18),
+      0 0 0 1px rgba(255,255,255,0.05),
+      inset 0 1px 0 rgba(255,255,255,0.18);
+    position: relative;
+    overflow: hidden;
+  }
+  .app-tile::before {
+    content:''; position: absolute; top: -30%; left: -20%; right: -20%; height: 60%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .app-tile svg {
+    width: 56%; height: 56%;
+    --mark: #fff;
+    --mark-detail: var(--leaf-deep);
+    color: #fff;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.18));
+  }
+  .icons-sizes { display: grid; gap: 14px; align-content: start; }
+  .size-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  }
+  .size-row .swatch {
+    background: var(--leaf); border-radius: 26%;
+    display: grid; place-items: center;
+    --mark: #fff;
+    --mark-detail: var(--leaf-deep);
+    color: #fff; flex-shrink: 0;
+  }
+  .size-row .swatch svg { width: 60%; height: 60%; }
+  .size-row .meta {
+    display: grid; gap: 2px; font-size: 13px;
+  }
+  .size-row .meta .k { font-family: var(--mono); font-size: 10px; color: var(--ink-dimmer); letter-spacing: 0.08em; text-transform: uppercase; }
+  .size-row .meta strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- In-context ---- */
+  .context {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  }
+  @media (max-width: 920px) { .context { grid-template-columns: 1fr; } }
+  .ctx-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid; grid-template-rows: 1fr auto;
+  }
+  .ctx-card .body { padding: 26px; display: grid; place-items: center; min-height: 220px; }
+  .ctx-card .foot { padding: 14px 20px; border-top: 1px solid var(--line); background: var(--bg); }
+  .ctx-card .foot .k {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+  }
+  .ctx-card .foot .v {
+    font-size: 13px; color: var(--ink); font-weight: 500; margin-top: 2px;
+  }
+
+  /* Chat bubble in-context */
+  .chat-demo {
+    width: 100%; max-width: 280px;
+    display: grid; gap: 10px;
+  }
+  .chat-bubble {
+    display: flex; gap: 10px; align-items: flex-end;
+  }
+  .chat-bubble .ava {
+    width: 36px; height: 36px; border-radius: 12px;
+    background: var(--leaf); display: grid; place-items: center;
+    --mark: #fff;
+    --mark-detail: var(--leaf-deep);
+    color: #fff; flex-shrink: 0;
+  }
+  .chat-bubble .ava svg { width: 65%; height: 65%; }
+  .chat-bubble .b {
+    padding: 10px 14px; border-radius: 16px 16px 16px 4px;
+    background: var(--leaf-soft); color: var(--ink);
+    font-size: 13px; line-height: 1.45;
+    max-width: 220px;
+  }
+  .chat-bubble.user { flex-direction: row-reverse; }
+  .chat-bubble.user .ava { background: var(--ink); }
+  .chat-bubble.user .ava svg { display: none; }
+  .chat-bubble.user .ava::after {
+    content: 'You';
+    font-family: var(--mono); font-size: 9px; color: var(--bg);
+    font-weight: 600;
+  }
+  .chat-bubble.user .b {
+    background: var(--ink); color: var(--bg);
+    border-radius: 16px 16px 4px 16px;
+  }
+
+  /* Avatar in-context */
+  .avatar-circle {
+    width: 140px; height: 140px; border-radius: 50%;
+    background: var(--leaf-deep); display: grid; place-items: center;
+    box-shadow: 0 14px 30px rgba(30,44,36,0.18);
+  }
+  .avatar-circle svg { width: 56%; height: 56%; --mark: #fff; --mark-detail: var(--leaf-deep); color: #fff; }
+
+  /* Embroidered patch in-context */
+  .patch {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.15), transparent 50%),
+      var(--leaf);
+    display: grid; place-items: center;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(30,44,36,0.2), inset 0 0 0 4px var(--bg), inset 0 0 0 5px var(--leaf-deep);
+  }
+  .patch::before {
+    content:''; position: absolute; inset: 12px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(255,255,255,0.35);
+  }
+  .patch svg {
+    width: 46%; height: 46%; --mark: var(--bg); --mark-detail: var(--leaf-deep); color: var(--bg);
+    filter: drop-shadow(0 2px 0 rgba(0,0,0,0.18));
+  }
+  .patch .text {
+    position: absolute; bottom: 22px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.85); text-transform: uppercase;
+  }
+
+  /* ---- Tagline footer ---- */
+  .tagline-block {
+    margin-top: 80px;
+    padding: 60px;
+    border-radius: 24px;
+    background:
+      radial-gradient(700px 300px at 100% 0%, rgba(127,179,163,0.2), transparent 60%),
+      radial-gradient(600px 260px at 0% 100%, rgba(213,139,58,0.12), transparent 60%),
+      linear-gradient(180deg, #FAF6EC, var(--bg-2));
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  @media (max-width: 600px) { .tagline-block { padding: 36px 24px; } }
+  .tagline-block .mark-large {
+    width: 110px; height: 100px;
+    --mark: var(--leaf);
+    color: var(--leaf); margin: 0 auto 22px;
+  }
+  .tagline-block h3 {
+    margin: 0; font-family: var(--display); font-weight: 600;
+    font-size: clamp(28px, 4vw, 48px); line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .tagline-block h3 em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--leaf-deep); }
+  .tagline-block p {
+    margin: 14px auto 0; max-width: 460px;
+    color: var(--ink-dim); font-size: 14px;
+  }
+
+  footer.page-foot {
+    padding: 50px 0 80px;
+    font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer);
+    letter-spacing: 0.06em;
+  }
+  footer.page-foot .wrap { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer.page-foot strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ====================================================== -->
+<!-- THE MARK — single source of truth, reused via <use href> -->
+<!-- ====================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Primary leaf-bubble silhouette.
+         Shape design notes:
+         - Apex (leaf tip) at top-right ≈ (105, 16) — leaf reading
+         - Right side bulges to ≈ (134, 80)
+         - Bottom curve tapers to ≈ (66, 132)
+         - Tail kicks out down-left to ≈ (28, 156) — chat-bubble reading
+         - Returns at ≈ (56, 126), continues left side
+         - Left bulges to ≈ (10, 70)
+         - Returns to apex
+    -->
+    <!-- ============================================================
+         The mark.
+         Horizontal leaf with two opposing pointed tips:
+           apex (top-right)  = leaf tip
+           petiole (bottom-left) = chat-bubble tail
+         The three dots inside double as a typing indicator AND seeds.
+         viewBox 0 0 200 180
+         ============================================================ -->
+
+    <!-- Primary: leaf + 3 typing dots (chat reading + leaf reading) -->
+    <symbol id="leaf-bubble" viewBox="0 0 200 215">
+      <path class="leaf-fill" d="
+        M 180 18
+        C 184 40, 200 70, 188 100
+        C 178 132, 158 152, 124 152
+        C 100 156, 74 154, 65 145.6
+        C 60 153.1, 51.2 169.7, 41.3 184.7
+        C 36.4 192.1, 30.5 197.8, 26.7 195.4
+        C 23.9 192.4, 29.7 184.5, 37.8 170.5
+        C 47.6 155.6, 55.2 146.6, 57.8 145.1
+        C 38 134, 14 116, 8 90
+        C 4 56, 14 32, 32 22
+        C 70 8, 120 6, 158 12
+        C 168 14, 170 16, 180 18 Z
+      "/>
+      <circle class="leaf-dot" cx="74"  cy="88" r="8"/>
+      <circle class="leaf-dot" cx="104" cy="88" r="8"/>
+      <circle class="leaf-dot" cx="134" cy="88" r="8"/>
+    </symbol>
+
+    <!-- Decorated variant: same shape with subtle leaf veins
+         (reading as text lines inside the bubble) -->
+    <!-- Solo: pure silhouette, no inner detail. Clean alternative + tiny sizes. -->
+    <symbol id="leaf-bubble-veined" viewBox="0 0 200 215">
+      <path class="leaf-fill" d="
+        M 180 18
+        C 184 40, 200 70, 188 100
+        C 178 132, 158 152, 124 152
+        C 100 156, 74 154, 65 145.6
+        C 60 153.1, 51.2 169.7, 41.3 184.7
+        C 36.4 192.1, 30.5 197.8, 26.7 195.4
+        C 23.9 192.4, 29.7 184.5, 37.8 170.5
+        C 47.6 155.6, 55.2 146.6, 57.8 145.1
+        C 38 134, 14 116, 8 90
+        C 4 56, 14 32, 32 22
+        C 70 8, 120 6, 158 12
+        C 168 14, 170 16, 180 18 Z
+      "/>
+    </symbol>
+
+    <!-- Outlined / monoline version (good for small + embroidery) -->
+    <!-- Outlined: single-weight outline (embroidery, stencil, single-colour print) -->
+    <symbol id="leaf-bubble-outline" viewBox="0 0 200 215">
+      <path class="leaf-stroke-outline" d="
+        M 180 18
+        C 184 40, 200 70, 188 100
+        C 178 132, 158 152, 124 152
+        C 100 156, 74 154, 65 145.6
+        C 60 153.1, 51.2 169.7, 41.3 184.7
+        C 36.4 192.1, 30.5 197.8, 26.7 195.4
+        C 23.9 192.4, 29.7 184.5, 37.8 170.5
+        C 47.6 155.6, 55.2 146.6, 57.8 145.1
+        C 38 134, 14 116, 8 90
+        C 4 56, 14 32, 32 22
+        C 70 8, 120 6, 158 12
+        C 168 14, 170 16, 180 18 Z
+      "/>
+    </symbol>
+
+    <!-- Two-tone variant: leaf body + small "seed/sun" eye -->
+    <!-- Voice: leaf + five sound-wave bars instead of dots (voice features) -->
+    <symbol id="leaf-bubble-two" viewBox="0 0 200 215">
+      <path class="leaf-fill" d="
+        M 180 18
+        C 184 40, 200 70, 188 100
+        C 178 132, 158 152, 124 152
+        C 100 156, 74 154, 65 145.6
+        C 60 153.1, 51.2 169.7, 41.3 184.7
+        C 36.4 192.1, 30.5 197.8, 26.7 195.4
+        C 23.9 192.4, 29.7 184.5, 37.8 170.5
+        C 47.6 155.6, 55.2 146.6, 57.8 145.1
+        C 38 134, 14 116, 8 90
+        C 4 56, 14 32, 32 22
+        C 70 8, 120 6, 158 12
+        C 168 14, 170 16, 180 18 Z
+      "/>
+      <rect class="leaf-bar" x="72"  y="82" width="5" height="14" rx="2.5"/>
+      <rect class="leaf-bar" x="84"  y="76" width="5" height="26" rx="2.5"/>
+      <rect class="leaf-bar" x="96"  y="70" width="5" height="38" rx="2.5"/>
+      <rect class="leaf-bar" x="108" y="76" width="5" height="26" rx="2.5"/>
+      <rect class="leaf-bar" x="120" y="82" width="5" height="14" rx="2.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ====================================================== -->
+<!-- TOP NAV CRUMBS                                         -->
+<!-- ====================================================== -->
+<nav class="page-nav">
+  <div class="wrap">
+    <span class="mini-mark"><svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg></span>
+    <span class="crumbs">SERREVUE / <strong>IDENTITY</strong> / Leaf bubble — v1</span>
+    <span class="id">REV · 2026-05</span>
+  </div>
+</nav>
+
+<!-- ====================================================== -->
+<!-- HERO                                                   -->
+<!-- ====================================================== -->
+<section class="hero wrap">
+  <div>
+    <span class="eyebrow"><span class="dot"></span>Final direction</span>
+    <h1>A leaf with something <em>to say.</em></h1>
+    <p>
+      Two pointed corners on opposite ends: the leaf's apex at the top-right, the
+      stem becoming a chat tail at the bottom-left. Three dots in the middle that
+      read as both a “typing…” indicator and seeds inside the leaf.
+    </p>
+    <div class="meta">
+      <span><strong>Primary</strong> · Sage leaf bubble</span>
+      <span><strong>Type</strong> · Space Grotesk + Fraunces italic</span>
+      <span><strong>Use</strong> · Logo · App icon · Avatar · Patch</span>
+    </div>
+  </div>
+
+  <div class="hero-mark">
+    <div class="breathe">
+      <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+    </div>
+    <span class="label"><span class="live"></span>SERREVUE · primary mark</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- THE IDEA / CONSTRUCTION                                -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">01 · The idea</span>
+      <h2>One silhouette that reads as <em>both</em> a leaf and a chat bubble — with a typing wink inside.</h2>
+    </div>
+
+    <div class="construction">
+      <div class="construction-stage">
+        <div class="grid-overlay"></div>
+        <div class="cross"></div>
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble"/></svg>
+      </div>
+      <div class="construction-notes">
+        <ul>
+          <li>
+            <span class="num">1</span>
+            <span><strong>Apex top-right.</strong> A clean pointed corner anchors the design on the diagonal — the leaf tip, where it would meet a branch.</span>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <span><strong>Asymmetric body.</strong> Fuller on the right, narrower on the left. Reads as a real leaf, not a balloon.</span>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <span><strong>Petiole as chat tail.</strong> The leaf's natural stem kicks down-and-left and becomes the bubble's tail. One shape, two readings.</span>
+          </li>
+          <li>
+            <span class="num">4</span>
+            <span><strong>Three dots inside.</strong> Read as a “typing…” indicator in chat contexts, and as seeds or droplets in leaf contexts. Gracefully disappears at favicon size, leaving the silhouette intact.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- COLOUR STUDIES                                         -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">02 · Colour studies</span>
+      <h2>Same mark, four surfaces.</h2>
+    </div>
+    <div class="studies">
+      <div class="study cream">
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble"/></svg>
+        <span class="tag">Sage on cream</span>
+      </div>
+      <div class="study sage">
+        <svg viewBox="0 0 200 215" style="color: var(--bg)"><use href="#leaf-bubble"/></svg>
+        <span class="tag">Cream on sage</span>
+      </div>
+      <div class="study forest">
+        <svg viewBox="0 0 200 215" style="color: var(--bg)"><use href="#leaf-bubble"/></svg>
+        <span class="tag">Cream on forest</span>
+      </div>
+      <div class="study ink">
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble"/></svg>
+        <span class="tag">Sage on ink</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- VARIANTS                                               -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">03 · Variants</span>
+      <h2>Four treatments — pick by context.</h2>
+    </div>
+    <div class="studies">
+      <div class="study cream">
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble"/></svg>
+        <span class="tag">Primary · with dots</span>
+      </div>
+      <div class="study cream">
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble-veined"/></svg>
+        <span class="tag">Solo · silhouette</span>
+      </div>
+      <div class="study cream-2">
+        <svg viewBox="0 0 200 215" style="--mark: var(--leaf-deep)"><use href="#leaf-bubble-outline"/></svg>
+        <span class="tag">Outlined · stencil & merch</span>
+      </div>
+      <div class="study cream">
+        <svg viewBox="0 0 200 215" style="color: var(--leaf)"><use href="#leaf-bubble-two"/></svg>
+        <span class="tag">Voice · with sound waves</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- LOCKUPS                                                -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">04 · Lockups</span>
+      <h2>Mixed type: <em>serre</em> in Space Grotesk, <em>vue</em> in Fraunces italic.</h2>
+    </div>
+    <div class="lockups">
+      <div class="lockup-cell">
+        <div class="lockup-horizontal">
+          <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          <span class="word">serre<em>vue</em></span>
+        </div>
+        <span class="tag">Horizontal · primary</span>
+      </div>
+      <div class="lockup-cell stack">
+        <div class="lockup-stacked">
+          <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          <span class="word">serre<em>vue</em></span>
+        </div>
+        <span class="tag">Stacked · square crops</span>
+      </div>
+      <div class="lockup-cell mono">
+        <div class="lockup-mono">
+          <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+        </div>
+        <span class="tag">Mark only</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- APP ICON & SIZES                                       -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">05 · App icon</span>
+      <h2>Survives the home screen and the 16-pixel tab.</h2>
+    </div>
+    <div class="icons-row">
+      <div class="app-tile">
+        <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+      </div>
+      <div class="icons-sizes">
+        <div class="size-row">
+          <div class="swatch" style="width: 60px; height: 60px;">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          </div>
+          <div class="meta">
+            <span class="k">App icon</span>
+            <strong>1024 × 1024 · rounded square</strong>
+            <span style="font-size:12px; color: var(--ink-dim);">iOS & Android home screen</span>
+          </div>
+        </div>
+        <div class="size-row">
+          <div class="swatch" style="width: 44px; height: 44px;">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          </div>
+          <div class="meta">
+            <span class="k">Touch target</span>
+            <strong>44 × 44 · safe area</strong>
+            <span style="font-size:12px; color: var(--ink-dim);">Notification + chat avatar</span>
+          </div>
+        </div>
+        <div class="size-row">
+          <div class="swatch" style="width: 28px; height: 28px; border-radius: 30%;">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          </div>
+          <div class="meta">
+            <span class="k">Browser tab</span>
+            <strong>32 × 32 · favicon</strong>
+            <span style="font-size:12px; color: var(--ink-dim);">Silhouette holds at this size</span>
+          </div>
+        </div>
+        <div class="size-row">
+          <div class="swatch" style="width: 18px; height: 18px; border-radius: 30%;">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          </div>
+          <div class="meta">
+            <span class="k">Smallest</span>
+            <strong>16 × 16 · tab tiny</strong>
+            <span style="font-size:12px; color: var(--ink-dim);">Still legible — that's the test</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- IN CONTEXT                                             -->
+<!-- ====================================================== -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="id">06 · In context</span>
+      <h2>Where the mark already feels at home.</h2>
+    </div>
+    <div class="context">
+
+      <div class="ctx-card">
+        <div class="body">
+          <div class="chat-demo">
+            <div class="chat-bubble">
+              <div class="ava"><svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg></div>
+              <div class="b">Morning — humidity in Bay 2 is high, I've opened the vents.</div>
+            </div>
+            <div class="chat-bubble user">
+              <div class="ava"></div>
+              <div class="b">Thanks. Water Bay 3 for 4 minutes please.</div>
+            </div>
+            <div class="chat-bubble">
+              <div class="ava"><svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg></div>
+              <div class="b">Starting Bay 3 — I'll text when it's done.</div>
+            </div>
+          </div>
+        </div>
+        <div class="foot">
+          <div class="k">In chat</div>
+          <div class="v">The avatar IS the brand promise.</div>
+        </div>
+      </div>
+
+      <div class="ctx-card">
+        <div class="body">
+          <div class="avatar-circle">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+          </div>
+        </div>
+        <div class="foot">
+          <div class="k">Social avatar</div>
+          <div class="v">Forest field, sage mark — high contrast at any zoom.</div>
+        </div>
+      </div>
+
+      <div class="ctx-card">
+        <div class="body">
+          <div class="patch">
+            <svg viewBox="0 0 200 215"><use href="#leaf-bubble"/></svg>
+            <span class="text">Serrevue · QC</span>
+          </div>
+        </div>
+        <div class="foot">
+          <div class="k">Embroidered patch</div>
+          <div class="v">For the team's work shirts. Mark holds at low thread count.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- TAGLINE BLOCK                                          -->
+<!-- ====================================================== -->
+<section class="wrap">
+  <div class="tagline-block">
+    <div class="mark-large" style="display: grid; place-items: center;">
+      <svg viewBox="0 0 200 215" style="width:100%; height:100%;"><use href="#leaf-bubble"/></svg>
+    </div>
+    <h3>Talk to your <em>greenhouse.</em></h3>
+    <p>The mark is your reply.</p>
+  </div>
+</section>
+
+<footer class="page-foot">
+  <div class="wrap">
+    <span><strong>SERREVUE</strong> · Brand identity v1 · Leaf bubble direction</span>
+    <span style="margin-left:auto;">Québec, Canada</span>
+  </div>
+</footer>
+
+</body>
+</html>

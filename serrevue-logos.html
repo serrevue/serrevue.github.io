@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SERREVUE — Logo exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F6F3EC;
+    --bg-2:      #EEE9DC;
+    --panel:     #FFFFFF;
+    --ink:       #1E2C24;
+    --ink-dim:   #5A6B62;
+    --ink-dimmer:#8A968F;
+    --leaf:      #3F8E5B;
+    --leaf-deep: #2C6B43;
+    --leaf-soft: rgba(63,142,91,0.12);
+    --honey:     #D58B3A;
+    --line:      rgba(30,44,36,0.10);
+    --line-2:    rgba(30,44,36,0.18);
+    --sans:      'Inter', system-ui, sans-serif;
+    --display:   'Space Grotesk', 'Inter', sans-serif;
+    --serif:     'Fraunces', Georgia, serif;
+    --mono:      'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(1000px 500px at 80% -5%, rgba(127,179,163,0.18), transparent 60%),
+      radial-gradient(900px 500px at -5% 90%, rgba(213,139,58,0.08), transparent 60%);
+  }
+
+  /* ---- Page header ---- */
+  .page-head {
+    max-width: 1300px; margin: 0 auto; padding: 56px 40px 24px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-head .id {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-dim);
+    margin: 0 0 14px;
+  }
+  .page-head h1 {
+    font-family: var(--display); font-weight: 600; letter-spacing: -0.02em;
+    font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; margin: 0;
+    max-width: 720px;
+  }
+  .page-head h1 em {
+    font-style: italic; font-family: var(--serif); font-weight: 400; color: var(--leaf-deep);
+  }
+  .page-head .meta {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-dim);
+    letter-spacing: 0.06em; text-align: right;
+    display: grid; gap: 6px;
+  }
+  .page-head .meta .k { color: var(--ink-dimmer); }
+
+  .page-intro {
+    max-width: 1300px; margin: 0 auto;
+    padding: 24px 40px 8px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    font-size: 14px; color: var(--ink-dim); line-height: 1.6;
+  }
+  @media (max-width: 760px) { .page-intro { grid-template-columns: 1fr; } }
+  .page-intro p { margin: 0; max-width: 540px; }
+  .page-intro strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Logo grid ---- */
+  .logos {
+    max-width: 1300px; margin: 0 auto; padding: 32px 40px 100px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1080px) { .logos { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px)  { .logos { grid-template-columns: 1fr; padding: 24px 20px 60px; } }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--leaf);
+    box-shadow: 0 18px 40px rgba(30,44,36,0.08);
+  }
+
+  .card .head {
+    padding: 16px 20px;
+    display: flex; align-items: baseline; gap: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .card .num {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-dimmer);
+    letter-spacing: 0.08em;
+  }
+  .card .name {
+    font-family: var(--display); font-weight: 600; font-size: 16px;
+    letter-spacing: -0.01em; color: var(--ink);
+  }
+  .card .pose {
+    margin-left: auto;
+    font-family: var(--mono); font-size: 10px; color: var(--leaf-deep);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 999px; background: var(--leaf-soft);
+  }
+
+  .card .stage {
+    aspect-ratio: 1 / 1;
+    background:
+      radial-gradient(circle at 50% 50%, var(--panel), var(--bg-2) 95%);
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .card .stage::before {
+    content:''; position: absolute; inset: 24px;
+    border: 1px dashed rgba(30,44,36,0.08);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .card .stage svg.mark {
+    width: 56%; height: 56%;
+  }
+
+  .card .lockup {
+    padding: 20px 24px;
+    display: flex; align-items: center; gap: 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .card .lockup svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .card .lockup .word {
+    font-family: var(--display); font-weight: 600; letter-spacing: -0.01em;
+    font-size: 22px; color: var(--ink);
+  }
+  .card .lockup .word .live {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--leaf); margin-left: 6px; vertical-align: 0.18em;
+    box-shadow: 0 0 0 0 rgba(63,142,91,0.5);
+    animation: pulse 2.2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(63,142,91,0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(63,142,91,0); }
+    100% { box-shadow: 0 0 0 0 rgba(63,142,91,0); }
+  }
+
+  .card .variants {
+    padding: 16px 20px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 50px;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .swatch {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .swatch svg { width: 60%; height: 60%; }
+  .swatch.sage { background: var(--leaf); }
+  .swatch.dark { background: var(--ink); }
+  .swatch.mono { background: var(--bg-2); border: 1px solid var(--line); }
+  .swatch.fav  { background: var(--leaf); border-radius: 8px; }
+  .swatch.fav svg { width: 70%; height: 70%; }
+
+  .card .note {
+    padding: 16px 20px 22px;
+    display: grid; gap: 8px;
+    font-size: 13px; line-height: 1.55; color: var(--ink-dim);
+  }
+  .card .note h4 {
+    margin: 0; font-family: var(--display); font-weight: 600;
+    font-size: 13px; color: var(--ink); letter-spacing: 0;
+  }
+
+  /* ---- Footer note ---- */
+  .foot-note {
+    max-width: 1300px; margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    font-size: 12px; color: var(--ink-dim); line-height: 1.6;
+  }
+  @media (max-width: 760px) { .foot-note { grid-template-columns: 1fr; } }
+  .foot-note .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-dimmer);
+    margin-bottom: 8px;
+  }
+  .palette {
+    display: flex; gap: 6px;
+  }
+  .palette span {
+    width: 28px; height: 28px; border-radius: 7px;
+    border: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable SVG mark symbols so each can be reused in multiple sizes/contexts -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- 01 · VEUE : eye-leaf almond with seed-pupil -->
+    <symbol id="m-veue" viewBox="0 0 120 140">
+      <path d="M60 10 C 102 32 102 108 60 130 C 18 108 18 32 60 10 Z" fill="currentColor"/>
+      <path d="M60 14 L 60 126" stroke="rgba(255,255,255,0.45)" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="60" cy="70" r="14" fill="#F6F3EC"/>
+      <circle cx="60" cy="70" r="5.5" fill="#1E2C24"/>
+    </symbol>
+
+    <!-- 02 · BLOOM LENS : 5-petal aperture flower -->
+    <symbol id="m-bloom" viewBox="-60 -60 120 120">
+      <g fill="currentColor">
+        <g><path d="M 0 -50 C 14 -35 14 -16 0 -8 C -14 -16 -14 -35 0 -50 Z"/></g>
+        <g transform="rotate(72)"><path d="M 0 -50 C 14 -35 14 -16 0 -8 C -14 -16 -14 -35 0 -50 Z"/></g>
+        <g transform="rotate(144)"><path d="M 0 -50 C 14 -35 14 -16 0 -8 C -14 -16 -14 -35 0 -50 Z"/></g>
+        <g transform="rotate(216)"><path d="M 0 -50 C 14 -35 14 -16 0 -8 C -14 -16 -14 -35 0 -50 Z"/></g>
+        <g transform="rotate(288)"><path d="M 0 -50 C 14 -35 14 -16 0 -8 C -14 -16 -14 -35 0 -50 Z"/></g>
+      </g>
+      <circle cx="0" cy="0" r="6" fill="#F6F3EC"/>
+      <circle cx="0" cy="0" r="3" fill="#1E2C24"/>
+    </symbol>
+
+    <!-- 03 · SERRE : greenhouse profile with iris -->
+    <symbol id="m-serre" viewBox="0 0 140 130">
+      <path d="M 18 110 L 18 56 L 70 18 L 122 56 L 122 110 Z"
+            fill="none" stroke="currentColor" stroke-width="8"
+            stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="70" y1="20" x2="70" y2="56" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="70" cy="80" r="18" fill="currentColor"/>
+      <circle cx="70" cy="80" r="7"  fill="#F6F3EC"/>
+    </symbol>
+
+    <!-- 04 · SPROUT : S as two leaves with stem -->
+    <symbol id="m-sprout" viewBox="0 0 100 130">
+      <!-- top leaf -->
+      <path d="M 50 22
+               C 78 22 86 42 78 56
+               C 70 66 56 64 50 62
+               C 50 50 50 36 50 22 Z" fill="currentColor"/>
+      <!-- bottom leaf (mirrored) -->
+      <path d="M 50 68
+               C 22 68 14 88 22 102
+               C 30 112 44 110 50 108
+               C 50 96 50 82 50 68 Z" fill="currentColor"/>
+      <!-- stem -->
+      <path d="M 50 22 L 50 108" stroke="#1E2C24" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+      <!-- tiny seed bud -->
+      <circle cx="50" cy="65" r="4.5" fill="#1E2C24"/>
+    </symbol>
+
+    <!-- 05 · DIALOGUE : leaf-shaped chat bubble -->
+    <symbol id="m-dialogue" viewBox="0 0 120 130">
+      <path d="M 62 14
+               C 96 18 106 42 100 66
+               C 94 88 70 96 50 92
+               L 30 110 L 38 88
+               C 18 78 14 50 28 32
+               C 38 20 50 14 62 14 Z" fill="currentColor"/>
+      <!-- leaf vein -->
+      <path d="M 38 30 L 88 70" stroke="rgba(255,255,255,0.55)" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M 50 38 L 64 50 M 62 42 L 76 58 M 46 50 L 54 56"
+            stroke="rgba(255,255,255,0.4)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+    </symbol>
+
+    <!-- 06 · PULSE : minimalist sun/seed mark (for wordmark-led concept) -->
+    <symbol id="m-pulse" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="4 9" opacity="0.4"/>
+      <circle cx="60" cy="60" r="30" fill="none" stroke="currentColor" stroke-width="6" opacity="0.7"/>
+      <circle cx="60" cy="60" r="16" fill="currentColor"/>
+    </symbol>
+
+    <!-- favicon-size simplified versions (sometimes the same, sometimes adjusted for legibility) -->
+  </defs>
+</svg>
+
+<header class="page-head">
+  <div>
+    <p class="id">Brand · Logo exploration · v1</p>
+    <h1>Six directions for <em>serrevue</em>.</h1>
+  </div>
+  <div class="meta">
+    <span><span class="k">project</span> &nbsp; serrevue.com</span>
+    <span><span class="k">scope</span> &nbsp; primary mark + wordmark</span>
+    <span><span class="k">palette</span> &nbsp; sage · forest · cream · honey</span>
+  </div>
+</header>
+
+<section class="page-intro">
+  <p>
+    <strong>Serre</strong> + <strong>vue</strong>.&nbsp; A greenhouse you can talk to — and that watches over itself. Every direction below pulls on one of those threads: the seeing, the growing, or the conversation between them.
+  </p>
+  <p>
+    Marks are designed to hold up at favicon size, work in single colour, and feel calm and confident rather than techy. Pick one, mix two, or send notes back — these are sketches, not commitments.
+  </p>
+</section>
+
+<main class="logos">
+
+  <!-- ============ 01 · VEUE ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">01</span>
+      <span class="name">VEUE</span>
+      <span class="pose">eye + leaf</span>
+    </div>
+    <div class="stage">
+      <svg class="mark" viewBox="0 0 120 140" style="color: var(--leaf)"><use href="#m-veue"/></svg>
+    </div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 140" style="color: var(--leaf)"><use href="#m-veue"/></svg>
+      <span class="word">SERREVUE</span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage">
+        <svg viewBox="0 0 120 140" style="color: #fff"><use href="#m-veue"/></svg>
+      </div>
+      <div class="swatch dark">
+        <svg viewBox="0 0 120 140" style="color: var(--leaf)"><use href="#m-veue"/></svg>
+      </div>
+      <div class="swatch mono">
+        <svg viewBox="0 0 120 140" style="color: var(--ink)"><use href="#m-veue"/></svg>
+      </div>
+      <div class="swatch fav" title="favicon">
+        <svg viewBox="0 0 120 140" style="color: #fff"><use href="#m-veue"/></svg>
+      </div>
+    </div>
+    <div class="note">
+      <h4>An eye that also reads as a leaf.</h4>
+      The almond is a vesica piscis — the simplest shape that is unmistakably both a leaf and an eye. The seed at the centre is the iris, the pupil, the grain of intelligence at the core of the system.
+    </div>
+  </article>
+
+  <!-- ============ 02 · BLOOM LENS ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">02</span>
+      <span class="name">BLOOM LENS</span>
+      <span class="pose">aperture + flower</span>
+    </div>
+    <div class="stage">
+      <svg class="mark" viewBox="-60 -60 120 120" style="color: var(--leaf)"><use href="#m-bloom"/></svg>
+    </div>
+    <div class="lockup">
+      <svg viewBox="-60 -60 120 120" style="color: var(--leaf)"><use href="#m-bloom"/></svg>
+      <span class="word">SERREVUE</span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="-60 -60 120 120" style="color: #fff"><use href="#m-bloom"/></svg></div>
+      <div class="swatch dark"><svg viewBox="-60 -60 120 120" style="color: var(--leaf)"><use href="#m-bloom"/></svg></div>
+      <div class="swatch mono"><svg viewBox="-60 -60 120 120" style="color: var(--ink)"><use href="#m-bloom"/></svg></div>
+      <div class="swatch fav"><svg viewBox="-60 -60 120 120" style="color: #fff"><use href="#m-bloom"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A camera aperture, but it's a flower.</h4>
+      Five petals reading equally as the blades of a lens and the petals of a bloom. The dot at the centre is the focal point — and the seed. Best mark if the brand wants to lean into the AI-vision side without losing warmth.
+    </div>
+  </article>
+
+  <!-- ============ 03 · SERRE ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">03</span>
+      <span class="name">SERRE</span>
+      <span class="pose">greenhouse + iris</span>
+    </div>
+    <div class="stage">
+      <svg class="mark" viewBox="0 0 140 130" style="color: var(--leaf)"><use href="#m-serre"/></svg>
+    </div>
+    <div class="lockup">
+      <svg viewBox="0 0 140 130" style="color: var(--leaf)"><use href="#m-serre"/></svg>
+      <span class="word">SERREVUE</span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 140 130" style="color: #fff"><use href="#m-serre"/></svg></div>
+      <div class="swatch dark"><svg viewBox="0 0 140 130" style="color: var(--leaf)"><use href="#m-serre"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 140 130" style="color: var(--ink)"><use href="#m-serre"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 140 130" style="color: #fff"><use href="#m-serre"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>The greenhouse is watching.</h4>
+      The classic gable-roof silhouette of a serre, with a single iris inside. The most literal of the six — and the most reassuring. The mark says <em>greenhouse</em> first, <em>technology</em> second.
+    </div>
+  </article>
+
+  <!-- ============ 04 · SPROUT ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">04</span>
+      <span class="name">SPROUT</span>
+      <span class="pose">letterform S + leaves</span>
+    </div>
+    <div class="stage">
+      <svg class="mark" viewBox="0 0 100 130" style="color: var(--leaf)"><use href="#m-sprout"/></svg>
+    </div>
+    <div class="lockup">
+      <svg viewBox="0 0 100 130" style="color: var(--leaf)"><use href="#m-sprout"/></svg>
+      <span class="word">SERREVUE</span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 100 130" style="color: #fff"><use href="#m-sprout"/></svg></div>
+      <div class="swatch dark"><svg viewBox="0 0 100 130" style="color: var(--leaf)"><use href="#m-sprout"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 100 130" style="color: var(--ink)"><use href="#m-sprout"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 100 130" style="color: #fff"><use href="#m-sprout"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>The letter S as a young plant.</h4>
+      Two opposing leaves meet at a stem — together they trace the silhouette of an S. Strongest as a single-letter mark for app icons, t-shirts, and merch. The seed-bud in the middle gives it a clear centre.
+    </div>
+  </article>
+
+  <!-- ============ 05 · DIALOGUE ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">05</span>
+      <span class="name">DIALOGUE</span>
+      <span class="pose">leaf + speech bubble</span>
+    </div>
+    <div class="stage">
+      <svg class="mark" viewBox="0 0 120 130" style="color: var(--leaf)"><use href="#m-dialogue"/></svg>
+    </div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 130" style="color: var(--leaf)"><use href="#m-dialogue"/></svg>
+      <span class="word">SERREVUE</span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 120 130" style="color: #fff"><use href="#m-dialogue"/></svg></div>
+      <div class="swatch dark"><svg viewBox="0 0 120 130" style="color: var(--leaf)"><use href="#m-dialogue"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 120 130" style="color: var(--ink)"><use href="#m-dialogue"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 120 130" style="color: #fff"><use href="#m-dialogue"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>A leaf with something to say.</h4>
+      Speech-bubble tail tucked into a leaf body, with three veins reading as text lines. The most product-true of the bunch — it points directly at <em>“talk to your greenhouse.”</em> Friendly, warm, slightly editorial.
+    </div>
+  </article>
+
+  <!-- ============ 06 · PULSE (wordmark-led) ============ -->
+  <article class="card">
+    <div class="head">
+      <span class="num">06</span>
+      <span class="name">PULSE</span>
+      <span class="pose">wordmark + live dot</span>
+    </div>
+    <div class="stage" style="background: linear-gradient(180deg, var(--panel), var(--bg-2));">
+      <div style="display:grid; place-items:center; gap: 22px;">
+        <svg viewBox="0 0 120 120" style="color: var(--leaf); width: 90px; height: 90px;"><use href="#m-pulse"/></svg>
+        <div style="font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: -0.02em; color: var(--ink);">
+          serre<em style="font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--leaf-deep);">vue</em><span style="display:inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--leaf); margin-left: 6px; vertical-align: 0.18em;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="lockup">
+      <svg viewBox="0 0 120 120" style="color: var(--leaf)"><use href="#m-pulse"/></svg>
+      <span class="word">SERREVUE<span class="live"></span></span>
+    </div>
+    <div class="variants">
+      <div class="swatch sage"><svg viewBox="0 0 120 120" style="color: #fff"><use href="#m-pulse"/></svg></div>
+      <div class="swatch dark"><svg viewBox="0 0 120 120" style="color: var(--leaf)"><use href="#m-pulse"/></svg></div>
+      <div class="swatch mono"><svg viewBox="0 0 120 120" style="color: var(--ink)"><use href="#m-pulse"/></svg></div>
+      <div class="swatch fav"><svg viewBox="0 0 120 120" style="color: #fff"><use href="#m-pulse"/></svg></div>
+    </div>
+    <div class="note">
+      <h4>Wordmark-led, with a living dot.</h4>
+      Mixed typography: <em>serre</em> in Space Grotesk, <em>vue</em> in Fraunces italic — a small typographic nod to the bilingual story. The single pulsing dot is the brand's heartbeat, already echoed throughout the product UI.
+    </div>
+  </article>
+
+</main>
+
+<section class="foot-note">
+  <div>
+    <div class="label">Palette</div>
+    <div class="palette" style="margin-bottom: 12px;">
+      <span style="background:#3F8E5B" title="Sage / Leaf"></span>
+      <span style="background:#2C6B43" title="Deep forest"></span>
+      <span style="background:#1E2C24" title="Ink"></span>
+      <span style="background:#F6F3EC" title="Cream"></span>
+      <span style="background:#D58B3A" title="Honey"></span>
+    </div>
+    The marks are designed in a single weight of sage. Honey appears only as an accent on the product, never on the logo.
+  </div>
+  <div>
+    <div class="label">Typography</div>
+    Wordmark in <strong>Space Grotesk SemiBold</strong>, slightly tightened tracking. The <em>“vue”</em> half can swap to <strong>Fraunces Italic</strong> in editorial contexts to lean into the French / artisanal feel.
+  </div>
+  <div>
+    <div class="label">Next</div>
+    Pick one or two favourites; tell me which to push to a full identity sheet — favicons, social avatars, app icon (rounded square), monogram, vehicle livery, embroidered patch.
+  </div>
+</section>
+
+</body>
+</html>
