@@ -421,6 +421,8 @@ function CtaFooter({ lang }) {
                   body.append('entry.537678743',  email);
                   body.append('entry.1103888134', phone);
                   body.append('entry.1806289493', val('ghsize'));
+                  body.append('entry.202877082',  val('crop'));
+                  body.append('entry.1246258545', val('needs'));
                   fetch(
                     ['https://docs.google.com/forms/d/e',
                      '1FAIpQLSdY_ERkt6zkTihGTXqV5pIm-0_SkOeNklSkBVJBF2c8t5c1Ig',
@@ -477,12 +479,12 @@ function CtaFooter({ lang }) {
                 </div>
                 <div>
                   <label>{t('Main crop','Culture principale')}</label>
-                  <input placeholder={t('Tomato, pepper, cannabis…','Tomate, poivron, cannabis…')} />
+                  <input name="crop" placeholder={t('Tomato, pepper, cannabis…','Tomate, poivron, cannabis…')} />
                 </div>
               </div>
               <div>
                 <label>{t('What would you automate first?','Qu\'aimeriez-vous automatiser en premier?')}</label>
-                <textarea rows="2" placeholder={t('Climate, irrigation, scouting…','Climat, arrosage, dépistage…')}></textarea>
+                <textarea name="needs" rows="2" placeholder={t('Climate, irrigation, scouting…','Climat, arrosage, dépistage…')}></textarea>
               </div>
               <button type="submit" className="btn btn-primary" style={{width:'100%', justifyContent:'center'}}>
                 {sent
