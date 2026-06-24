@@ -59,6 +59,30 @@
   .touch a{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:var(--ink);text-decoration:none}
   .touch a:hover{color:var(--green3)}
   .touch a .arw{color:var(--green3)}
+
+  /* ---- tablet ---- */
+  @media (max-width: 900px) and (min-width: 701px){
+    .hero{max-width:62%}
+    .hero h1{font-size:60px}
+    .corner{font-size:11px}
+    .art{width:300px;height:174px;right:42px;bottom:140px}
+  }
+  /* ---- phone: stack vertically ---- */
+  @media (max-width: 700px){
+    html,body{overflow-x:hidden;overflow-y:auto;height:auto}
+    .stage{position:relative;display:flex;flex-direction:column;height:auto;min-height:100vh;padding:30px 24px 40px}
+    .brand{position:static;top:auto;left:auto}
+    .brand .logo{width:34px;height:34px}
+    .brand .wm{font-size:23px}
+    .corner{position:static;top:auto;right:auto;margin-top:12px;font-size:11px}
+    .hero{position:static;transform:none;max-width:100%;margin-top:44px}
+    .hero h1{font-size:clamp(36px,11.5vw,52px);letter-spacing:-1px;line-height:1.07}
+    .hero p{font-size:16px;max-width:100%;margin-top:18px}
+    .art{position:static;width:100%;max-width:300px;height:140px;margin:40px 0 0;right:auto;bottom:auto}
+    .products{position:static;left:auto;bottom:auto;margin-top:44px}
+    .touch{position:static;right:auto;bottom:auto;text-align:left;margin-top:32px}
+    .touch a{font-size:20px}
+  }
 </style>
 </head>
 <body>
