@@ -399,6 +399,8 @@ function CtaFooter({ lang }) {
                 <span>{t('Québec, Canada','Québec, Canada')}</span>
               </div>
             </div>
+            {/* Contact form hidden for now (2026-06-24). Flip false to true to restore. */}
+            {false && (
             <form
               className="cta-form"
               onSubmit={e => {
@@ -492,6 +494,7 @@ function CtaFooter({ lang }) {
                   : <>{t('Request pilot','Demander un pilote')} <span className="arrow">→</span></>}
               </button>
             </form>
+            )}
           </div>
         </div>
 
