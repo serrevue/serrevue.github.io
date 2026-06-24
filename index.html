@@ -39,8 +39,8 @@
   .lang-sep{color:var(--ink-dimmer);font-size:12px}
 
   /* greenhouse line-art, lower right (2-3 spans) */
-  .art{position:absolute;right:72px;bottom:118px;width:360px;height:208px;pointer-events:none}
-  .art svg{width:100%;height:100%}
+  .art{position:absolute;right:60px;bottom:120px;width:384px;height:198px;pointer-events:none;color:#9DBBA6}
+  .art svg{width:100%;height:100%;display:block}
 
   /* hero */
   .hero{position:absolute;top:45%;left:60px;transform:translateY(-54%);max-width:60%}
@@ -70,7 +70,7 @@
   @media (max-width: 900px) and (min-width: 701px){
     .hero{max-width:62%}
     .hero h1{font-size:60px}
-    .art{width:300px;height:174px;right:42px;bottom:140px}
+    .art{width:320px;height:165px;right:42px;bottom:140px}
   }
   /* ---- phone: stack vertically ---- */
   @media (max-width: 700px){
@@ -83,7 +83,7 @@
     .hero{position:static;transform:none;max-width:100%;margin-top:52px}
     .hero h1{font-size:clamp(36px,11.5vw,52px);letter-spacing:-1px;line-height:1.07}
     .hero p{font-size:16px;max-width:100%;margin-top:18px}
-    .art{position:static;width:100%;max-width:300px;height:140px;margin:40px 0 0;right:auto;bottom:auto}
+    .art{position:static;width:100%;max-width:340px;height:176px;margin:40px 0 0;right:auto;bottom:auto}
     .products{position:static;left:auto;bottom:auto;margin-top:44px}
     .touch{position:static;right:auto;bottom:auto;text-align:left;margin-top:32px}
     .touch a{font-size:20px}
@@ -114,13 +114,23 @@
       <button class="lang-btn" data-lang="fr">FR</button>
     </div>
 
-    <!-- greenhouse line-art (3-span) -->
+    <!-- greenhouse line-art (version B: two greenhouses + sprout, from Claude Design) -->
     <div class="art">
-      <svg viewBox="0 0 360 208" fill="none" stroke="#2C6B43" stroke-width="1.6" opacity="0.20" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M20,190 H342"/>
-        <path d="M40,190 V112 L92,58 L144,112 L196,58 L248,112 L300,58 L352,112 V190"/>
-        <path d="M144,112 V190 M248,112 V190"/>
-        <path d="M92,118 V190 M196,118 V190 M300,118 V190" opacity="0.6"/>
+      <svg viewBox="0 0 620 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M40 300 L40 150 L150 78 L260 150 L260 300"/>
+          <line x1="150" y1="78" x2="150" y2="300"/>
+          <line x1="40" y1="220" x2="260" y2="220"/>
+          <path d="M280 300 L280 124 L400 44 L520 124 L520 300"/>
+          <line x1="400" y1="44" x2="400" y2="300"/>
+          <line x1="280" y1="190" x2="520" y2="190"/>
+          <line x1="0" y1="300" x2="620" y2="300"/>
+        </g>
+        <g opacity="0.85">
+          <path d="M566 300 L566 268" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M566 282 C 548 278 542 264 548 252 C 562 256 568 270 566 282 Z" fill="currentColor"/>
+          <path d="M566 288 C 584 282 590 270 585 258 C 570 262 564 276 566 288 Z" fill="#4FA86C"/>
+        </g>
       </svg>
     </div>
 
