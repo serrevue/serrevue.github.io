@@ -73,7 +73,7 @@
     .art{width:320px;height:165px;right:42px;bottom:140px}
   }
   /* ---- phone: stack vertically ---- */
-  @media (max-width: 700px){
+  @media (max-width: 700px), (max-height: 520px){
     html,body{overflow-x:hidden;overflow-y:auto;height:auto}
     .stage{position:relative;display:flex;flex-direction:column;height:auto;min-height:100vh;padding:30px 24px 40px}
     .brand{position:static;top:auto;left:auto}
@@ -127,7 +127,7 @@
   body.dark .art{color:rgba(175,214,186,.5)}
 
   /* mobile: theme toggle above the greenhouses (must come after the desktop rule to win) */
-  @media (max-width: 700px){ .theme-toggle{top:96px;right:22px;bottom:auto} }
+  @media (max-width: 700px), (max-height: 520px){ .theme-toggle{top:96px;right:22px;bottom:auto} }
 </style>
 </head>
 <body>
