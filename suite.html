@@ -128,6 +128,14 @@
   .node .nd{display:block;margin-top:6px;font-size:12.5px;color:var(--ink-dim);line-height:1.45}
   .flow .arr{align-self:center;color:var(--ink-dimmer);font-size:16px}
   .flow-note{margin-top:14px;font-size:12.5px;color:var(--ink-dimmer)}
+  .ncanvas{border:1px solid var(--line);border-radius:16px;background-color:rgba(63,142,91,.03);background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:15px 15px;padding:8px;margin-top:2px}
+  .ngraph{width:100%;height:auto;display:block}
+  .nn-bg{fill:var(--card);stroke:var(--line);stroke-width:1}
+  .nn-icon{fill:var(--green3)} .nn-gly{fill:#F6F3EC}
+  .nn-t{fill:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:9.5px}
+  .nn-s{fill:var(--ink-dimmer);font-family:'Inter',sans-serif;font-size:8px}
+  .nn-edge{fill:none;stroke:var(--green2);stroke-width:1.7;opacity:.5}
+  .nn-port{fill:var(--card);stroke:var(--green3);stroke-width:1.3}
 
   /* rules */
   .rules{display:flex;flex-direction:column;gap:8px}
@@ -176,6 +184,11 @@
   body.dark .zone .zn,body.dark .zone .big{color:#F6F3EC} body.dark .zone .crop{color:rgba(246,243,236,.5)} body.dark .zone .rh{color:rgba(246,243,236,.7)}
   body.dark .gh-state span{color:#BFE6CC;background:rgba(169,217,183,.12);border-color:rgba(169,217,183,.3)}
   body.dark .node .nk{color:#A9D9B7} body.dark .node .nd{color:rgba(246,243,236,.72)} body.dark .flow .arr{color:rgba(246,243,236,.45)}
+  body.dark .ncanvas{border-color:rgba(246,243,236,.13);background-color:rgba(169,217,183,.04);background-image:radial-gradient(rgba(246,243,236,.13) 1px,transparent 1px)}
+  body.dark .nn-bg{fill:rgba(30,44,36,.5);stroke:rgba(246,243,236,.16)}
+  body.dark .nn-icon{fill:#A9D9B7} body.dark .nn-gly{fill:#234E36}
+  body.dark .nn-t{fill:#F6F3EC} body.dark .nn-s{fill:rgba(246,243,236,.5)}
+  body.dark .nn-edge{stroke:#A9D9B7;opacity:.5} body.dark .nn-port{fill:rgba(30,44,36,.9);stroke:#A9D9B7}
   body.dark .rule .on{color:#BFE6CC;background:rgba(169,217,183,.15)} body.dark .rule .rt{color:#F6F3EC}
   body.dark footer{border-color:rgba(246,243,236,.14)} body.dark .foot .fe{color:rgba(246,243,236,.5)}
   body.dark .foot .mail{color:#F6F3EC} body.dark .foot .mail:hover{color:#A9D9B7} body.dark .foot .mail .arw{color:#A9D9B7}
@@ -375,15 +388,45 @@
           <!-- PIPELINE -->
           <div class="panel" data-panel="flow">
             <div class="pt" data-en="How a decision moves" data-fr="Le cheminement d'une décision">How a decision moves</div>
-            <div class="psub" data-en="Every action follows the same path" data-fr="Chaque action suit le même chemin">Every action follows the same path</div>
-            <div class="flow">
-              <div class="node"><span class="nk" data-en="Sense" data-fr="Détecter">Sense</span><span class="nd" data-en="Grow 2 reads 31°, 84% RH and climbing" data-fr="Culture 2 : 31°, 84% HR et en hausse">Grow 2 reads 31°, 84% RH and climbing</span></div>
-              <span class="arr">&rarr;</span>
-              <div class="node"><span class="nk" data-en="Reason" data-fr="Raisonner">Reason</span><span class="nd" data-en="Over your 80% humidity limit; venting is safe" data-fr="Au-dessus de votre limite de 80 % ; ventiler est sûr">Over your 80% humidity limit; venting is safe</span></div>
-              <span class="arr">&rarr;</span>
-              <div class="node"><span class="nk" data-en="Act" data-fr="Agir">Act</span><span class="nd" data-en="Vents to 45%, exhaust fan up" data-fr="Évents à 45 %, extraction augmentée">Vents to 45%, exhaust fan up</span></div>
-              <span class="arr">&rarr;</span>
-              <div class="node"><span class="nk" data-en="Logged" data-fr="Journalisé">Logged</span><span class="nd" data-en="Written to your audit trail, with the reason" data-fr="Inscrit dans votre journal, avec la raison">Written to your audit trail, with the reason</span></div>
+            <div class="psub" data-en="The automation graph behind every action" data-fr="Le graphe d'automatisation derrière chaque action">The automation graph behind every action</div>
+            <div class="ncanvas">
+              <svg class="ngraph" viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="nn-edge" d="M104,68 C114,68 114,68 124,68"/>
+                <path class="nn-edge" d="M222,68 C232,68 232,68 242,68"/>
+                <path class="nn-edge" d="M340,68 C350,68 350,68 360,68"/>
+                <g>
+                  <rect class="nn-bg" x="6" y="42" width="98" height="52" rx="12"/>
+                  <rect class="nn-icon" x="14" y="57" width="22" height="22" rx="7"/>
+                  <g class="nn-gly"><circle cx="20" cy="68" r="1.7"/><circle cx="25" cy="68" r="1.7"/><circle cx="30" cy="68" r="1.7"/></g>
+                  <text class="nn-t" x="41" y="65" data-en="Sensors" data-fr="Capteurs">Sensors</text>
+                  <text class="nn-s" x="41" y="78" data-en="31° · 84% RH" data-fr="31° · 84% HR">31° · 84% RH</text>
+                  <circle class="nn-port" cx="104" cy="68" r="3.4"/>
+                </g>
+                <g>
+                  <rect class="nn-bg" x="124" y="42" width="98" height="52" rx="12"/>
+                  <rect class="nn-icon" x="132" y="57" width="22" height="22" rx="7"/>
+                  <svg class="nn-gly" x="135" y="60" width="16" height="16" viewBox="0 0 200 196"><path d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/></svg>
+                  <text class="nn-t" x="159" y="65" data-en="SerreVue" data-fr="SerreVue">SerreVue</text>
+                  <text class="nn-s" x="159" y="78" data-en="on your rules" data-fr="selon vos règles">on your rules</text>
+                  <circle class="nn-port" cx="124" cy="68" r="3.4"/><circle class="nn-port" cx="222" cy="68" r="3.4"/>
+                </g>
+                <g>
+                  <rect class="nn-bg" x="242" y="42" width="98" height="52" rx="12"/>
+                  <rect class="nn-icon" x="250" y="57" width="22" height="22" rx="7"/>
+                  <g class="nn-gly"><rect x="255" y="63.5" width="13" height="2.2" rx="1.1"/><rect x="255" y="70.5" width="13" height="2.2" rx="1.1"/><circle cx="264" cy="64.6" r="2.2"/><circle cx="259" cy="71.6" r="2.2"/></g>
+                  <text class="nn-t" x="277" y="65" data-en="Actuators" data-fr="Actionneurs">Actuators</text>
+                  <text class="nn-s" x="277" y="78" data-en="vents → 45%" data-fr="évents → 45 %">vents → 45%</text>
+                  <circle class="nn-port" cx="242" cy="68" r="3.4"/><circle class="nn-port" cx="340" cy="68" r="3.4"/>
+                </g>
+                <g>
+                  <rect class="nn-bg" x="360" y="42" width="94" height="52" rx="12"/>
+                  <rect class="nn-icon" x="368" y="57" width="22" height="22" rx="7"/>
+                  <g class="nn-gly"><rect x="373" y="63" width="12" height="2" rx="1"/><rect x="373" y="67.5" width="12" height="2" rx="1"/><rect x="373" y="72" width="12" height="2" rx="1"/></g>
+                  <text class="nn-t" x="395" y="65" data-en="Audit log" data-fr="Journal">Audit log</text>
+                  <text class="nn-s" x="395" y="78" data-en="with reason" data-fr="avec la raison">with reason</text>
+                  <circle class="nn-port" cx="360" cy="68" r="3.4"/>
+                </g>
+              </svg>
             </div>
             <div class="flow-note" data-en="You can pause, override, or tighten any step at any time." data-fr="Vous pouvez suspendre, remplacer ou resserrer chaque étape à tout moment.">You can pause, override, or tighten any step at any time.</div>
           </div>
