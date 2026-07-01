@@ -176,6 +176,14 @@
   body.dark .spop{background:#20402e;border-color:rgba(246,243,236,.16);box-shadow:0 16px 38px -14px rgba(0,0,0,.6)}
   body.dark .sp-h b{color:#F6F3EC} body.dark .sp-b{color:rgba(246,243,236,.72)} body.dark .sp-x{color:rgba(246,243,236,.6)}
   body.dark .sp-ask{background:#A9D9B7;color:#234E36} body.dark .sp-ask:hover{background:#fff}
+  .sp-ask.sp-alt{margin-top:6px;color:var(--green3);background:rgba(63,142,91,.12)}
+  .sp-ask.sp-alt:hover{background:rgba(63,142,91,.2)}
+  body.dark .sp-ask.sp-alt{background:rgba(169,217,183,.16);color:#A9D9B7} body.dark .sp-ask.sp-alt:hover{background:rgba(169,217,183,.28)}
+  .panel[data-panel="climate"]{position:relative}
+  .mk{cursor:pointer}
+  .ae[data-e]{cursor:pointer;border-radius:7px;padding:3px 5px;margin:0 -5px;transition:background .12s}
+  .ae[data-e]:hover{background:rgba(63,142,91,.09)}
+  body.dark .ae[data-e]:hover{background:rgba(169,217,183,.12)}
   body.dark .mon .m:hover{background:rgba(169,217,183,.1)}
   .addrule{width:100%;margin-top:4px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;color:var(--green3);background:none;border:1px dashed rgba(44,107,67,.4);border-radius:12px;padding:10px;cursor:pointer;transition:background .15s,border-color .15s}
   .addrule.done{opacity:.35;pointer-events:none}
@@ -277,7 +285,7 @@
             <polyline points="50,124 99,131 149,124 198,85 248,46 297,20 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             <polyline points="50,51 99,46 149,46 198,72 248,103 297,119 346,88 396,62 445,46" fill="none" stroke="#8A968F" stroke-width="1.8" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
             <g stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"><line x1="198" y1="18" x2="198" y2="150"/><line x1="253" y1="18" x2="253" y2="150"/><line x1="297" y1="18" x2="297" y2="150"/></g>
-            <g font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle"><circle cx="198" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="198" y="14.2" fill="#F6F3EC">1</text><circle cx="253" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="253" y="14.2" fill="#F6F3EC">2</text><circle cx="297" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="297" y="14.2" fill="#F6F3EC">3</text></g>
+            <g font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle"><g class="mk" data-e="1"><circle cx="198" cy="11" r="12" fill="transparent"/><circle cx="198" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="198" y="14.2" fill="#F6F3EC">1</text></g><g class="mk" data-e="2"><circle cx="253" cy="11" r="12" fill="transparent"/><circle cx="253" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="253" y="14.2" fill="#F6F3EC">2</text></g><g class="mk" data-e="3"><circle cx="297" cy="11" r="12" fill="transparent"/><circle cx="297" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="297" y="14.2" fill="#F6F3EC">3</text></g></g>
             <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/><circle cx="320" cy="38" r="3.5" fill="#2C6B43"/>
             <text x="149" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6am</text><text x="248" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">noon</text><text x="320" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="#2C6B43" font-weight="600">now</text><text x="396" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6pm</text>
           </svg>
@@ -290,10 +298,11 @@
           </div>
           <div class="alog">
             <div class="aeh" data-en="Actions today" data-fr="Actions aujourd'hui">Actions today</div>
-            <div class="ae"><span class="an">1</span><span class="at">09:00</span><span class="ax" data-en="Opened the vents as it warmed up" data-fr="Ouvert les évents au réchauffement">Opened the vents as it warmed up</span></div>
-            <div class="ae"><span class="an">2</span><span class="at">12:20</span><span class="ax" data-en="Held irrigation, soil already at 72%" data-fr="Irrigation retenue, sol déjà à 72 %">Held irrigation, soil already at 72%</span></div>
-            <div class="ae"><span class="an">3</span><span class="at">15:00</span><span class="ax" data-en="Shade drawn, vents to 45% for the peak" data-fr="Ombrage tiré, évents à 45 % pour le pic">Shade drawn, vents to 45% for the peak</span></div>
+            <div class="ae" data-e="1"><span class="an">1</span><span class="at">09:00</span><span class="ax" data-en="Opened the vents as it warmed up" data-fr="Ouvert les évents au réchauffement">Opened the vents as it warmed up</span></div>
+            <div class="ae" data-e="2"><span class="an">2</span><span class="at">12:20</span><span class="ax" data-en="Held irrigation, soil already at 72%" data-fr="Irrigation retenue, sol déjà à 72 %">Held irrigation, soil already at 72%</span></div>
+            <div class="ae" data-e="3"><span class="an">3</span><span class="at">15:00</span><span class="ax" data-en="Shade drawn, vents to 45% for the peak" data-fr="Ombrage tiré, évents à 45 % pour le pic">Shade drawn, vents to 45% for the peak</span></div>
           </div>
+          <div class="spop" id="mpop" hidden><div class="sp-h"><span class="sp-n">1</span><b class="sp-t">Action</b><button class="sp-x" aria-label="Close">&times;</button></div><div class="sp-b"></div><button class="sp-ask mp-chat"><span data-en="Ask about this" data-fr="Poser la question">Ask about this</span> &rarr;</button><button class="sp-ask sp-alt mp-auto"><span data-en="See the automation" data-fr="Voir l'automatisation">See the automation</span> &rarr;</button></div>
         </div>
                 <div class="panel active" data-panel="layout">
           <div class="pt" data-en="Greenhouse layout" data-fr="Plan de la serre">Greenhouse layout</div>
@@ -484,6 +493,22 @@
       pop.querySelector('.sp-x').addEventListener('click',function(){pop.hidden=true;});
       document.addEventListener('click',function(){pop.hidden=true;});
       pop.querySelector('.sp-ask').addEventListener('click',function(){var d=S[cur],l=L();pop.hidden=true;if(window.svShowTab)window.svShowTab('ask');if(window.svInject)window.svInject(d.q[l],d.a[l],d.chip?d.chip[l]:null);});
+    })();
+    (function(){
+      var pop=document.getElementById('mpop'); if(!pop)return; var host=pop.parentElement, cur=null;
+      var M={
+        '1':{t:{en:'09:00 · Vents opened',fr:'09:00 · Évents ouverts'},d:{en:"Grow 2 warmed past 26° and humidity was climbing toward your 80% limit, so I opened the vents to 30%. Eased them back once it settled.",fr:"Culture 2 a dépassé 26° et l'humidité montait vers votre limite de 80 %, alors j'ai ouvert les évents à 30 %. Refermés une fois stabilisé."},q:{en:"Why did you open the vents at 9?",fr:"Pourquoi ouvrir les évents à 9 h ?"},a:{en:"Grow 2 passed 26° and humidity was heading for your 80% ceiling, so I vented to 30% to hold it, then closed partway once it settled.",fr:"Culture 2 a dépassé 26° et l'humidité visait votre plafond de 80 %, alors j'ai ventilé à 30 % puis refermé en partie une fois stabilisé."},chip:{en:'Acted within your rules',fr:'A agi selon vos règles'}},
+        '2':{t:{en:'12:20 · Irrigation held',fr:'12:20 · Irrigation retenue'},d:{en:"A watering cycle came due but soil was already 72%, above your 70% hold rule, so I skipped it to avoid overwatering.",fr:"Un cycle d'arrosage était prévu mais le sol était déjà à 72 %, au-dessus de votre règle de 70 %, alors je l'ai sauté pour éviter le surarrosage."},q:{en:"Why skip the noon watering?",fr:"Pourquoi sauter l'arrosage de midi ?"},a:{en:"Soil was 72%, above your 70% hold-irrigation rule, so I held the cycle. I'll water once it drops under target.",fr:"Le sol était à 72 %, au-dessus de votre règle de rétention à 70 %, alors j'ai retenu le cycle. J'arroserai sous la cible."},chip:{en:'Acted within your rules',fr:'A agi selon vos règles'}},
+        '3':{t:{en:'15:00 · Shade + vents',fr:'15:00 · Ombrage + évents'},d:{en:"Outside peaked at 34° with strong light, so I drew the shade screen and opened vents to 45% to keep Grow 2 under its limit.",fr:"L'extérieur a atteint 34° avec une forte lumière, alors j'ai déployé l'ombrage et ouvert les évents à 45 % pour garder Culture 2 sous sa limite."},q:{en:"What did you do at the 3pm peak?",fr:"Qu'as-tu fait au pic de 15 h ?"},a:{en:"I drew the shade screen and opened vents to 45% as outside hit 34°, keeping Grow 2 from overheating. Eased both back after the peak.",fr:"J'ai déployé l'ombrage et ouvert les évents à 45 % quand l'extérieur a atteint 34°, évitant la surchauffe de Culture 2. Rétabli après le pic."},chip:{en:'Acted within your rules',fr:'A agi selon vos règles'}}
+      };
+      function L(){return document.documentElement.lang==='fr'?'fr':'en';}
+      function open(n,el){var d=M[n];if(!d)return;cur=n;var l=L();pop.querySelector('.sp-n').textContent=n;pop.querySelector('.sp-t').textContent=d.t[l];pop.querySelector('.sp-b').textContent=d.d[l];pop.hidden=false;var hr=host.getBoundingClientRect(),tr=el.getBoundingClientRect();var left=(tr.left-hr.left)+tr.width/2-pop.offsetWidth/2;var top=(tr.top-hr.top)-pop.offsetHeight-8;if(top<4)top=(tr.top-hr.top)+tr.height+8;left=Math.max(6,Math.min(left,hr.width-pop.offsetWidth-6));pop.style.left=left+'px';pop.style.top=top+'px';}
+      host.querySelectorAll('[data-e]').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();open(el.getAttribute('data-e'),el);});});
+      pop.addEventListener('click',function(e){e.stopPropagation();});
+      pop.querySelector('.sp-x').addEventListener('click',function(){pop.hidden=true;});
+      document.addEventListener('click',function(){pop.hidden=true;});
+      pop.querySelector('.mp-chat').addEventListener('click',function(){var d=M[cur],l=L();pop.hidden=true;if(window.svShowTab)window.svShowTab('ask');if(window.svInject)window.svInject(d.q[l],d.a[l],d.chip?d.chip[l]:null);});
+      pop.querySelector('.mp-auto').addEventListener('click',function(){pop.hidden=true;if(window.svShowTab)window.svShowTab('flow');});
     })();
     (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('rules');});})();
   </script>
