@@ -114,8 +114,11 @@
   .flow-note{margin-top:14px;font-size:12.5px;color:var(--ink-dimmer)}
 
   .rules{display:flex;flex-direction:column;gap:8px}
-  .rule{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
-  .rule .on{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--green3);background:rgba(44,107,67,.1);border-radius:14px;padding:3px 9px;flex:none}
+  .rule{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+  .rule:hover{border-color:rgba(44,107,67,.35)}
+  .rule .sw{position:relative;width:32px;height:18px;border-radius:10px;background:var(--green3);flex:none;transition:background .18s}
+  .rule .sw::after{content:"";position:absolute;top:2px;left:16px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .18s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .rule.off{background:transparent} .rule.off .sw{background:#cbccc0} .rule.off .sw::after{left:2px} .rule.off .rt{color:var(--ink-dimmer)}
   .rule .rt{font-size:13px;color:var(--ink)}
   .rules-note{margin-top:12px;font-size:12px;color:var(--ink-dimmer)}
 
@@ -149,7 +152,8 @@
   body.dark .ncanvas{border-color:rgba(246,243,236,.13);background-color:rgba(169,217,183,.04);background-image:radial-gradient(rgba(246,243,236,.13) 1px,transparent 1px)}
   body.dark .nn-bg{fill:rgba(30,44,36,.5);stroke:rgba(246,243,236,.16)} body.dark .nn-icon{fill:#A9D9B7} body.dark .nn-gly{fill:#234E36}
   body.dark .nn-t{fill:#F6F3EC} body.dark .nn-s{fill:rgba(246,243,236,.5)} body.dark .nn-edge{stroke:#A9D9B7;opacity:.5} body.dark .nn-port{fill:rgba(30,44,36,.9);stroke:#A9D9B7}
-  body.dark .rule{background:rgba(246,243,236,.06);border-color:rgba(246,243,236,.13)} body.dark .rule .on{color:#BFE6CC;background:rgba(169,217,183,.15)} body.dark .rule .rt{color:#F6F3EC}
+  body.dark .rule{background:rgba(246,243,236,.06);border-color:rgba(246,243,236,.13)} body.dark .rule .rt{color:#F6F3EC}
+  body.dark .rule:hover{border-color:rgba(169,217,183,.4)} body.dark .rule .sw{background:#4FA86C} body.dark .rule.off{background:transparent} body.dark .rule.off .sw{background:rgba(246,243,236,.22)} body.dark .rule.off .rt{color:rgba(246,243,236,.45)}
 
   /* ===== stacked (tablet/phone/short) ===== */
   @media (max-width:1080px), (max-height:560px){
@@ -300,10 +304,10 @@
           <div class="pt" data-en="Your pre-approved automations" data-fr="Vos automatisations pré-approuvées">Your pre-approved automations</div>
           <div class="psub" data-en="It only acts inside these. Nothing else." data-fr="Il agit uniquement dans ce cadre. Rien d'autre.">It only acts inside these. Nothing else.</div>
           <div class="rules">
-            <div class="rule"><span class="on" data-en="ON" data-fr="ACTIF">ON</span><span class="rt" data-en="Open the vents when humidity climbs over 80%" data-fr="Ouvrir les évents quand l'humidité dépasse 80 %">Open the vents when humidity climbs over 80%</span></div>
-            <div class="rule"><span class="on" data-en="ON" data-fr="ACTIF">ON</span><span class="rt" data-en="Hold irrigation above 70% soil moisture" data-fr="Retenir l'irrigation au-dessus de 70 % d'humidité du sol">Hold irrigation above 70% soil moisture</span></div>
-            <div class="rule"><span class="on" data-en="ON" data-fr="ACTIF">ON</span><span class="rt" data-en="Grow lights off from 22:00 to 06:00" data-fr="Éclairage éteint de 22 h à 6 h">Grow lights off from 22:00 to 06:00</span></div>
-            <div class="rule"><span class="on" data-en="ON" data-fr="ACTIF">ON</span><span class="rt" data-en="CO₂ dosing only below 700 ppm" data-fr="Dosage du CO₂ uniquement sous 700 ppm">CO₂ dosing only below 700 ppm</span></div>
+            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Open the vents when humidity climbs over 80%" data-fr="Ouvrir les évents quand l'humidité dépasse 80 %">Open the vents when humidity climbs over 80%</span></div>
+            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Hold irrigation above 70% soil moisture" data-fr="Retenir l'irrigation au-dessus de 70 % d'humidité du sol">Hold irrigation above 70% soil moisture</span></div>
+            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Grow lights off from 22:00 to 06:00" data-fr="Éclairage éteint de 22 h à 6 h">Grow lights off from 22:00 to 06:00</span></div>
+            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="CO₂ dosing only below 700 ppm" data-fr="Dosage du CO₂ uniquement sous 700 ppm">CO₂ dosing only below 700 ppm</span></div>
           </div>
           <div class="rules-note" data-en="Add, edit, or switch any rule off in one tap." data-fr="Ajoutez, modifiez ou désactivez une règle en un geste.">Add, edit, or switch any rule off in one tap.</div>
         </div>
@@ -369,6 +373,7 @@
         setTimeout(function(){typ.remove();var chip=r.chip?'<span class="chip">&#10003; '+r.chip[L]+'</span>':'';add('op',LEAF+'<div><div class="bubble">'+r.a[L]+'</div>'+chip+'</div>');busy=false;},760);
       });});
     })();
+    (function(){document.querySelectorAll('.rule').forEach(function(r){r.addEventListener('click',function(){r.classList.toggle('off');});});})();
   </script>
 </body>
 </html>
