@@ -73,7 +73,8 @@
   .msg.me .bubble{background:var(--cream2);color:var(--ink);border-bottom-right-radius:5px}
   .msg.op .bubble{background:rgba(63,142,91,.10);color:#20402e;border-bottom-left-radius:5px}
   .av{width:24px;height:24px;border-radius:7px;flex:none;margin-top:2px}
-  .chip{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green3);background:rgba(44,107,67,.09);border:1px solid rgba(44,107,67,.18);border-radius:20px;padding:4px 10px}
+  .chip{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green3);background:rgba(44,107,67,.09);border:1px solid rgba(44,107,67,.18);border-radius:20px;padding:4px 10px;cursor:pointer;transition:background .15s}
+  .chip:hover{background:rgba(44,107,67,.2)}
   .typing{display:inline-flex;gap:4px;align-items:center;padding:13px}
   .typing span{width:6px;height:6px;border-radius:50%;background:var(--green3);opacity:.4;animation:blink 1s infinite}
   .typing span:nth-child(2){animation-delay:.15s} .typing span:nth-child(3){animation-delay:.3s}
@@ -146,7 +147,7 @@
   body.dark .panels{border-color:rgba(246,243,236,.12)}
   body.dark .chat-body{scrollbar-color:rgba(246,243,236,.2) transparent} body.dark .chat-body::-webkit-scrollbar-thumb{background:rgba(246,243,236,.2)}
   body.dark .msg.me .bubble{background:rgba(246,243,236,.12);color:#F6F3EC} body.dark .msg.op .bubble{background:rgba(169,217,183,.16);color:#EAF6EE}
-  body.dark .chip{color:#BFE6CC;background:rgba(169,217,183,.12);border-color:rgba(169,217,183,.3)} body.dark .typing span{background:#A9D9B7}
+  body.dark .chip{color:#BFE6CC;background:rgba(169,217,183,.12);border-color:rgba(169,217,183,.3)} body.dark .chip:hover{background:rgba(169,217,183,.22)} body.dark .typing span{background:#A9D9B7}
   body.dark .ask{border-color:rgba(246,243,236,.12)} body.dark .ask-l{color:rgba(246,243,236,.5)}
   body.dark .qa{border-color:rgba(246,243,236,.2);color:rgba(246,243,236,.78)} body.dark .qa:hover{border-color:#A9D9B7;color:#A9D9B7;background:rgba(169,217,183,.1)}
   body.dark .inbar{border-color:rgba(246,243,236,.2);color:rgba(246,243,236,.5)} body.dark .inbar .send{background:#A9D9B7;color:#234E36}
@@ -427,6 +428,7 @@
       document.addEventListener('click',function(){pop.hidden=true;});
       pop.querySelector('.sp-ask').addEventListener('click',function(){var d=S[cur],l=L();pop.hidden=true;if(window.svShowTab)window.svShowTab('ask');if(window.svInject)window.svInject(d.q[l],d.a[l],d.chip?d.chip[l]:null);});
     })();
+    (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('rules');});})();
   </script>
 </body>
 </html>
