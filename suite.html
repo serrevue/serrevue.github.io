@@ -38,14 +38,15 @@
   .hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:80px;line-height:1.02;letter-spacing:-2px;color:var(--ink)}
   .hero h1 .g{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
   .hero p.sub{margin-top:24px;font-size:17.5px;line-height:1.55;color:var(--ink-dim);max-width:42ch}
-  .cta-row{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .bl{position:absolute;left:60px;bottom:48px;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
   .btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;text-decoration:none;border-radius:26px;padding:12px 22px;transition:.15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;border:none}
   .btn-primary{background:var(--green3);color:var(--cream)} .btn-primary:hover{background:#235638;transform:translateY(-1px)}
   .btn-ghost{border:1px solid var(--line);color:var(--ink);background:none} .btn-ghost:hover{border-color:var(--green3);color:var(--green3)}
   .meta{margin-top:26px;display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dimmer)}
   .meta span{display:inline-flex;align-items:center;gap:7px} .meta .d{width:5px;height:5px;border-radius:50%;background:var(--green2)}
 
-  .back{position:absolute;left:60px;bottom:48px;font-size:14px;color:var(--ink-dim);text-decoration:none}
+  .back{font-size:14px;color:var(--ink-dim);text-decoration:none}
   .back:hover{color:var(--green3)}
   .touch{position:absolute;right:60px;bottom:48px;text-align:right}
   .touch .fe{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:10px}
@@ -159,8 +160,8 @@
     .hero h1{font-size:clamp(38px,8vw,64px);letter-spacing:-1.4px;line-height:1.05}
     .hero p.sub{max-width:52ch}
     .app{position:static;transform:none;width:100%;max-width:540px;margin:40px 0 0}
-    .back{position:static;margin-top:40px}
-    .touch{position:static;text-align:left;margin-top:24px}
+    .bl{position:static;margin-top:38px}
+    .touch{position:static;text-align:left;margin-top:26px}
   }
   @media (max-width:640px){
     .stage{padding:26px 18px 40px}
@@ -192,10 +193,6 @@
     <div class="hero">
       <h1><span data-en="The operator for your " data-fr="L'opérateur de votre ">The operator for your </span><span class="g" data-en="greenhouse." data-fr="serre.">greenhouse.</span></h1>
       <p class="sub" data-en="SerreVue senses, reasons, and acts inside your greenhouse, always within the rules you set. Just talk to it in plain language. It handles the rest." data-fr="SerreVue détecte, raisonne et agit dans votre serre, toujours selon les règles que vous fixez. Parlez-lui simplement. Il s'occupe du reste.">SerreVue senses, reasons, and acts inside your greenhouse, always within the rules you set. Just talk to it in plain language. It handles the rest.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-fr-href="mailto:bonjour@serrevue.com?subject=D%C3%A9mo%20SerreVue"><span data-en="Book a demo" data-fr="Réserver une démo">Book a demo</span> <span class="arw">&rarr;</span></a>
-        <a class="btn btn-ghost" href="#try" data-en="Try it live" data-fr="Essayez-le">Try it live</a>
-      </div>
     </div>
 
     <div class="app" id="try">
@@ -313,7 +310,13 @@
       </div>
     </div>
 
-    <a class="back" href="/" data-en="&larr; Back to SerreVue" data-fr="&larr; Retour à SerreVue">&larr; Back to SerreVue</a>
+    <div class="bl">
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-fr-href="mailto:bonjour@serrevue.com?subject=D%C3%A9mo%20SerreVue"><span data-en="Book a demo" data-fr="Réserver une démo">Book a demo</span> <span class="arw">&rarr;</span></a>
+        <a class="btn btn-ghost" href="#try" data-en="Try it live" data-fr="Essayez-le">Try it live</a>
+      </div>
+      <a class="back" href="/" data-en="&larr; Back to SerreVue" data-fr="&larr; Retour à SerreVue">&larr; Back to SerreVue</a>
+    </div>
     <div class="touch">
       <div class="fe" data-en="Get in touch" data-fr="Nous joindre">Get in touch</div>
       <a href="mailto:hello@serrevue.com" data-en-href="mailto:hello@serrevue.com" data-fr-href="mailto:bonjour@serrevue.com"><span data-en="hello@serrevue.com" data-fr="bonjour@serrevue.com">hello@serrevue.com</span> <span class="arw">&rarr;</span></a>
