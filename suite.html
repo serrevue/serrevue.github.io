@@ -15,7 +15,7 @@
   :root{--green1:#4FA86C;--green2:#3F8E5B;--green3:#2C6B43;--cream:#F6F3EC;--cream2:#EEE9DC;--card:#FCFBF7;--line:#E7E0D0;--ink:#1E2C24;--ink-dim:#5A6B62;--ink-dimmer:#8A968F}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.5}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
   .wrap{max-width:1120px;margin:0 auto;padding:0 40px}
   a{color:inherit}
   header{position:sticky;top:0;z-index:20;background:transparent;border-bottom:1px solid transparent;transition:background .2s,border-color .2s}
@@ -189,6 +189,14 @@
     .hero p.sub{font-size:16.5px;max-width:100%}
     .foot{flex-direction:column;align-items:flex-start}
     .login{display:none}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .bar{height:62px}
+    .brand{gap:9px} .brand .logo{width:29px;height:29px} .brand .wm{font-size:19px}
+    .navr{gap:4px} .lang{margin-right:0} .lang-btn{padding:4px 6px;font-size:12px} .lang-sep{font-size:10px}
+    .theme-toggle{width:29px;height:29px} .theme-toggle svg{width:17px;height:17px}
+    .btn-primary{font-size:12.5px;padding:8px 13px}
   }
 </style>
 </head>
