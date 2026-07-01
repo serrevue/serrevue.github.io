@@ -184,6 +184,14 @@
   .ae[data-e]{cursor:pointer;border-radius:7px;padding:3px 5px;margin:0 -5px;transition:background .12s}
   .ae[data-e]:hover{background:rgba(63,142,91,.09)}
   body.dark .ae[data-e]:hover{background:rgba(169,217,183,.12)}
+  .mlgd{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .mchip{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:11.5px;color:var(--ink-dim);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 10px;cursor:pointer;transition:opacity .12s,border-color .12s}
+  .mchip .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+  .mchip .mval{color:var(--ink);font-weight:700}
+  .mchip.off{opacity:.5} .mchip.off .dot{background:var(--ink-dimmer)}
+  body.dark .mchip{background:transparent;border-color:rgba(246,243,236,.16)} body.dark .mchip .mval{color:#F6F3EC}
+  .fczone{fill:#2C6B43;opacity:.06} body.dark .fczone{fill:#A9D9B7;opacity:.08}
+  .fclbl{fill:currentColor;opacity:.5}
   body.dark .mon .m:hover{background:rgba(169,217,183,.1)}
   .addrule{width:100%;margin-top:4px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;color:var(--green3);background:none;border:1px dashed rgba(44,107,67,.4);border-radius:12px;padding:10px;cursor:pointer;transition:background .15s,border-color .15s}
   .addrule.done{opacity:.35;pointer-events:none}
@@ -276,20 +284,17 @@
         <div class="panel" data-panel="climate">
           <div class="pt" data-en="Today's climate" data-fr="Climat du jour">Today's climate</div>
           <div class="psub" data-en="Grow 2 · last 24 hours" data-fr="Culture 2 · 24 dernières heures">Grow 2 · last 24 hours</div>
-          <svg class="chart" viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="tf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F8E5B" stop-opacity="0.2"/><stop offset="1" stop-color="#3F8E5B" stop-opacity="0"/></linearGradient></defs>
-            <line x1="50" y1="20" x2="445" y2="20" stroke="currentColor" opacity="0.08"/><line x1="50" y1="85" x2="445" y2="85" stroke="currentColor" opacity="0.08"/><line x1="50" y1="150" x2="445" y2="150" stroke="currentColor" opacity="0.14"/>
-            <text x="44" y="23" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">34°</text><text x="44" y="88" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">24°</text><text x="44" y="153" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">14°</text>
-            <text x="451" y="23" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">90%</text><text x="451" y="88" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">65%</text><text x="451" y="153" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">40%</text>
-            <path d="M50,124 L99,131 L149,124 L198,85 L248,46 L297,20 L346,59 L396,98 L445,118 L445,150 L50,150 Z" fill="url(#tf)"/>
-            <polyline points="50,124 99,131 149,124 198,85 248,46 297,20 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="50,51 99,46 149,46 198,72 248,103 297,119 346,88 396,62 445,46" fill="none" stroke="#8A968F" stroke-width="1.8" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
-            <g stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"><line x1="198" y1="18" x2="198" y2="150"/><line x1="253" y1="18" x2="253" y2="150"/><line x1="297" y1="18" x2="297" y2="150"/></g>
+          <svg class="chart" id="climChart" viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
+            <rect class="fczone" x="320" y="18" width="125" height="132"/>
+            <text class="fclbl" x="383" y="13" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" letter-spacing="0.09em" text-anchor="middle" data-en="FORECAST" data-fr="PRÉVISION">FORECAST</text>
+            <line x1="50" y1="30" x2="445" y2="30" stroke="currentColor" opacity="0.07"/><line x1="50" y1="90" x2="445" y2="90" stroke="currentColor" opacity="0.07"/><line x1="50" y1="150" x2="445" y2="150" stroke="currentColor" opacity="0.12"/>
+            <g stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"><line x1="198" y1="18" x2="198" y2="150"/><line x1="253" y1="18" x2="253" y2="150"/><line x1="297" y1="18" x2="297" y2="150"/></g>
+            <g class="series" data-m="temp"><polyline points="50,124 99,131 149,124 198,85 248,46 297,20 320,38" fill="none" stroke="#3F8E5B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,38 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="humid"><polyline points="50,51 99,46 149,46 198,72 248,103 297,119 320,104" fill="none" stroke="#5E9BC9" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,104 346,88 396,62 445,46" fill="none" stroke="#5E9BC9" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="co2" style="display:none"><polyline points="50,40 99,50 149,66 198,96 248,120 297,104 320,94" fill="none" stroke="#C2772F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,74 396,84 445,96" fill="none" stroke="#C2772F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="soil" style="display:none"><polyline points="50,108 99,104 149,110 198,116 248,120 297,112 320,110" fill="none" stroke="#8E7B4E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,110 346,92 396,98 445,106" fill="none" stroke="#8E7B4E" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="water" style="display:none"><polyline points="50,140 99,138 149,132 198,120 248,112 297,98 320,94" fill="none" stroke="#4C9E8F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,82 396,70 445,58" fill="none" stroke="#4C9E8F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g>
+            <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/>
             <g font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle"><g class="mk" data-e="1"><circle cx="198" cy="11" r="12" fill="transparent"/><circle cx="198" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="198" y="14.2" fill="#F6F3EC">1</text></g><g class="mk" data-e="2"><circle cx="253" cy="11" r="12" fill="transparent"/><circle cx="253" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="253" y="14.2" fill="#F6F3EC">2</text></g><g class="mk" data-e="3"><circle cx="297" cy="11" r="12" fill="transparent"/><circle cx="297" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="297" y="14.2" fill="#F6F3EC">3</text></g></g>
-            <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/><circle cx="320" cy="38" r="3.5" fill="#2C6B43"/>
             <text x="149" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6am</text><text x="248" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">noon</text><text x="320" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="#2C6B43" font-weight="600">now</text><text x="396" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6pm</text>
           </svg>
-          <div class="legend"><span><i style="background:#3F8E5B"></i><span data-en="Temperature" data-fr="Température">Temperature</span></span><span><i style="background:#8A968F"></i><span data-en="Humidity" data-fr="Humidité">Humidity</span></span></div>
+          <div class="mlgd"><button class="mchip" data-m="temp" style="--c:#3F8E5B"><span class="dot"></span><span data-en="Temperature" data-fr="Température">Temperature</span> <b class="mval">31°C</b></button><button class="mchip" data-m="humid" style="--c:#5E9BC9"><span class="dot"></span><span data-en="Humidity" data-fr="Humidité">Humidity</span> <b class="mval">74%</b></button><button class="mchip off" data-m="co2" style="--c:#C2772F"><span class="dot"></span><span data-en="CO₂" data-fr="CO₂">CO₂</span> <b class="mval">620 ppm</b></button><button class="mchip off" data-m="soil" style="--c:#8E7B4E"><span class="dot"></span><span data-en="Soil" data-fr="Sol">Soil</span> <b class="mval">68%</b></button><button class="mchip off" data-m="water" style="--c:#4C9E8F"><span class="dot"></span><span data-en="Water" data-fr="Eau">Water</span> <b class="mval">38 L</b></button></div>
           <div class="stat">
             <div class="s"><b>31°C</b><span data-en="air · peak 34° at 3pm" data-fr="air · max 34° à 15 h">air · peak 34° at 3pm</span></div>
             <div class="s"><b>74%</b><span data-en="humidity · target 70%" data-fr="humidité · cible 70 %">humidity · target 70%</span></div>
@@ -509,6 +514,10 @@
       document.addEventListener('click',function(){pop.hidden=true;});
       pop.querySelector('.mp-chat').addEventListener('click',function(){var d=M[cur],l=L();pop.hidden=true;if(window.svShowTab)window.svShowTab('ask');if(window.svInject)window.svInject(d.q[l],d.a[l],d.chip?d.chip[l]:null);});
       pop.querySelector('.mp-auto').addEventListener('click',function(){pop.hidden=true;if(window.svShowTab)window.svShowTab('flow');});
+    })();
+    (function(){
+      var chart=document.getElementById('climChart'); if(!chart)return;
+      document.querySelectorAll('.mchip').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('off');var g=chart.querySelector('.series[data-m="'+c.getAttribute('data-m')+'"]');if(g)g.style.display=c.classList.contains('off')?'none':'';});});
     })();
     (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('rules');});})();
   </script>
