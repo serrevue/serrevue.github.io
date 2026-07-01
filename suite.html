@@ -92,7 +92,7 @@
   .chart{width:100%;height:auto;display:block}
   .legend{display:flex;gap:16px;margin-top:10px;font-size:12px;color:var(--ink-dim)}
   .legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:2px}
-  .stat{display:flex;gap:10px;margin-top:14px}
+  .stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
   .stat .s{flex:1;background:rgba(63,142,91,.06);border:1px solid var(--cream2);border-radius:12px;padding:10px 12px}
   .stat .s b{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;display:block;letter-spacing:-.4px}
   .stat .s span{font-size:11px;color:var(--ink-dimmer)}
@@ -184,6 +184,13 @@
   .ncanvas.paused{opacity:.38;transition:opacity .2s}
   .panel[data-panel="rules"].active{max-height:calc(100vh - 210px);overflow-y:auto;scrollbar-width:thin}
   body.dark .addrule{color:#A9D9B7;border-color:rgba(169,217,183,.4)} body.dark .addrule:hover{background:rgba(169,217,183,.1);border-color:#A9D9B7}
+  .alog{margin-top:15px;display:flex;flex-direction:column;gap:7px}
+  .alog .aeh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:2px}
+  .ae{display:flex;align-items:center;gap:9px;font-size:12px}
+  .ae .an{width:16px;height:16px;border-radius:50%;background:#3F8E5B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:9px;display:grid;place-items:center;flex:none}
+  .ae .at{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink);font-size:11.5px;flex:none;width:36px}
+  .ae .ax{color:var(--ink-dim)}
+  body.dark .alog .aeh{color:rgba(246,243,236,.5)} body.dark .ae .at{color:#F6F3EC} body.dark .ae .ax{color:rgba(246,243,236,.72)}
   @media (max-width:1080px), (max-height:560px){
     .stage{position:static;display:flex;flex-direction:column;min-height:100vh;padding:30px 24px 42px}
     .brand{position:static}
@@ -258,20 +265,35 @@
         </div>
         <div class="panel" data-panel="climate">
           <div class="pt" data-en="Today's climate" data-fr="Climat du jour">Today's climate</div>
-          <div class="psub" data-en="Grow 2 · temperature and humidity, last 24 hours" data-fr="Culture 2 · température et humidité, 24 dernières heures">Grow 2 · temperature and humidity, last 24 hours</div>
-          <svg class="chart" viewBox="0 0 440 170" preserveAspectRatio="none">
-            <defs><linearGradient id="tf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F8E5B" stop-opacity="0.22"/><stop offset="1" stop-color="#3F8E5B" stop-opacity="0"/></linearGradient></defs>
-            <line x1="30" y1="45" x2="420" y2="45" stroke="currentColor" opacity="0.08"/><line x1="30" y1="95" x2="420" y2="95" stroke="currentColor" opacity="0.08"/><line x1="30" y1="145" x2="420" y2="145" stroke="currentColor" opacity="0.08"/>
-            <path d="M30,139 L125,133 L172,106 L220,73 L267,51 L315,84 L362,117 L410,133 L410,150 L30,150 Z" fill="url(#tf)"/>
-            <polyline points="30,139 125,133 172,106 220,73 267,51 315,84 362,117 410,133" fill="none" stroke="#3F8E5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="30,57 125,52 172,77 220,106 267,121 315,91 362,67 410,52" fill="none" stroke="#8A968F" stroke-width="1.8" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
-            <line x1="267" y1="38" x2="267" y2="150" stroke="#2C6B43" stroke-width="1" opacity="0.35"/><circle cx="267" cy="51" r="4" fill="#2C6B43"/>
-            <text x="30" y="163" font-family="Inter" font-size="10" fill="currentColor" opacity="0.5">6am</text><text x="255" y="163" font-family="Inter" font-size="10" fill="currentColor" opacity="0.5">3pm</text><text x="398" y="163" font-family="Inter" font-size="10" fill="currentColor" opacity="0.5">now</text>
+          <div class="psub" data-en="Grow 2 · last 24 hours" data-fr="Culture 2 · 24 dernières heures">Grow 2 · last 24 hours</div>
+          <svg class="chart" viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="tf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F8E5B" stop-opacity="0.2"/><stop offset="1" stop-color="#3F8E5B" stop-opacity="0"/></linearGradient></defs>
+            <line x1="50" y1="20" x2="445" y2="20" stroke="currentColor" opacity="0.08"/><line x1="50" y1="85" x2="445" y2="85" stroke="currentColor" opacity="0.08"/><line x1="50" y1="150" x2="445" y2="150" stroke="currentColor" opacity="0.14"/>
+            <text x="44" y="23" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">34°</text><text x="44" y="88" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">24°</text><text x="44" y="153" font-family="Inter" font-size="9" text-anchor="end" fill="currentColor" opacity="0.55">14°</text>
+            <text x="451" y="23" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">90%</text><text x="451" y="88" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">65%</text><text x="451" y="153" font-family="Inter" font-size="9" text-anchor="start" fill="#8A968F">40%</text>
+            <path d="M50,124 L99,131 L149,124 L198,85 L248,46 L297,20 L346,59 L396,98 L445,118 L445,150 L50,150 Z" fill="url(#tf)"/>
+            <polyline points="50,124 99,131 149,124 198,85 248,46 297,20 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="50,51 99,46 149,46 198,72 248,103 297,119 346,88 396,62 445,46" fill="none" stroke="#8A968F" stroke-width="1.8" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <g stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"><line x1="198" y1="18" x2="198" y2="150"/><line x1="253" y1="18" x2="253" y2="150"/><line x1="297" y1="18" x2="297" y2="150"/></g>
+            <g font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle"><circle cx="198" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="198" y="14.2" fill="#F6F3EC">1</text><circle cx="253" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="253" y="14.2" fill="#F6F3EC">2</text><circle cx="297" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="297" y="14.2" fill="#F6F3EC">3</text></g>
+            <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/><circle cx="320" cy="38" r="3.5" fill="#2C6B43"/>
+            <text x="149" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6am</text><text x="248" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">noon</text><text x="320" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="#2C6B43" font-weight="600">now</text><text x="396" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6pm</text>
           </svg>
           <div class="legend"><span><i style="background:#3F8E5B"></i><span data-en="Temperature" data-fr="Température">Temperature</span></span><span><i style="background:#8A968F"></i><span data-en="Humidity" data-fr="Humidité">Humidity</span></span></div>
-          <div class="stat"><div class="s"><b>31°C</b><span data-en="now · peak 34° at 3pm" data-fr="maintenant · max 34° à 15 h">now · peak 34° at 3pm</span></div><div class="s"><b>74%</b><span data-en="humidity · target 70%" data-fr="humidité · cible 70 %">humidity · target 70%</span></div></div>
+          <div class="stat">
+            <div class="s"><b>31°C</b><span data-en="air · peak 34° at 3pm" data-fr="air · max 34° à 15 h">air · peak 34° at 3pm</span></div>
+            <div class="s"><b>74%</b><span data-en="humidity · target 70%" data-fr="humidité · cible 70 %">humidity · target 70%</span></div>
+            <div class="s"><b>620 ppm</b><span data-en="CO₂ · dosing under 700" data-fr="CO₂ · dosage sous 700">CO₂ · dosing under 700</span></div>
+            <div class="s"><b>68%</b><span data-en="soil · target 70%" data-fr="sol · cible 70 %">soil · target 70%</span></div>
+          </div>
+          <div class="alog">
+            <div class="aeh" data-en="Actions today" data-fr="Actions aujourd'hui">Actions today</div>
+            <div class="ae"><span class="an">1</span><span class="at">09:00</span><span class="ax" data-en="Opened the vents as it warmed up" data-fr="Ouvert les évents au réchauffement">Opened the vents as it warmed up</span></div>
+            <div class="ae"><span class="an">2</span><span class="at">12:20</span><span class="ax" data-en="Held irrigation, soil already at 72%" data-fr="Irrigation retenue, sol déjà à 72 %">Held irrigation, soil already at 72%</span></div>
+            <div class="ae"><span class="an">3</span><span class="at">15:00</span><span class="ax" data-en="Shade drawn, vents to 45% for the peak" data-fr="Ombrage tiré, évents à 45 % pour le pic">Shade drawn, vents to 45% for the peak</span></div>
+          </div>
         </div>
-        <div class="panel active" data-panel="layout">
+                <div class="panel active" data-panel="layout">
           <div class="pt" data-en="Greenhouse layout" data-fr="Plan de la serre">Greenhouse layout</div>
           <div class="psub" data-en="Sectional view, and everything it monitors" data-fr="Vue sectionnelle, et tout ce qu'il surveille">Sectional view, and everything it monitors</div>
           <div class="gh">
