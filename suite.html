@@ -96,7 +96,7 @@
   .stat .s b{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;display:block;letter-spacing:-.4px}
   .stat .s span{font-size:11px;color:var(--ink-dimmer)}
 
-  .gh{border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(63,142,91,.04)}
+  .gh{position:relative;border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(63,142,91,.04)}
   .gh-top{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:6px}
   .ghsvg{width:100%;height:auto;display:block;color:var(--green3);margin:2px 0}
   .mon{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:13px}
@@ -161,6 +161,21 @@
   body.dark .rule:hover{border-color:rgba(169,217,183,.4)} body.dark .rule .sw{background:#4FA86C} body.dark .rule.off{background:transparent} body.dark .rule.off .sw{background:rgba(246,243,236,.22)} body.dark .rule.off .rt{color:rgba(246,243,236,.45)}
 
   /* ===== stacked (tablet/phone/short) ===== */
+  .pin{cursor:pointer}
+  .mon .m{cursor:pointer;border-radius:8px;transition:background .12s} .mon .m:hover{background:rgba(44,107,67,.06)}
+  .spop{position:absolute;z-index:6;width:206px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px -14px rgba(30,44,36,.4);padding:11px 12px;font-size:12px}
+  .spop[hidden]{display:none}
+  .sp-h{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+  .sp-h .sp-n{width:17px;height:17px;border-radius:50%;background:#3F8E5B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:9.5px;display:grid;place-items:center;flex:none}
+  .sp-h b{font-family:'Space Grotesk',sans-serif;font-size:13px}
+  .sp-x{margin-left:auto;background:none;border:none;color:var(--ink-dimmer);cursor:pointer;font-size:16px;line-height:1;padding:0 2px}
+  .sp-b{color:var(--ink-dim);line-height:1.45}
+  .sp-ask{margin-top:10px;width:100%;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;color:var(--cream);background:var(--green3);border:none;border-radius:9px;padding:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+  .sp-ask:hover{background:#235638}
+  body.dark .spop{background:#20402e;border-color:rgba(246,243,236,.16);box-shadow:0 16px 38px -14px rgba(0,0,0,.6)}
+  body.dark .sp-h b{color:#F6F3EC} body.dark .sp-b{color:rgba(246,243,236,.72)} body.dark .sp-x{color:rgba(246,243,236,.6)}
+  body.dark .sp-ask{background:#A9D9B7;color:#234E36} body.dark .sp-ask:hover{background:#fff}
+  body.dark .mon .m:hover{background:rgba(169,217,183,.1)}
   @media (max-width:1080px), (max-height:560px){
     .stage{position:static;display:flex;flex-direction:column;min-height:100vh;padding:30px 24px 42px}
     .brand{position:static}
@@ -253,6 +268,7 @@
           <div class="psub" data-en="Sectional view, and everything it monitors" data-fr="Vue sectionnelle, et tout ce qu'il surveille">Sectional view, and everything it monitors</div>
           <div class="gh">
             <div class="gh-top" data-en="Greenhouse · top view" data-fr="Serre · vue de dessus">Greenhouse · top view</div>
+            <div class="spop" id="spop" hidden><div class="sp-h"><span class="sp-n">1</span><b class="sp-t">Air</b><button class="sp-x" aria-label="Close">&times;</button></div><div class="sp-b"></div><button class="sp-ask"><span>Ask about this</span> &rarr;</button></div>
             <svg class="ghsvg" viewBox="0 0 460 236" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <ellipse cx="235" cy="212" rx="205" ry="18" fill="#2C6B43" opacity="0.06"/>
               <polygon points="60,196 280,196 326,168 106,168" fill="#3F8E5B" opacity="0.05"/>
@@ -272,21 +288,21 @@
               <g fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.55"><line x1="62" y1="118" x2="62" y2="86"/><line x1="54" y1="90" x2="70" y2="90"/></g><circle cx="62" cy="82" r="3" fill="#3F8E5B"/>
               <g stroke="#3F8E5B" stroke-width="1" opacity="0.55"><line x1="128" y1="150" x2="128" y2="124"/><line x1="205" y1="118" x2="205" y2="104"/><line x1="150" y1="206" x2="167" y2="188"/><line x1="321" y1="158" x2="321" y2="170"/><line x1="373" y1="150" x2="373" y2="162"/></g>
               <g font-family="'Space Grotesk',sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
-                <circle cx="128" cy="118" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="128" y="121.5" fill="#F6F3EC">1</text>
-                <circle cx="205" cy="96" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="205" y="99.5" fill="#F6F3EC">2</text>
-                <circle cx="150" cy="214" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="150" y="217.5" fill="#F6F3EC">3</text>
-                <circle cx="321" cy="150" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="321" y="153.5" fill="#F6F3EC">4</text>
-                <circle cx="373" cy="142" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="373" y="145.5" fill="#F6F3EC">5</text>
-                <circle cx="62" cy="82" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="62" y="85.5" fill="#F6F3EC">6</text>
+                <g class="pin" data-s="1"><circle cx="128" cy="118" r="13" fill="transparent"/><circle cx="128" cy="118" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="128" y="121.5" fill="#F6F3EC">1</text></g>
+                <g class="pin" data-s="2"><circle cx="205" cy="96" r="13" fill="transparent"/><circle cx="205" cy="96" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="205" y="99.5" fill="#F6F3EC">2</text></g>
+                <g class="pin" data-s="3"><circle cx="150" cy="214" r="13" fill="transparent"/><circle cx="150" cy="214" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="150" y="217.5" fill="#F6F3EC">3</text></g>
+                <g class="pin" data-s="4"><circle cx="321" cy="150" r="13" fill="transparent"/><circle cx="321" cy="150" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="321" y="153.5" fill="#F6F3EC">4</text></g>
+                <g class="pin" data-s="5"><circle cx="373" cy="142" r="13" fill="transparent"/><circle cx="373" cy="142" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="373" y="145.5" fill="#F6F3EC">5</text></g>
+                <g class="pin" data-s="6"><circle cx="62" cy="82" r="13" fill="transparent"/><circle cx="62" cy="82" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="62" y="85.5" fill="#F6F3EC">6</text></g>
               </g>
             </svg>
             <div class="mon">
-              <div class="m"><span class="mn">1</span><span><b data-en="Air" data-fr="Air">Air</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
-              <div class="m"><span class="mn">2</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· PAR &amp; daily light" data-fr="· PAR et lumière du jour">· PAR &amp; daily light</span></span></div>
-              <div class="m"><span class="mn">3</span><span><b data-en="Root zone" data-fr="Racines">Root zone</b> <span data-en="· moisture, EC, pH" data-fr="· humidité, EC, pH">· moisture, EC, pH</span></span></div>
-              <div class="m"><span class="mn">4</span><span><b data-en="Water reserve" data-fr="Réserve d'eau">Water reserve</b> <span data-en="· level &amp; temp" data-fr="· niveau et temp.">· level &amp; temp</span></span></div>
-              <div class="m"><span class="mn">5</span><span><b data-en="Fertigation" data-fr="Fertigation">Fertigation</b> <span data-en="· dosing, EC, pH" data-fr="· dosage, EC, pH">· dosing, EC, pH</span></span></div>
-              <div class="m"><span class="mn">6</span><span><b data-en="Outside" data-fr="Extérieur">Outside</b> <span data-en="· weather station" data-fr="· station météo">· weather station</span></span></div>
+              <div class="m" data-s="1"><span class="mn">1</span><span><b data-en="Air" data-fr="Air">Air</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
+              <div class="m" data-s="2"><span class="mn">2</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· PAR &amp; daily light" data-fr="· PAR et lumière du jour">· PAR &amp; daily light</span></span></div>
+              <div class="m" data-s="3"><span class="mn">3</span><span><b data-en="Root zone" data-fr="Racines">Root zone</b> <span data-en="· moisture, EC, pH" data-fr="· humidité, EC, pH">· moisture, EC, pH</span></span></div>
+              <div class="m" data-s="4"><span class="mn">4</span><span><b data-en="Water reserve" data-fr="Réserve d'eau">Water reserve</b> <span data-en="· level &amp; temp" data-fr="· niveau et temp.">· level &amp; temp</span></span></div>
+              <div class="m" data-s="5"><span class="mn">5</span><span><b data-en="Fertigation" data-fr="Fertigation">Fertigation</b> <span data-en="· dosing, EC, pH" data-fr="· dosage, EC, pH">· dosing, EC, pH</span></span></div>
+              <div class="m" data-s="6"><span class="mn">6</span><span><b data-en="Outside" data-fr="Extérieur">Outside</b> <span data-en="· weather station" data-fr="· station météo">· weather station</span></span></div>
             </div>
             <div class="mon-note" data-en="Plus vents, screens, heating and energy in every section." data-fr="Plus les évents, écrans, chauffage et énergie dans chaque section.">Plus vents, screens, heating and energy in every section.</div>
           </div>
@@ -357,7 +373,7 @@
       var initial='ask';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
       function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
       document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
-      if(initial!=='ask')show(initial);
+      window.svShowTab=show;if(initial!=='ask')show(initial);
     })();
     (function(){
       var body=document.getElementById('chatBody');
@@ -370,6 +386,7 @@
       };
       function lang(){return document.documentElement.lang==='fr'?'fr':'en';}
       function add(cls,html){var d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
+      window.svInject=function(q,a,chip){add('me','<div class="bubble">'+q+'</div>');var typ=add('op',LEAF+'<div class="bubble typing"><span></span><span></span><span></span></div>');setTimeout(function(){typ.remove();var c=chip?'<span class="chip">&#10003; '+chip+'</span>':'';add('op',LEAF+'<div><div class="bubble">'+a+'</div>'+c+'</div>');},700);};
       var busy=false;
       document.querySelectorAll('.qa').forEach(function(b){b.addEventListener('click',function(){
         if(busy)return;busy=true;var r=R[b.getAttribute('data-q')],L=lang();
@@ -379,6 +396,25 @@
       });});
     })();
     (function(){document.querySelectorAll('.rule').forEach(function(r){r.addEventListener('click',function(){r.classList.toggle('off');});});})();
+    (function(){
+      var pop=document.getElementById('spop'); if(!pop)return; var gh=pop.parentElement, cur=null;
+      var S={
+        '1':{t:{en:'Air',fr:'Air'},d:{en:'Temperature, humidity and CO2 in every zone. Grow 2 now: 31 deg C, 74% RH, 620 ppm. Sampled every 30s.',fr:'Temperature, humidite et CO2 dans chaque zone. Culture 2 : 31 deg C, 74% HR, 620 ppm. Toutes les 30 s.'},q:{en:"How's the air in Grow 2?",fr:'Comment est l air dans Culture 2 ?'},a:{en:"Grow 2 is 31 deg C, 74% RH, 620 ppm. Humidity is near your 80% ceiling so I'm venting; the rest is in range.",fr:'Culture 2 : 31 deg C, 74% HR, 620 ppm. L humidite approche votre plafond de 80 %, alors je ventile; le reste est correct.'},chip:{en:'Acting within your rules',fr:'J agis selon vos regles'}},
+        '2':{t:{en:'Light',fr:'Lumiere'},d:{en:'PAR and the daily light sum, plus shade-screen position. 620 umol now, screen 40% drawn.',fr:'PAR et cumul de lumiere du jour, plus l ombrage. 620 umol, ombrage a 40 %.'},q:{en:'How much light today?',fr:'Combien de lumiere aujourd hui ?'},a:{en:"About 18 mol so far, on track for your 22 target. Shade is at 40% to hold the midday peak down.",fr:'Environ 18 mol jusqu ici, en route vers votre cible de 22. L ombrage est a 40 % pour limiter le pic de midi.'}},
+        '3':{t:{en:'Root zone',fr:'Racines'},d:{en:'Substrate moisture, EC and pH per bed. Grow 3 is driest at 61%.',fr:'Humidite du substrat, EC et pH par plate-bande. Culture 3 la plus seche a 61 %.'},q:{en:'How are the roots?',fr:'Comment vont les racines ?'},a:{en:"Grow 3 is driest at 61% (EC 2.2, pH 5.9). I'm running a short cycle to your 70% target; the others are fine.",fr:'Culture 3 la plus seche a 61 % (EC 2,2, pH 5,9). Je lance un court cycle vers votre cible de 70 %; les autres vont bien.'},chip:{en:'Acting within your rules',fr:'J agis selon vos regles'}},
+        '4':{t:{en:'Water reserve',fr:'Reserve d eau'},d:{en:'Tank level and water temperature. Reserve at 78%, 18 deg C.',fr:'Niveau et temperature du reservoir. Reserve a 78 %, 18 deg C.'},q:{en:"How's the water reserve?",fr:'Comment est la reserve d eau ?'},a:{en:"Tank is at 78% and 18 deg C, about three days at current use. I'll flag you under 20%.",fr:'Reservoir a 78 % et 18 deg C, environ trois jours au rythme actuel. Je vous avertis sous 20 %.'}},
+        '5':{t:{en:'Fertigation',fr:'Fertigation'},d:{en:'Nutrient dosing (A/B tanks), feed EC and pH. Feed EC 2.1, pH 5.9.',fr:'Dosage des nutriments (bacs A/B), EC et pH de la solution. EC 2,1, pH 5,9.'},q:{en:"How's the feed mix?",fr:'Comment est la solution nutritive ?'},a:{en:'Feed is EC 2.1 and pH 5.9, right on your recipe. Tank A is at 45%, B at 52%.',fr:'Solution a EC 2,1 et pH 5,9, conforme a votre recette. Bac A a 45 %, B a 52 %.'}},
+        '6':{t:{en:'Outside',fr:'Exterieur'},d:{en:'Weather station: sun, wind and rain, so it can act ahead of the forecast. Peak 34 deg C at 3pm.',fr:'Station meteo : soleil, vent et pluie, pour agir avant la meteo. Max 34 deg C a 15 h.'},q:{en:"What's the weather doing?",fr:'Que fait la meteo ?'},a:{en:"Clear and warming, peak 34 deg C around 3pm. That's why I'm pre-cooling Grow 2 now.",fr:'Degage et en hausse, max 34 deg C vers 15 h. C est pourquoi je pre-refroidis Culture 2.'},chip:{en:'Acting ahead, within your rules',fr:'J agis a l avance, selon vos regles'}}
+      };
+      function L(){return document.documentElement.lang==='fr'?'fr':'en';}
+      function open(n,el){var d=S[n];if(!d)return;cur=n;var l=L();pop.querySelector('.sp-n').textContent=n;pop.querySelector('.sp-t').textContent=d.t[l];pop.querySelector('.sp-b').textContent=d.d[l];pop.querySelector('.sp-ask span').textContent=(l==='fr'?'Poser la question':'Ask about this');pop.hidden=false;var gr=gh.getBoundingClientRect(),tr=el.getBoundingClientRect();var left=(tr.left-gr.left)+tr.width/2-pop.offsetWidth/2;var top=(tr.top-gr.top)-pop.offsetHeight-8;if(top<4)top=(tr.top-gr.top)+tr.height+8;left=Math.max(6,Math.min(left,gr.width-pop.offsetWidth-6));pop.style.left=left+'px';pop.style.top=top+'px';}
+      document.querySelectorAll('.pin').forEach(function(p){p.addEventListener('click',function(e){e.stopPropagation();open(p.getAttribute('data-s'),p);});});
+      document.querySelectorAll('.mon .m').forEach(function(m){m.addEventListener('click',function(e){e.stopPropagation();open(m.getAttribute('data-s'),m);});});
+      pop.addEventListener('click',function(e){e.stopPropagation();});
+      pop.querySelector('.sp-x').addEventListener('click',function(){pop.hidden=true;});
+      document.addEventListener('click',function(){pop.hidden=true;});
+      pop.querySelector('.sp-ask').addEventListener('click',function(){var d=S[cur],l=L();pop.hidden=true;if(window.svShowTab)window.svShowTab('ask');if(window.svInject)window.svInject(d.q[l],d.a[l],d.chip?d.chip[l]:null);});
+    })();
   </script>
 </body>
 </html>
