@@ -241,7 +241,8 @@
         <button class="tab active" data-tab="layout" data-en="View" data-fr="Vue">View</button>
         <button class="tab" data-tab="ask" data-en="Talk" data-fr="Parler">Talk</button>
         <button class="tab" data-tab="climate" data-en="Monitor" data-fr="Suivi">Monitor</button>
-        <button class="tab" data-tab="rules" data-en="Automations" data-fr="Automatisations">Automations</button>
+        <button class="tab" data-tab="rules" data-en="Rules" data-fr="Règles">Rules</button>
+        <button class="tab" data-tab="flow" data-en="Automations" data-fr="Automatisations">Automations</button>
       </div>
       <div class="panels">
         <div class="panel" data-panel="ask">
@@ -347,7 +348,9 @@
             <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="CO₂ dosing only below 700 ppm" data-fr="Dosage du CO₂ uniquement sous 700 ppm">CO₂ dosing only below 700 ppm</span></div>
             <button class="addrule" data-en="＋ Add rule" data-fr="＋ Ajouter une règle">＋ Add rule</button>
           </div>
-          <div class="pt" style="margin-top:16px" data-en="How it acts" data-fr="Comment il agit">How it acts</div>
+        </div>
+        <div class="panel" data-panel="flow">
+          <div class="pt" data-en="How it acts" data-fr="Comment il agit">How it acts</div>
           <div class="psub" data-en="Every action runs this loop, within your rules" data-fr="Chaque action suit cette boucle, selon vos règles">Every action runs this loop, within your rules</div>
           <div class="ncanvas" id="decGraph">
             <svg class="ngraph" viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
