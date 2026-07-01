@@ -178,6 +178,7 @@
   body.dark .sp-ask{background:#A9D9B7;color:#234E36} body.dark .sp-ask:hover{background:#fff}
   body.dark .mon .m:hover{background:rgba(169,217,183,.1)}
   .addrule{width:100%;margin-top:4px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;color:var(--green3);background:none;border:1px dashed rgba(44,107,67,.4);border-radius:12px;padding:10px;cursor:pointer;transition:background .15s,border-color .15s}
+  .addrule.done{opacity:.35;pointer-events:none}
   .addrule:hover{background:rgba(44,107,67,.05);border-color:var(--green3)}
   .int{cursor:pointer;transition:opacity .15s} .int.ioff{opacity:.4}
   .nn-edge.eoff{opacity:.12;animation:none}
@@ -442,7 +443,27 @@
       var rc=document.querySelector('.rules');
       if(rc)rc.addEventListener('click',function(e){var r=e.target.closest('.rule');if(r){r.classList.toggle('off');updateFlow();}});
       var ar=document.querySelector('.addrule');
-      if(ar)ar.addEventListener('click',function(){var row=document.createElement('div');row.className='rule';row.innerHTML='<span class="sw" aria-hidden="true"></span><span class="rt">New rule</span>';rc.insertBefore(row,ar);});
+      if(ar){
+        var POOL=[
+          {en:"Draw the shade screen when light tops 900 W/m²",fr:"Déployer l'ombrage quand la lumière dépasse 900 W/m²"},
+          {en:"Boost the exhaust fan when the air climbs past 30°C",fr:"Monter l'extraction quand l'air dépasse 30°C"},
+          {en:"Recirculate air if humidity holds over 85% for 20 min",fr:"Recirculer l'air si l'humidité dépasse 85 % pendant 20 min"},
+          {en:"Pause fertigation when feed EC passes 2.6",fr:"Suspendre la fertigation quand l'EC dépasse 2,6"},
+          {en:"Close the vents if outside wind tops 40 km/h",fr:"Fermer les évents si le vent extérieur dépasse 40 km/h"},
+          {en:"Warn me if any zone drops below 12°C overnight",fr:"M'avertir si une zone descend sous 12°C la nuit"}
+        ];
+        var added=0;
+        ar.addEventListener('click',function(){
+          if(added>=3||POOL.length===0)return;
+          var r=POOL.splice(Math.floor(Math.random()*POOL.length),1)[0];
+          var l=document.documentElement.lang==='fr'?'fr':'en';
+          var row=document.createElement('div');row.className='rule';
+          row.innerHTML='<span class="sw" aria-hidden="true"></span><span class="rt" data-en="'+r.en+'" data-fr="'+r.fr+'">'+r[l]+'</span>';
+          rc.insertBefore(row,ar);
+          added++;
+          if(added>=3||POOL.length===0)ar.classList.add('done');
+        });
+      }
       document.querySelectorAll('.int').forEach(function(g){g.addEventListener('click',function(){var i=g.getAttribute('data-i');g.classList.toggle('ioff');var e=document.querySelector('.e-'+i);if(e)e.classList.toggle('eoff');});});
     })();
     (function(){
