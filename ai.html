@@ -208,6 +208,46 @@
   body.dark .mchip{background:transparent;border-color:rgba(246,243,236,.16)} body.dark .mchip .mval{color:#F6F3EC}
   .fczone{fill:#2C6B43;opacity:.06} body.dark .fczone{fill:#A9D9B7;opacity:.08}
   .fclbl{fill:currentColor;opacity:.5}
+  .paper{padding:2px 4px;color:var(--ink)}
+  .pp-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.18;letter-spacing:-.4px}
+  .pp-by{font-family:'Fraunces',serif;font-style:italic;font-size:12.5px;color:var(--green3);margin:7px 0 13px}
+  .abs-l{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:5px}
+  .kw{font-size:11px;color:var(--ink-dimmer);margin-top:7px}
+  .kw i{font-family:'Fraunces',serif;color:var(--green3)}
+  body.dark .abs-l,body.dark .kw{color:rgba(246,243,236,.55)} body.dark .kw i{color:#A9D9B7}
+  .abst{background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12.2px;line-height:1.6;color:var(--ink-dim)}
+  .psec{margin-top:16px;padding-top:13px;border-top:1px solid var(--cream2)}
+  .psec h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13.5px;color:var(--ink);display:flex;align-items:baseline;gap:7px}
+  .psec h2 .no{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  .paper p{font-size:12.4px;line-height:1.62;color:var(--ink-dim);margin-top:7px}
+  .statrow{display:flex;gap:8px;margin-top:10px}
+  .st{flex:1;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  .st b{display:block;font-family:'Space Grotesk',sans-serif;font-size:14.5px;color:var(--ink)}
+  .st span{font-size:10.5px;color:var(--ink-dimmer)}
+  .fig{margin-top:11px;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:10px 10px 8px}
+  .figcap{font-family:'Fraunces',serif;font-style:italic;font-size:11.5px;color:var(--ink-dimmer);margin-top:5px;text-align:center}
+  .fig .ftx{fill:currentColor} .fig{color:var(--ink)}
+  .fig .g2s{stroke:var(--green2)} .fig .fg2{fill:var(--green2)} .fig .dm{stroke:#8A968F} .fig circle.dm,.fig g.dm circle{fill:#8A968F;stroke:none}
+  .fig .fdim{fill:var(--cream2);stroke:var(--line)}
+  .pull{margin:11px 0 2px;padding:9px 14px;border-left:2px solid var(--green2);font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--green3);line-height:1.5}
+  .find{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:7px;padding:0}
+  .find li{font-size:12.4px;line-height:1.55;color:var(--ink-dim);padding-left:17px;position:relative}
+  .find li:before{content:"";position:absolute;left:2px;top:6.5px;width:7px;height:7px;border-radius:50%;background:var(--green2)}
+  .metho{font-size:10.8px;color:var(--ink-dimmer);font-style:italic;margin-top:10px}
+  .reqnote{display:inline-flex;align-items:center;gap:6px;margin-top:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;color:var(--cream);background:var(--green3);border-radius:9px;padding:9px 14px;text-decoration:none}
+  .reqnote:hover{background:#235638}
+  body.dark .pp-title{color:#F6F3EC} body.dark .pp-by{color:#A9D9B7}
+  body.dark .abst,body.dark .st,body.dark .fig{background:rgba(30,44,36,.5);border-color:rgba(246,243,236,.14)}
+  body.dark .abst,body.dark .paper p,body.dark .find li{color:rgba(246,243,236,.75)}
+  body.dark .psec{border-top-color:rgba(246,243,236,.12)}
+  body.dark .psec h2{color:#F6F3EC} body.dark .psec h2 .no{color:#A9D9B7}
+  body.dark .st b{color:#F6F3EC} body.dark .st span,body.dark .figcap,body.dark .metho{color:rgba(246,243,236,.55)}
+  body.dark .fig{color:#F6F3EC}
+  body.dark .fig .g2s{stroke:#A9D9B7} body.dark .fig .fg2{fill:#A9D9B7} body.dark .fig .dm{stroke:rgba(246,243,236,.5)} body.dark .fig g.dm circle{fill:rgba(246,243,236,.5)}
+  body.dark .fig .fdim{fill:rgba(246,243,236,.12);stroke:rgba(246,243,236,.18)}
+  body.dark .pull{color:#A9D9B7;border-left-color:#A9D9B7}
+  body.dark .find li:before{background:#A9D9B7}
+  body.dark .reqnote{background:#A9D9B7;color:#234E36} body.dark .reqnote:hover{background:#fff}
   .mdl-list{display:flex;flex-direction:column;gap:9px}
   .mdl{background:var(--cream);border:1px solid var(--line);border-radius:13px;padding:11px 13px}
   .mdl-h{display:flex;align-items:center;gap:8px;margin-bottom:3px}
@@ -284,67 +324,100 @@
     </div>
 
     <div class="app" id="try">
-      <div class="app-head"><span class="dot"></span><span class="t">SerreVue AI</span><span class="s" data-en="live" data-fr="en direct">live</span></div>
-      <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="ask" data-en="Ask" data-fr="Demander">Ask</button>
-        <button class="tab" data-tab="climate" data-en="Forecast" data-fr="Prévision">Forecast</button>
-        <button class="tab" data-tab="models" data-en="Models" data-fr="Modèles">Models</button>
-      </div>
+      <div class="app-head"><span class="dot"></span><span class="t" data-en="SerreVue Research" data-fr="Recherche SerreVue">SerreVue Research</span><span class="s">Note 01 &middot; 2026</span></div>
       <div class="panels">
-        <div class="panel active" data-panel="ask">
-          <div class="chat-body" id="chatBody">
-            <div class="msg me"><div class="bubble" data-en="How's Grow 2 looking this afternoon?" data-fr="Comment se présente Culture 2 cet après-midi ?">How's Grow 2 looking this afternoon?</div></div>
-            <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
-              <div><div class="bubble" data-en="Warm. Forecast peaks at 34°C around 3pm, so I'm pre-cooling now. Vents to 45% and the shade drawn, to keep it under your 28° ceiling." data-fr="Il fera chaud. Maximum prévu de 34 °C vers 15 h, alors je pré-refroidis déjà. Évents à 45 % et ombrage tiré, pour rester sous votre plafond de 28 °C.">Warm. Forecast peaks at 34°C around 3pm, so I'm pre-cooling now. Vents to 45% and the shade drawn, to keep it under your 28° ceiling.</div>
-              <span class="chip">&#10003; <span data-en="Acting ahead, within your rules" data-fr="J'agis à l'avance, selon vos règles">Acting ahead, within your rules</span></span></div>
+        <div class="panel active" data-panel="paper">
+          <div class="paper">
+            <div class="pp-title" data-en="Teaching a model to run a greenhouse" data-fr="Apprendre à un modèle à gérer une serre">Teaching a model to run a greenhouse</div>
+            <div class="pp-by" data-en="SerreVue AI · Technical note 01 · Québec, 2026" data-fr="SerreVue AI · Note technique 01 · Québec, 2026">SerreVue AI · Technical note 01 · Québec, 2026</div>
+            <div class="abs-l" data-en="Abstract" data-fr="Résumé">Abstract</div>
+            <div class="abst" data-en="We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured." data-fr="Nous avons entraîné un opérateur pour les serres : des modèles de prédiction qui voient quelques heures à l'avance, et un LLM horticole qui les transforme en actions sûres. Cette note résume la collecte des données, la simulation, les modèles retenus et les résultats mesurés.">We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured.</div>
+            <div class="kw"><span data-en="Keywords:" data-fr="Mots-clés :">Keywords:</span> <i data-en="greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin" data-fr="contrôle du climat de serre · prévision de séries temporelles · LLM affiné · jumeau numérique">greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin</i></div>
+
+            <div class="psec">
+              <h2><span class="no">1</span><span data-en="Data" data-fr="Données">Data</span></h2>
+              <p data-en="Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it." data-fr="Chaque serre transmet des lectures toutes les 30 secondes : air, lumière, zone racinaire, eau et énergie, plus une station météo extérieure. Nous associons ces flux aux conversations et décisions des producteurs, pour que les modèles apprennent non seulement ce qui s'est passé, mais ce qu'un bon producteur a fait.">Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it.</p>
+              <div class="statrow">
+                <div class="st"><b>30 s</b><span data-en="sampling, every zone" data-fr="échantillonnage, chaque zone">sampling, every zone</span></div>
+                <div class="st"><b>6</b><span data-en="sensor families" data-fr="familles de capteurs">sensor families</span></div>
+                <div class="st"><b>2</b><span data-en="growing seasons" data-fr="saisons de culture">growing seasons</span></div>
+              </div>
+            </div>
+
+            <div class="psec">
+              <h2><span class="no">2</span><span data-en="Simulation" data-fr="Simulation">Simulation</span></h2>
+              <p data-en="Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely." data-fr="Les vraies saisons sont lentes et les pannes rares. Nous avons donc construit un jumeau numérique physique de la serre, le même modèle en coupe que dans la Suite, et rejoué plus de 12 000 journées de culture simulées : canicules, pics d'humidité, capteurs en panne, évents bloqués. L'opérateur s'y entraîne sans risque.">Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely.</p>
+              <div class="fig">
+                <svg viewBox="0 0 420 118" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <line class="dm" x1="14" y1="100" x2="406" y2="100" stroke-width="1" opacity="0.5"/>
+                  <g class="g2s" fill="none" stroke-width="1.6" stroke-linejoin="round">
+                    <polyline points="30,100 30,56 105,26 180,56 180,100"/>
+                    <line x1="30" y1="56" x2="180" y2="56"/>
+                  </g>
+                  <g class="dm" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"><line x1="80" y1="56" x2="80" y2="100"/><line x1="130" y1="56" x2="130" y2="100"/></g>
+                  <g class="fg2"><circle cx="55" cy="88" r="2.6"/><circle cx="105" cy="88" r="2.6"/><circle cx="155" cy="88" r="2.6"/><circle cx="105" cy="40" r="2.6"/></g>
+                  <g class="g2s" fill="none" stroke-width="1.4" stroke-dasharray="4 4" opacity="0.45" stroke-linejoin="round">
+                    <polyline points="240,100 240,56 315,26 390,56 390,100"/>
+                    <line x1="240" y1="56" x2="390" y2="56"/>
+                  </g>
+                  <g class="dm" opacity="0.55"><circle cx="265" cy="88" r="2.2"/><circle cx="315" cy="88" r="2.2"/><circle cx="365" cy="88" r="2.2"/></g>
+                  <text class="ftx" x="105" y="114" font-family="Inter" font-size="9" text-anchor="middle" opacity="0.6" data-en="live twin" data-fr="jumeau réel">live twin</text>
+                  <text class="ftx" x="315" y="114" font-family="Inter" font-size="9" text-anchor="middle" opacity="0.6" data-en="12,000+ simulated days" data-fr="12 000+ journées simulées">12,000+ simulated days</text>
+                </svg>
+                <div class="figcap" data-en="Fig. 1 · The digital twin behind training, and its simulated variants." data-fr="Fig. 1 · Le jumeau numérique derrière l'entraînement, et ses variantes simulées.">Fig. 1 · The digital twin behind training, and its simulated variants.</div>
+              </div>
+            </div>
+
+            <div class="psec">
+              <h2><span class="no">3</span><span data-en="Models" data-fr="Modèles">Models</span></h2>
+              <p data-en="We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days." data-fr="Nous avons comparé la persistance, les arbres boostés et les réseaux neuronaux temporels sur le climat des six prochaines heures. Les arbres sont forts à court terme; le réseau temporel gagne dès que la météo et les plans d'actionneurs comptent. Chaque serre reçoit un modèle par zone, affiné sur ses propres données en quelques jours.">We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days.</p>
+              <div class="fig">
+                <svg viewBox="0 0 420 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <line class="dm" x1="30" y1="110" x2="400" y2="110" stroke-width="1" opacity="0.5"/>
+                  <rect class="fdim" x="63" y="26" width="54" height="84" rx="6"/>
+                  <rect class="fdim" x="183" y="54" width="54" height="56" rx="6"/>
+                  <rect class="fg2" x="303" y="82" width="54" height="28" rx="6"/>
+                  <text class="ftx" x="90" y="18" font-family="'Space Grotesk',sans-serif" font-size="12" font-weight="700" text-anchor="middle">2.4°</text>
+                  <text class="ftx" x="210" y="46" font-family="'Space Grotesk',sans-serif" font-size="12" font-weight="700" text-anchor="middle">1.6°</text>
+                  <text class="ftx" x="330" y="74" font-family="'Space Grotesk',sans-serif" font-size="12" font-weight="700" text-anchor="middle">0.8°</text>
+                  <text class="ftx" x="90" y="126" font-family="Inter" font-size="9.5" text-anchor="middle" opacity="0.65" data-en="Persistence" data-fr="Persistance">Persistence</text>
+                  <text class="ftx" x="210" y="126" font-family="Inter" font-size="9.5" text-anchor="middle" opacity="0.65" data-en="Boosted trees" data-fr="Arbres boostés">Boosted trees</text>
+                  <text class="ftx" x="330" y="126" font-family="Inter" font-size="9.5" text-anchor="middle" opacity="0.65" data-en="Temporal net" data-fr="Réseau temporel">Temporal net</text>
+                </svg>
+                <div class="figcap" data-en="Fig. 2 · Mean 6 h temperature error, held-out days. Lower is better." data-fr="Fig. 2 · Erreur moyenne de température à 6 h, journées réservées. Plus bas = mieux.">Fig. 2 · Mean 6 h temperature error, held-out days. Lower is better.</div>
+              </div>
+            </div>
+
+            <div class="psec">
+              <h2><span class="no">4</span><span data-en="Grower LLM" data-fr="LLM horticole">Grower LLM</span></h2>
+              <p data-en="The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves." data-fr="Le LLM horticole est affiné sur les opérations de serre et l'agronomie, en français et en anglais. Chaque réponse s'appuie sur l'état réel des capteurs et les prévisions ci-dessus, et chaque action proposée est vérifiée contre vos règles avant tout mouvement.">The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves.</p>
+              <div class="pull" data-en="&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;" data-fr="&laquo; Il répond à partir de l'état réel de votre serre, pas d'une invite générique. &raquo;">&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;</div>
+            </div>
+
+            <div class="psec">
+              <h2><span class="no">5</span><span data-en="Findings" data-fr="Résultats">Findings</span></h2>
+              <ul class="find">
+                <li data-en="0.8 °C mean error on 6 h temperature, per zone (Fig. 2)." data-fr="0,8 °C d'erreur moyenne sur la température à 6 h, par zone (Fig. 2).">0.8 °C mean error on 6 h temperature, per zone (Fig. 2).</li>
+                <li data-en="Pest and disease windows flagged 36 to 48 h before scouting caught them." data-fr="Fenêtres de ravageurs et maladies signalées 36 à 48 h avant le dépistage.">Pest and disease windows flagged 36 to 48 h before scouting caught them.</li>
+                <li data-en="12 to 18 % less irrigation water in simulation, at equal or better soil targets." data-fr="12 à 18 % d'eau d'irrigation en moins en simulation, à cibles de sol égales ou meilleures.">12 to 18 % less irrigation water in simulation, at equal or better soil targets.</li>
+                <li data-en="Pre-cooling ahead of forecast peaks halved the time zones spent above their ceiling." data-fr="Le pré-refroidissement avant les pics prévus a réduit de moitié le temps passé au-dessus du plafond.">Pre-cooling ahead of forecast peaks halved the time zones spent above their ceiling.</li>
+              </ul>
+              <div class="fig">
+                <svg viewBox="0 0 420 108" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <line class="dm" x1="14" y1="88" x2="406" y2="88" stroke-width="1" opacity="0.5"/>
+                  <polyline class="g2s" points="20,72 60,76 100,66 140,48 180,30 220,24 260,34 300,50 340,62 400,68" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline class="dm" points="20,76 60,79 100,62 140,44 180,33 220,21 260,38 300,46 340,66 400,65" fill="none" stroke-width="1.6" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                  <text class="ftx" x="60" y="101" font-family="Inter" font-size="9" text-anchor="middle" opacity="0.55">6am</text>
+                  <text class="ftx" x="210" y="101" font-family="Inter" font-size="9" text-anchor="middle" opacity="0.55">noon</text>
+                  <text class="ftx" x="360" y="101" font-family="Inter" font-size="9" text-anchor="middle" opacity="0.55">6pm</text>
+                </svg>
+                <div class="figcap" data-en="Fig. 3 · Predicted (dashed) vs measured temperature, one held-out day." data-fr="Fig. 3 · Température prédite (pointillé) vs mesurée, une journée réservée.">Fig. 3 · Predicted (dashed) vs measured temperature, one held-out day.</div>
+              </div>
+              <div class="metho" data-en="Simulation and pilot data, 2025-2026. Full methodology in the technical note." data-fr="Données de simulation et de pilote, 2025-2026. Méthodologie complète dans la note technique.">Simulation and pilot data, 2025-2026. Full methodology in the technical note.</div>
+              <a class="reqnote" href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-fr-href="mailto:bonjour@serrevue.com?subject=Note%20technique%20SerreVue"><span data-en="Request the full technical note" data-fr="Demander la note technique complète">Request the full technical note</span> <span class="arw">&rarr;</span></a>
             </div>
           </div>
-          <div class="ask">
-            <div class="ask-l" data-en="Try asking" data-fr="Essayez de demander">Try asking</div>
-            <div class="chips">
-              <button class="qa" data-q="vents" data-en="Open the vents" data-fr="Ouvre les évents">Open the vents</button>
-              <button class="qa" data-q="pest" data-en="Any pest or disease risk?" data-fr="Risque de ravageurs ?">Any pest or disease risk?</button>
-              <button class="qa" data-q="water" data-en="Water the driest zone" data-fr="Arrose la zone la plus sèche">Water the driest zone</button>
-              <button class="qa" data-q="co2" data-en="How's the CO₂?" data-fr="Comment est le CO₂ ?">How's the CO₂?</button>
-            </div>
-            <div class="inbar"><span data-en="Ask your greenhouse…" data-fr="Parlez à votre serre…">Ask your greenhouse…</span><span class="send">&uarr;</span></div>
-          </div>
         </div>
-        <div class="panel" data-panel="climate">
-          <div class="pt" data-en="24-hour prediction" data-fr="Prédiction sur 24 h">24-hour prediction</div>
-          <div class="psub" data-en="Grow 2 · solid is measured, dashed is the model" data-fr="Culture 2 · plein = mesuré, pointillé = le modèle">Grow 2 · solid is measured, dashed is the model</div>
-          <svg class="chart" id="climChart" viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
-            <rect class="fczone" x="320" y="18" width="125" height="132"/>
-            <text class="fclbl" x="346" y="13" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" letter-spacing="0.09em" text-anchor="middle" data-en="FORECAST" data-fr="PRÉVISION">FORECAST</text>
-            <line x1="50" y1="30" x2="445" y2="30" stroke="currentColor" opacity="0.07"/><line x1="50" y1="90" x2="445" y2="90" stroke="currentColor" opacity="0.07"/><line x1="50" y1="150" x2="445" y2="150" stroke="currentColor" opacity="0.12"/>
-            <g class="series" data-m="temp"><polyline points="50,124 99,131 149,124 198,85 248,46 297,20 320,38" fill="none" stroke="#3F8E5B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,38 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="humid"><polyline points="50,51 99,46 149,46 198,72 248,103 297,119 320,104" fill="none" stroke="#5E9BC9" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,104 346,88 396,62 445,46" fill="none" stroke="#5E9BC9" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="co2" style="display:none"><polyline points="50,40 99,50 149,66 198,96 248,120 297,104 320,94" fill="none" stroke="#C2772F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,74 396,84 445,96" fill="none" stroke="#C2772F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="soil" style="display:none"><polyline points="50,108 99,104 149,110 198,116 248,120 297,112 320,110" fill="none" stroke="#8E7B4E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,110 346,92 396,98 445,106" fill="none" stroke="#8E7B4E" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="water" style="display:none"><polyline points="50,140 99,138 149,132 198,120 248,112 297,98 320,94" fill="none" stroke="#4C9E8F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,82 396,70 445,58" fill="none" stroke="#4C9E8F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g>
-            <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/>
-            
-            <text x="149" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6am</text><text x="248" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">noon</text><text x="320" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="#2C6B43" font-weight="600">now</text><text x="396" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6pm</text>
-          </svg>
-          <div class="mlgd"><button class="mchip" data-m="temp" style="--c:#3F8E5B"><span class="dot"></span><span data-en="Temperature" data-fr="Température">Temperature</span> <b class="mval">31°C</b></button><button class="mchip" data-m="humid" style="--c:#5E9BC9"><span class="dot"></span><span data-en="Humidity" data-fr="Humidité">Humidity</span> <b class="mval">74%</b></button><button class="mchip off" data-m="co2" style="--c:#C2772F"><span class="dot"></span><span data-en="CO₂" data-fr="CO₂">CO₂</span> <b class="mval">620 ppm</b></button><button class="mchip off" data-m="soil" style="--c:#8E7B4E"><span class="dot"></span><span data-en="Soil" data-fr="Sol">Soil</span> <b class="mval">68%</b></button><button class="mchip off" data-m="water" style="--c:#4C9E8F"><span class="dot"></span><span data-en="Water" data-fr="Eau">Water</span> <b class="mval">38 L</b></button></div>
-          <div class="stat">
-            <div class="s"><b>31°C</b><span data-en="air · peak 34° at 3pm" data-fr="air · max 34° à 15 h">air · peak 34° at 3pm</span></div>
-            <div class="s"><b>74%</b><span data-en="humidity · target 70%" data-fr="humidité · cible 70 %">humidity · target 70%</span></div>
-            <div class="s"><b>620 ppm</b><span data-en="CO₂ · dosing under 700" data-fr="CO₂ · dosage sous 700">CO₂ · dosing under 700</span></div>
-            <div class="s"><b>68%</b><span data-en="soil · target 70%" data-fr="sol · cible 70 %">soil · target 70%</span></div>
-          </div>
-          
-        </div>
-        <div class="panel" data-panel="models">
-          <div class="pt" data-en="The models behind it" data-fr="Les modèles derrière">The models behind it</div>
-          <div class="psub" data-en="One fine-tuned LLM up front, prediction models underneath. All within your rules." data-fr="Un LLM affiné devant, des modèles de prédiction derrière. Tous selon vos règles.">One fine-tuned LLM up front, prediction models underneath. All within your rules.</div>
-          <div class="mdl-list">
-            <div class="mdl"><div class="mdl-h"><b data-en="Grower LLM" data-fr="LLM horticole">Grower LLM</b><span class="mtag" data-en="fine-tuned" data-fr="affiné">fine-tuned</span></div><p data-en="Trained on greenhouse operations and agronomy, bilingual EN/FR. It reads your sensors before it answers." data-fr="Entraîné sur les opérations de serre et l'agronomie, bilingue EN/FR. Il lit vos capteurs avant de répondre.">Trained on greenhouse operations and agronomy, bilingual EN/FR. It reads your sensors before it answers.</p></div>
-            <div class="mdl"><div class="mdl-h"><b data-en="Climate forecaster" data-fr="Prévision climat">Climate forecaster</b><span class="mtag">24 h</span></div><p data-en="Per-zone temperature and humidity ahead of time, so it can pre-cool before the peak instead of reacting after." data-fr="Température et humidité par zone à l'avance, pour pré-refroidir avant le pic au lieu de réagir après.">Per-zone temperature and humidity ahead of time, so it can pre-cool before the peak instead of reacting after.</p></div>
-            <div class="mdl"><div class="mdl-h"><b data-en="Pest &amp; disease risk" data-fr="Risque ravageurs et maladies">Pest &amp; disease risk</b><span class="mtag" data-en="48 h ahead" data-fr="48 h d'avance">48 h ahead</span></div><p data-en="Watches leaf wetness and climate windows for botrytis and mildew, and alerts before the risk opens." data-fr="Surveille l'humidité foliaire et les fenêtres climatiques pour la botrytis et le mildiou, et alerte avant l'ouverture du risque.">Watches leaf wetness and climate windows for botrytis and mildew, and alerts before the risk opens.</p></div>
-            <div class="mdl"><div class="mdl-h"><b data-en="Irrigation planner" data-fr="Plan d'irrigation">Irrigation planner</b><span class="mtag" data-en="less water" data-fr="moins d'eau">less water</span></div><p data-en="Forecasts water demand from soil, crop stage and weather, and waters only when the root zone needs it." data-fr="Prévoit la demande en eau selon le sol, le stade de culture et la météo, et arrose seulement quand la zone racinaire en a besoin.">Forecasts water demand from soil, crop stage and weather, and waters only when the root zone needs it.</p></div>
-            <div class="mdl"><div class="mdl-h"><b data-en="Energy forecaster" data-fr="Prévision énergie">Energy forecaster</b><span class="mtag" data-en="day-ahead" data-fr="jour d'avance">day-ahead</span></div><p data-en="Plans heating and lighting around price peaks and cold nights before they arrive." data-fr="Planifie le chauffage et l'éclairage autour des pointes de prix et des nuits froides avant qu'elles arrivent.">Plans heating and lighting around price peaks and cold nights before they arrive.</p></div>
-          </div>
-        </div>
-                
-        
-        
       </div>
     </div>
 
@@ -382,7 +455,7 @@
       document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var t=document.body.classList.contains('dark')?'light':'dark';saved=t;try{localStorage.setItem(KEY,t);}catch(e){}apply(t);});});
     })();
     (function(){
-      var initial='ask';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
+      var initial='paper';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
       function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
       document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
       window.svShowTab=show;show(initial);
