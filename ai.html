@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SerreVue Greenhouse Suite · Talk to your greenhouse</title>
-<meta name="description" content="SerreVue is an AI operator for greenhouses. It senses, reasons, and acts, always within the rules you set." />
+<title>SerreVue AI · models that speak greenhouse</title>
+<meta name="description" content="A grower LLM fine-tuned on greenhouse operations, plus prediction models for climate, pests, irrigation and energy. Bilingual EN/FR, built in Québec." />
 <meta name="theme-color" content="#F6F3EC" />
-<meta property="og:title" content="SerreVue Greenhouse Suite · a live demo" />
-<meta property="og:description" content="See the AI operator work: view the greenhouse, talk to it, monitor the climate, set rules and automations." />
-<link rel="canonical" href="https://serrevue.com/suite" />
+<meta property="og:title" content="SerreVue AI · models that speak greenhouse" />
+<meta property="og:description" content="A fine-tuned grower LLM plus prediction models for climate, pests, irrigation and energy." />
+<link rel="canonical" href="https://serrevue.com/ai" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SerreVue" />
-<meta property="og:url" content="https://serrevue.com/suite" />
+<meta property="og:url" content="https://serrevue.com/ai" />
 <meta property="og:image" content="https://serrevue.com/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_CA" />
 <meta property="og:locale:alternate" content="fr_CA" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="SerreVue Greenhouse Suite · a live demo" />
-<meta name="twitter:description" content="See the AI operator work: view the greenhouse, talk to it, monitor the climate, set rules and automations." />
+<meta name="twitter:title" content="SerreVue AI · models that speak greenhouse" />
+<meta name="twitter:description" content="A fine-tuned grower LLM plus prediction models for climate, pests, irrigation and energy." />
 <meta name="twitter:image" content="https://serrevue.com/og.png" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -208,6 +208,15 @@
   body.dark .mchip{background:transparent;border-color:rgba(246,243,236,.16)} body.dark .mchip .mval{color:#F6F3EC}
   .fczone{fill:#2C6B43;opacity:.06} body.dark .fczone{fill:#A9D9B7;opacity:.08}
   .fclbl{fill:currentColor;opacity:.5}
+  .mdl-list{display:flex;flex-direction:column;gap:9px}
+  .mdl{background:var(--cream);border:1px solid var(--line);border-radius:13px;padding:11px 13px}
+  .mdl-h{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+  .mdl-h b{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--ink)}
+  .mtag{margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green3);background:rgba(63,142,91,.1);border-radius:6px;padding:2px 7px;flex:none}
+  .mdl p{font-size:12px;line-height:1.5;color:var(--ink-dim)}
+  body.dark .mdl{background:rgba(30,44,36,.5);border-color:rgba(246,243,236,.14)}
+  body.dark .mdl-h b{color:#F6F3EC} body.dark .mdl p{color:rgba(246,243,236,.72)}
+  body.dark .mtag{color:#A9D9B7;background:rgba(169,217,183,.14)}
   .mk.future .mkc{fill:var(--card)}
   .ae.future .an{background:transparent;border:1.5px solid #3F8E5B;color:#3F8E5B;box-sizing:border-box}
   .ae.future .ax{font-style:italic}
@@ -270,21 +279,19 @@
     </div>
 
     <div class="hero">
-      <h1><span data-en="The operator for your " data-fr="L'opérateur de votre ">The operator for your </span><span class="g" data-en="greenhouse." data-fr="serre.">greenhouse.</span></h1>
-      <p class="sub" data-en="SerreVue senses, reasons, and acts inside your greenhouse, always within the rules you set. Just talk to it in plain language. It handles the rest." data-fr="SerreVue détecte, raisonne et agit dans votre serre, toujours selon les règles que vous fixez. Parlez-lui simplement. Il s'occupe du reste.">SerreVue senses, reasons, and acts inside your greenhouse, always within the rules you set. Just talk to it in plain language. It handles the rest.</p>
+      <h1><span data-en="AI that speaks " data-fr="Une IA qui parle ">AI that speaks </span><span class="g" data-en="greenhouse." data-fr="serre.">greenhouse.</span></h1>
+      <p class="sub" data-en="A grower LLM fine-tuned on greenhouse operations, working with prediction models for climate, pests, irrigation and energy. It understands your crops, your data, and your rules." data-fr="Un LLM horticole affiné sur les opérations de serre, appuyé par des modèles de prédiction pour le climat, les ravageurs, l'irrigation et l'énergie. Il comprend vos cultures, vos données et vos règles.">A grower LLM fine-tuned on greenhouse operations, working with prediction models for climate, pests, irrigation and energy. It understands your crops, your data, and your rules.</p>
     </div>
 
     <div class="app" id="try">
-      <div class="app-head"><span class="dot"></span><span class="t" data-en="Greenhouse" data-fr="Serre">Greenhouse</span><span class="s" data-en="live" data-fr="en direct">live</span></div>
+      <div class="app-head"><span class="dot"></span><span class="t">SerreVue AI</span><span class="s" data-en="live" data-fr="en direct">live</span></div>
       <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="layout" data-en="View" data-fr="Vue">View</button>
-        <button class="tab" data-tab="ask" data-en="Talk" data-fr="Parler">Talk</button>
-        <button class="tab" data-tab="climate" data-en="Monitor" data-fr="Suivi">Monitor</button>
-        <button class="tab" data-tab="rules" data-en="Rules" data-fr="Règles">Rules</button>
-        <button class="tab" data-tab="flow" data-en="Automations" data-fr="Automatisations">Automations</button>
+        <button class="tab active" data-tab="ask" data-en="Ask" data-fr="Demander">Ask</button>
+        <button class="tab" data-tab="climate" data-en="Forecast" data-fr="Prévision">Forecast</button>
+        <button class="tab" data-tab="models" data-en="Models" data-fr="Modèles">Models</button>
       </div>
       <div class="panels">
-        <div class="panel" data-panel="ask">
+        <div class="panel active" data-panel="ask">
           <div class="chat-body" id="chatBody">
             <div class="msg me"><div class="bubble" data-en="How's Grow 2 looking this afternoon?" data-fr="Comment se présente Culture 2 cet après-midi ?">How's Grow 2 looking this afternoon?</div></div>
             <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
@@ -304,15 +311,15 @@
           </div>
         </div>
         <div class="panel" data-panel="climate">
-          <div class="pt" data-en="Today's climate" data-fr="Climat du jour">Today's climate</div>
-          <div class="psub" data-en="Grow 2 · last 24 hours" data-fr="Culture 2 · 24 dernières heures">Grow 2 · last 24 hours</div>
+          <div class="pt" data-en="24-hour prediction" data-fr="Prédiction sur 24 h">24-hour prediction</div>
+          <div class="psub" data-en="Grow 2 · solid is measured, dashed is the model" data-fr="Culture 2 · plein = mesuré, pointillé = le modèle">Grow 2 · solid is measured, dashed is the model</div>
           <svg class="chart" id="climChart" viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
             <rect class="fczone" x="320" y="18" width="125" height="132"/>
             <text class="fclbl" x="346" y="13" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" letter-spacing="0.09em" text-anchor="middle" data-en="FORECAST" data-fr="PRÉVISION">FORECAST</text>
             <line x1="50" y1="30" x2="445" y2="30" stroke="currentColor" opacity="0.07"/><line x1="50" y1="90" x2="445" y2="90" stroke="currentColor" opacity="0.07"/><line x1="50" y1="150" x2="445" y2="150" stroke="currentColor" opacity="0.12"/>
             <g class="series" data-m="temp"><polyline points="50,124 99,131 149,124 198,85 248,46 297,20 320,38" fill="none" stroke="#3F8E5B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,38 346,59 396,98 445,118" fill="none" stroke="#3F8E5B" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="humid"><polyline points="50,51 99,46 149,46 198,72 248,103 297,119 320,104" fill="none" stroke="#5E9BC9" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,104 346,88 396,62 445,46" fill="none" stroke="#5E9BC9" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="co2" style="display:none"><polyline points="50,40 99,50 149,66 198,96 248,120 297,104 320,94" fill="none" stroke="#C2772F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,74 396,84 445,96" fill="none" stroke="#C2772F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="soil" style="display:none"><polyline points="50,108 99,104 149,110 198,116 248,120 297,112 320,110" fill="none" stroke="#8E7B4E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,110 346,92 396,98 445,106" fill="none" stroke="#8E7B4E" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g><g class="series" data-m="water" style="display:none"><polyline points="50,140 99,138 149,132 198,120 248,112 297,98 320,94" fill="none" stroke="#4C9E8F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="320,94 346,82 396,70 445,58" fill="none" stroke="#4C9E8F" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/></g>
             <line x1="320" y1="18" x2="320" y2="150" stroke="#2C6B43" stroke-width="1.2" opacity="0.5"/>
-            <g class="mk" data-e="1" data-m="temp"><line x1="190" y1="18" x2="190" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle cx="190" cy="11" r="12" fill="transparent"/><circle cx="190" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="190" y="14.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">1</text></g><g class="mk" data-e="2" data-m="humid"><line x1="250" y1="18" x2="250" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle cx="250" cy="11" r="12" fill="transparent"/><circle cx="250" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="250" y="14.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">2</text></g><g class="mk" data-e="3" data-m="temp"><line x1="300" y1="18" x2="300" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle cx="300" cy="11" r="12" fill="transparent"/><circle cx="300" cy="11" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="300" y="14.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">3</text></g><g class="mk future" data-e="4" data-m="humid"><line x1="382" y1="18" x2="382" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="2 3" opacity="0.25"/><circle cx="382" cy="11" r="12" fill="transparent"/><circle class="mkc" cx="382" cy="11" r="7.5" stroke="#3F8E5B" stroke-width="1.6"/><text x="382" y="14.2" fill="#3F8E5B" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">4</text></g><g class="mk future" data-e="5" data-m="co2" style="display:none"><line x1="414" y1="18" x2="414" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="2 3" opacity="0.25"/><circle cx="414" cy="11" r="12" fill="transparent"/><circle class="mkc" cx="414" cy="11" r="7.5" stroke="#3F8E5B" stroke-width="1.6"/><text x="414" y="14.2" fill="#3F8E5B" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">5</text></g><g class="mk future" data-e="6" data-m="soil" style="display:none"><line x1="440" y1="18" x2="440" y2="150" stroke="#2C6B43" stroke-width="1" stroke-dasharray="2 3" opacity="0.25"/><circle cx="440" cy="11" r="12" fill="transparent"/><circle class="mkc" cx="440" cy="11" r="7.5" stroke="#3F8E5B" stroke-width="1.6"/><text x="440" y="14.2" fill="#3F8E5B" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">6</text></g>
+            
             <text x="149" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6am</text><text x="248" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">noon</text><text x="320" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="#2C6B43" font-weight="600">now</text><text x="396" y="170" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5">6pm</text>
           </svg>
           <div class="mlgd"><button class="mchip" data-m="temp" style="--c:#3F8E5B"><span class="dot"></span><span data-en="Temperature" data-fr="Température">Temperature</span> <b class="mval">31°C</b></button><button class="mchip" data-m="humid" style="--c:#5E9BC9"><span class="dot"></span><span data-en="Humidity" data-fr="Humidité">Humidity</span> <b class="mval">74%</b></button><button class="mchip off" data-m="co2" style="--c:#C2772F"><span class="dot"></span><span data-en="CO₂" data-fr="CO₂">CO₂</span> <b class="mval">620 ppm</b></button><button class="mchip off" data-m="soil" style="--c:#8E7B4E"><span class="dot"></span><span data-en="Soil" data-fr="Sol">Soil</span> <b class="mval">68%</b></button><button class="mchip off" data-m="water" style="--c:#4C9E8F"><span class="dot"></span><span data-en="Water" data-fr="Eau">Water</span> <b class="mval">38 L</b></button></div>
@@ -322,97 +329,29 @@
             <div class="s"><b>620 ppm</b><span data-en="CO₂ · dosing under 700" data-fr="CO₂ · dosage sous 700">CO₂ · dosing under 700</span></div>
             <div class="s"><b>68%</b><span data-en="soil · target 70%" data-fr="sol · cible 70 %">soil · target 70%</span></div>
           </div>
-          <div class="alog">
-            <div class="aeh" data-en="Actions today" data-fr="Actions aujourd'hui">Actions today</div>
-            <div class="ae" data-e="1" data-m="temp"><span class="an">1</span><span class="at">09:00</span><span class="ax" data-en="Opened vents as the air warmed past 26°" data-fr="Évents ouverts, l'air a dépassé 26°">Opened vents as the air warmed past 26°</span></div>
-            <div class="ae" data-e="2" data-m="humid"><span class="an">2</span><span class="at">12:00</span><span class="ax" data-en="Eased vents as humidity settled under 80%" data-fr="Évents ajustés, humidité sous 80 %">Eased vents as humidity settled under 80%</span></div>
-            <div class="ae" data-e="3" data-m="temp"><span class="an">3</span><span class="at">15:00</span><span class="ax" data-en="Shade drawn, vents to 45% for the heat peak" data-fr="Ombrage tiré, évents à 45 % pour le pic">Shade drawn, vents to 45% for the heat peak</span></div>
-            <div class="ae future" data-e="4" data-m="humid"><span class="an">4</span><span class="at">18:00</span><span class="ax" data-en="Will recirculate air as humidity climbs at dusk" data-fr="Recirculation prévue à la montée d'humidité">Will recirculate air as humidity climbs at dusk</span><span class="ptag" data-en="planned" data-fr="prévu">planned</span></div>
-            <div class="ae future" data-e="5" data-m="co2" style="display:none"><span class="an">5</span><span class="at">19:30</span><span class="ax" data-en="Will dose CO₂ after dusk if it dips under 700" data-fr="Dosage CO₂ prévu si sous 700 après le crépuscule">Will dose CO₂ after dusk if it dips under 700</span><span class="ptag" data-en="planned" data-fr="prévu">planned</span></div>
-            <div class="ae future" data-e="6" data-m="soil" style="display:none"><span class="an">6</span><span class="at">20:30</span><span class="ax" data-en="Will top up irrigation overnight to hold 70%" data-fr="Irrigation nocturne prévue pour tenir 70 %">Will top up irrigation overnight to hold 70%</span><span class="ptag" data-en="planned" data-fr="prévu">planned</span></div>
-          </div>
-          <div class="spop" id="mpop" hidden><div class="sp-h"><span class="sp-n">1</span><b class="sp-t">Action</b><button class="sp-x" aria-label="Close">&times;</button></div><div class="sp-b"></div><button class="sp-ask mp-chat"><span data-en="Ask about this" data-fr="Poser la question">Ask about this</span> &rarr;</button><button class="sp-ask sp-alt mp-auto"><span data-en="See the automation" data-fr="Voir l'automatisation">See the automation</span> &rarr;</button></div>
+          
         </div>
-                <div class="panel active" data-panel="layout">
-          <div class="pt" data-en="Greenhouse layout" data-fr="Plan de la serre">Greenhouse layout</div>
-          <div class="psub" data-en="Sectional view, and everything it monitors" data-fr="Vue sectionnelle, et tout ce qu'il surveille">Sectional view, and everything it monitors</div>
-          <div class="gh">
-            <div class="gh-top" data-en="Greenhouse · top view" data-fr="Serre · vue de dessus">Greenhouse · top view</div>
-            <div class="spop" id="spop" hidden><div class="sp-h"><span class="sp-n">1</span><b class="sp-t">Air</b><button class="sp-x" aria-label="Close">&times;</button></div><div class="sp-b"></div><button class="sp-ask"><span>Ask about this</span> &rarr;</button></div>
-            <svg class="ghsvg" viewBox="0 0 460 236" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="235" cy="212" rx="205" ry="18" fill="#2C6B43" opacity="0.06"/>
-              <polygon points="60,196 280,196 326,168 106,168" fill="#3F8E5B" opacity="0.05"/>
-              <g fill="#3F8E5B" opacity="0.2"><polygon points="76,196 98,196 144,168 122,168"/><polygon points="131,196 153,196 199,168 177,168"/><polygon points="186,196 208,196 254,168 232,168"/><polygon points="241,196 263,196 309,168 287,168"/></g>
-              <g fill="#2C6B43"><circle cx="97" cy="188" r="4"/><circle cx="112" cy="180" r="4"/><circle cx="127" cy="172" r="4"/><circle cx="152" cy="188" r="4"/><circle cx="167" cy="180" r="4"/><circle cx="182" cy="172" r="4"/><circle cx="207" cy="188" r="4"/><circle cx="222" cy="180" r="4"/><circle cx="237" cy="172" r="4"/><circle cx="262" cy="188" r="4"/><circle cx="277" cy="180" r="4"/><circle cx="292" cy="172" r="4"/></g>
-              <polygon points="60,196 280,196 280,140 60,140" fill="#A9D9B7" opacity="0.05"/><polygon points="60,140 280,140 303,100 83,100" fill="#A9D9B7" opacity="0.09"/>
-              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.5">
-                <polygon points="60,196 280,196 326,168 106,168"/><line x1="60" y1="196" x2="60" y2="140"/><line x1="280" y1="196" x2="280" y2="140"/><line x1="326" y1="168" x2="326" y2="112"/><line x1="106" y1="168" x2="106" y2="112"/>
-                <polygon points="60,140 280,140 326,112 106,112"/><line x1="83" y1="100" x2="303" y2="100"/><line x1="60" y1="140" x2="83" y2="100"/><line x1="280" y1="140" x2="303" y2="100"/><line x1="106" y1="112" x2="83" y2="100"/><line x1="326" y1="112" x2="303" y2="100"/>
-                <line x1="115" y1="196" x2="115" y2="140" opacity="0.55"/><line x1="115" y1="196" x2="161" y2="168" opacity="0.4"/><line x1="170" y1="196" x2="170" y2="140" opacity="0.55"/><line x1="170" y1="196" x2="216" y2="168" opacity="0.4"/><line x1="225" y1="196" x2="225" y2="140" opacity="0.55"/><line x1="225" y1="196" x2="271" y2="168" opacity="0.4"/>
-              </g>
-              <polygon points="280,196 356,196 402,168 326,168" fill="#3F8E5B" opacity="0.05"/>
-              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" opacity="0.5"><polygon points="280,196 356,196 402,168 326,168"/><line x1="356" y1="196" x2="356" y2="152"/><line x1="402" y1="168" x2="402" y2="124"/><line x1="280" y1="196" x2="280" y2="140"/><polygon points="280,152 356,152 402,124 326,124"/><line x1="326" y1="168" x2="326" y2="124"/></g>
-              <path d="M306,182 A15,5 0 0 0 336,182 L336,194 A15,5 0 0 1 306,194 Z" fill="#3F8E5B" opacity="0.3"/>
-              <g fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.6"><ellipse cx="321" cy="172" rx="15" ry="5"/><line x1="306" y1="172" x2="306" y2="194"/><line x1="336" y1="172" x2="336" y2="194"/><path d="M306,194 A15,5 0 0 0 336,194"/></g>
-              <g fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.55"><ellipse cx="360" cy="166" rx="7" ry="3"/><line x1="353" y1="166" x2="353" y2="182"/><line x1="367" y1="166" x2="367" y2="182"/><path d="M353,182 A7,3 0 0 0 367,182"/><ellipse cx="380" cy="160" rx="7" ry="3"/><line x1="373" y1="160" x2="373" y2="176"/><line x1="387" y1="160" x2="387" y2="176"/><path d="M373,176 A7,3 0 0 0 387,176"/></g>
-              <g fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.55"><line x1="62" y1="118" x2="62" y2="86"/><line x1="54" y1="90" x2="70" y2="90"/></g><circle cx="62" cy="82" r="3" fill="#3F8E5B"/>
-              <g stroke="#3F8E5B" stroke-width="1" opacity="0.55"><line x1="128" y1="150" x2="128" y2="124"/><line x1="205" y1="118" x2="205" y2="104"/><line x1="150" y1="206" x2="167" y2="188"/><line x1="321" y1="158" x2="321" y2="170"/><line x1="373" y1="150" x2="373" y2="162"/></g>
-              <g font-family="'Space Grotesk',sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
-                <g class="pin" data-s="1"><circle cx="128" cy="118" r="13" fill="transparent"/><circle cx="128" cy="118" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="128" y="121.5" fill="#F6F3EC">1</text></g>
-                <g class="pin" data-s="2"><circle cx="205" cy="96" r="13" fill="transparent"/><circle cx="205" cy="96" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="205" y="99.5" fill="#F6F3EC">2</text></g>
-                <g class="pin" data-s="3"><circle cx="150" cy="214" r="13" fill="transparent"/><circle cx="150" cy="214" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="150" y="217.5" fill="#F6F3EC">3</text></g>
-                <g class="pin" data-s="4"><circle cx="321" cy="150" r="13" fill="transparent"/><circle cx="321" cy="150" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="321" y="153.5" fill="#F6F3EC">4</text></g>
-                <g class="pin" data-s="5"><circle cx="373" cy="142" r="13" fill="transparent"/><circle cx="373" cy="142" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="373" y="145.5" fill="#F6F3EC">5</text></g>
-                <g class="pin" data-s="6"><circle cx="62" cy="82" r="13" fill="transparent"/><circle cx="62" cy="82" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="62" y="85.5" fill="#F6F3EC">6</text></g>
-              </g>
-            </svg>
-            <div class="mon">
-              <div class="m" data-s="1"><span class="mn">1</span><span><b data-en="Air" data-fr="Air">Air</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
-              <div class="m" data-s="2"><span class="mn">2</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· PAR &amp; daily light" data-fr="· PAR et lumière du jour">· PAR &amp; daily light</span></span></div>
-              <div class="m" data-s="3"><span class="mn">3</span><span><b data-en="Root zone" data-fr="Racines">Root zone</b> <span data-en="· moisture, EC, pH" data-fr="· humidité, EC, pH">· moisture, EC, pH</span></span></div>
-              <div class="m" data-s="4"><span class="mn">4</span><span><b data-en="Water reserve" data-fr="Réserve d'eau">Water reserve</b> <span data-en="· level &amp; temp" data-fr="· niveau et temp.">· level &amp; temp</span></span></div>
-              <div class="m" data-s="5"><span class="mn">5</span><span><b data-en="Fertigation" data-fr="Fertigation">Fertigation</b> <span data-en="· dosing, EC, pH" data-fr="· dosage, EC, pH">· dosing, EC, pH</span></span></div>
-              <div class="m" data-s="6"><span class="mn">6</span><span><b data-en="Outside" data-fr="Extérieur">Outside</b> <span data-en="· weather station" data-fr="· station météo">· weather station</span></span></div>
-            </div>
-            <div class="mon-note" data-en="Plus vents, screens, heating and energy in every section." data-fr="Plus les évents, écrans, chauffage et énergie dans chaque section.">Plus vents, screens, heating and energy in every section.</div>
+        <div class="panel" data-panel="models">
+          <div class="pt" data-en="The models behind it" data-fr="Les modèles derrière">The models behind it</div>
+          <div class="psub" data-en="One fine-tuned LLM up front, prediction models underneath. All within your rules." data-fr="Un LLM affiné devant, des modèles de prédiction derrière. Tous selon vos règles.">One fine-tuned LLM up front, prediction models underneath. All within your rules.</div>
+          <div class="mdl-list">
+            <div class="mdl"><div class="mdl-h"><b data-en="Grower LLM" data-fr="LLM horticole">Grower LLM</b><span class="mtag" data-en="fine-tuned" data-fr="affiné">fine-tuned</span></div><p data-en="Trained on greenhouse operations and agronomy, bilingual EN/FR. It reads your sensors before it answers." data-fr="Entraîné sur les opérations de serre et l'agronomie, bilingue EN/FR. Il lit vos capteurs avant de répondre.">Trained on greenhouse operations and agronomy, bilingual EN/FR. It reads your sensors before it answers.</p></div>
+            <div class="mdl"><div class="mdl-h"><b data-en="Climate forecaster" data-fr="Prévision climat">Climate forecaster</b><span class="mtag">24 h</span></div><p data-en="Per-zone temperature and humidity ahead of time, so it can pre-cool before the peak instead of reacting after." data-fr="Température et humidité par zone à l'avance, pour pré-refroidir avant le pic au lieu de réagir après.">Per-zone temperature and humidity ahead of time, so it can pre-cool before the peak instead of reacting after.</p></div>
+            <div class="mdl"><div class="mdl-h"><b data-en="Pest &amp; disease risk" data-fr="Risque ravageurs et maladies">Pest &amp; disease risk</b><span class="mtag" data-en="48 h ahead" data-fr="48 h d'avance">48 h ahead</span></div><p data-en="Watches leaf wetness and climate windows for botrytis and mildew, and alerts before the risk opens." data-fr="Surveille l'humidité foliaire et les fenêtres climatiques pour la botrytis et le mildiou, et alerte avant l'ouverture du risque.">Watches leaf wetness and climate windows for botrytis and mildew, and alerts before the risk opens.</p></div>
+            <div class="mdl"><div class="mdl-h"><b data-en="Irrigation planner" data-fr="Plan d'irrigation">Irrigation planner</b><span class="mtag" data-en="less water" data-fr="moins d'eau">less water</span></div><p data-en="Forecasts water demand from soil, crop stage and weather, and waters only when the root zone needs it." data-fr="Prévoit la demande en eau selon le sol, le stade de culture et la météo, et arrose seulement quand la zone racinaire en a besoin.">Forecasts water demand from soil, crop stage and weather, and waters only when the root zone needs it.</p></div>
+            <div class="mdl"><div class="mdl-h"><b data-en="Energy forecaster" data-fr="Prévision énergie">Energy forecaster</b><span class="mtag" data-en="day-ahead" data-fr="jour d'avance">day-ahead</span></div><p data-en="Plans heating and lighting around price peaks and cold nights before they arrive." data-fr="Planifie le chauffage et l'éclairage autour des pointes de prix et des nuits froides avant qu'elles arrivent.">Plans heating and lighting around price peaks and cold nights before they arrive.</p></div>
           </div>
         </div>
-        <div class="panel" data-panel="rules">
-          <div class="pt" data-en="Your rules" data-fr="Vos règles">Your rules</div>
-          <div class="psub" data-en="It only acts inside these. Switch any off, or add your own." data-fr="Il agit uniquement dans ce cadre. Désactivez-en une, ou ajoutez la vôtre.">It only acts inside these. Switch any off, or add your own.</div>
-          <div class="rules">
-            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Open the vents when humidity climbs over 80%" data-fr="Ouvrir les évents quand l'humidité dépasse 80 %">Open the vents when humidity climbs over 80%</span></div>
-            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Hold irrigation above 70% soil moisture" data-fr="Retenir l'irrigation au-dessus de 70 % d'humidité du sol">Hold irrigation above 70% soil moisture</span></div>
-            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="Grow lights off from 22:00 to 06:00" data-fr="Éclairage éteint de 22 h à 6 h">Grow lights off from 22:00 to 06:00</span></div>
-            <div class="rule"><span class="sw" aria-hidden="true"></span><span class="rt" data-en="CO₂ dosing only below 700 ppm" data-fr="Dosage du CO₂ uniquement sous 700 ppm">CO₂ dosing only below 700 ppm</span></div>
-            <button class="addrule" data-en="＋ Add rule" data-fr="＋ Ajouter une règle">＋ Add rule</button>
-          </div>
-        </div>
-        <div class="panel" data-panel="flow">
-          <div class="pt" data-en="How it acts" data-fr="Comment il agit">How it acts</div>
-          <div class="psub" data-en="Every action runs this loop, within your rules" data-fr="Chaque action suit cette boucle, selon vos règles">Every action runs this loop, within your rules</div>
-          <div class="ncanvas" id="decGraph">
-            <svg class="ngraph" viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="nn-edge" d="M104,68 C114,68 114,68 124,68"/><path class="nn-edge" d="M222,68 C232,68 232,68 242,68"/><path class="nn-edge" d="M340,68 C350,68 350,68 360,68"/>
-              <g class="n1"><rect class="nn-bg" x="6" y="42" width="98" height="52" rx="12"/><rect class="nn-icon" x="14" y="57" width="22" height="22" rx="7"/><g class="nn-gly"><circle cx="20" cy="68" r="1.7"/><circle cx="25" cy="68" r="1.7"/><circle cx="30" cy="68" r="1.7"/></g><text class="nn-t" x="41" y="65" data-en="Sensors" data-fr="Capteurs">Sensors</text><text class="nn-s" x="41" y="78" data-en="31° · 84% RH" data-fr="31° · 84% HR">31° · 84% RH</text><circle class="nn-port" cx="104" cy="68" r="3.4"/></g>
-              <g class="n2"><rect class="nn-bg" x="124" y="42" width="98" height="52" rx="12"/><rect class="nn-icon" x="132" y="57" width="22" height="22" rx="7"/><svg class="nn-gly" x="135" y="60" width="16" height="16" viewBox="0 0 200 196"><path d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/></svg><text class="nn-t" x="159" y="65">SerreVue</text><text class="nn-s" x="159" y="78" data-en="on your rules" data-fr="selon vos règles">on your rules</text><circle class="nn-port" cx="124" cy="68" r="3.4"/><circle class="nn-port" cx="222" cy="68" r="3.4"/></g>
-              <g class="n3"><rect class="nn-bg" x="242" y="42" width="98" height="52" rx="12"/><rect class="nn-icon" x="250" y="57" width="22" height="22" rx="7"/><g class="nn-gly"><rect x="255" y="63.5" width="13" height="2.2" rx="1.1"/><rect x="255" y="70.5" width="13" height="2.2" rx="1.1"/><circle cx="264" cy="64.6" r="2.2"/><circle cx="259" cy="71.6" r="2.2"/></g><text class="nn-t" x="277" y="65" data-en="Actuators" data-fr="Actionneurs">Actuators</text><text class="nn-s" x="277" y="78" data-en="vents → 45%" data-fr="évents → 45 %">vents → 45%</text><circle class="nn-port" cx="242" cy="68" r="3.4"/><circle class="nn-port" cx="340" cy="68" r="3.4"/></g>
-              <g class="n4"><rect class="nn-bg" x="360" y="42" width="94" height="52" rx="12"/><rect class="nn-icon" x="368" y="57" width="22" height="22" rx="7"/><g class="nn-gly"><rect x="373" y="63" width="12" height="2" rx="1"/><rect x="373" y="67.5" width="12" height="2" rx="1"/><rect x="373" y="72" width="12" height="2" rx="1"/></g><text class="nn-t" x="395" y="65" data-en="Audit log" data-fr="Journal">Audit log</text><text class="nn-s" x="395" y="78" data-en="with reason" data-fr="avec la raison">with reason</text><circle class="nn-port" cx="360" cy="68" r="3.4"/></g>
-            </svg>
-          </div>
-          <div class="pt" style="margin-top:16px" data-en="Connected apps &amp; channels" data-fr="Apps et canaux connectés">Connected apps &amp; channels</div>
-          <div class="psub" data-en="What feeds in, and where it reaches out. Tap any to toggle." data-fr="Ce qui entre, et ce qui sort. Touchez pour activer ou couper.">What feeds in, and where it reaches out. Tap any to toggle.</div>
-          <div class="ncanvas">
-            <svg class="ngraph" viewBox="0 0 460 172" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="nn-edge e-sen" d="M104,29 C141,29 141,87 178,87"/><path class="nn-edge e-wea" d="M104,67 C141,67 141,87 178,87"/><path class="nn-edge e-cam" d="M104,105 C141,105 141,87 178,87"/><path class="nn-edge e-zap" d="M104,143 C141,143 141,87 178,87"/><path class="nn-edge e-wa" d="M282,87 C311,87 311,22 340,22"/><path class="nn-edge e-sms" d="M282,87 C311,87 311,54 340,54"/><path class="nn-edge e-em" d="M282,87 C311,87 311,86 340,86"/><path class="nn-edge e-app" d="M282,87 C311,87 311,118 340,118"/><path class="nn-edge e-wh" d="M282,87 C311,87 311,150 340,150"/><g><rect class="nn-bg" x="178" y="64" width="104" height="46" rx="12"/><rect class="nn-icon" x="188" y="76" width="22" height="22" rx="7"/><svg class="nn-gly" x="191" y="79" width="16" height="16" viewBox="0 0 200 196"><path d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/></svg><text class="nn-t" x="216" y="84">SerreVue</text><text class="nn-s" x="216" y="96" data-en="your rules" data-fr="vos règles">your rules</text><circle class="nn-port" cx="178" cy="87" r="3.4"/><circle class="nn-port" cx="282" cy="87" r="3.4"/></g><g class="int" data-i="sen"><rect class="nn-bg" x="6" y="14" width="98" height="30" rx="9"/><rect class="nn-icon" x="13" y="19" width="20" height="20" rx="6"/><circle class="nn-gly" cx="19.0" cy="29.0" r="1.7"/><circle class="nn-gly" cx="23.0" cy="29.0" r="1.7"/><circle class="nn-gly" cx="27.0" cy="29.0" r="1.7"/><text class="nn-t" x="39" y="32.4" data-en="Sensors" data-fr="Capteurs">Sensors</text><circle class="nn-port" cx="104" cy="29" r="3.4"/></g><g class="int" data-i="wea"><rect class="nn-bg" x="6" y="52" width="98" height="30" rx="9"/><rect class="nn-icon" x="13" y="57" width="20" height="20" rx="6"/><circle class="nn-gly" cx="23.0" cy="67.0" r="2.6"/><line class="nn-gly-s" x1="23.0" y1="63.4" x2="23.0" y2="62.0"/><line class="nn-gly-s" x1="23.0" y1="70.6" x2="23.0" y2="72.0"/><line class="nn-gly-s" x1="19.4" y1="67.0" x2="18.0" y2="67.0"/><line class="nn-gly-s" x1="26.6" y1="67.0" x2="28.0" y2="67.0"/><text class="nn-t" x="39" y="70.4" data-en="Weather" data-fr="Météo">Weather</text><circle class="nn-port" cx="104" cy="67" r="3.4"/></g><g class="int" data-i="cam"><rect class="nn-bg" x="6" y="90" width="98" height="30" rx="9"/><rect class="nn-icon" x="13" y="95" width="20" height="20" rx="6"/><rect class="nn-gly-s" x="16.0" y="101.0" width="14" height="9.5" rx="1.6"/><rect class="nn-gly-s" x="21.0" y="99.0" width="4" height="2" rx="0.8"/><circle class="nn-gly" cx="23.0" cy="105.8" r="2.3"/><text class="nn-t" x="39" y="108.4" data-en="Cameras" data-fr="Caméras">Cameras</text><circle class="nn-port" cx="104" cy="105" r="3.4"/></g><g class="int" data-i="zap"><rect class="nn-bg" x="6" y="128" width="98" height="30" rx="9"/><rect class="nn-icon" x="13" y="133" width="20" height="20" rx="6"/><path class="nn-gly" d="M26.0,136.0 L19.0,144.5 L22.5,144.5 L20.0,150.0 L27.0,142.0 L23.5,142.0 Z"/><text class="nn-t" x="39" y="146.4">Zapier</text><circle class="nn-port" cx="104" cy="143" r="3.4"/></g><g class="int" data-i="wa"><rect class="nn-bg" x="340" y="9" width="112" height="26" rx="8"/><rect class="nn-icon" x="347" y="12" width="20" height="20" rx="6"/><rect class="nn-gly" x="351.0" y="16.0" width="12" height="9" rx="3"/><path class="nn-gly" d="M354.0,24.0 l-2,3.5 l4.5,-1.4 z"/><text class="nn-t" x="373" y="25.4">WhatsApp</text><circle class="nn-port" cx="340" cy="22" r="3.4"/></g><g class="int" data-i="sms"><rect class="nn-bg" x="340" y="41" width="112" height="26" rx="8"/><rect class="nn-icon" x="347" y="44" width="20" height="20" rx="6"/><rect class="nn-gly-s" x="350.0" y="48.0" width="14" height="10" rx="3"/><circle class="nn-gly" cx="354.0" cy="53.0" r="1.0"/><circle class="nn-gly" cx="357.0" cy="53.0" r="1.0"/><circle class="nn-gly" cx="360.0" cy="53.0" r="1.0"/><text class="nn-t" x="373" y="57.4">SMS</text><circle class="nn-port" cx="340" cy="54" r="3.4"/></g><g class="int" data-i="em"><rect class="nn-bg" x="340" y="73" width="112" height="26" rx="8"/><rect class="nn-icon" x="347" y="76" width="20" height="20" rx="6"/><rect class="nn-gly-s" x="350.0" y="81.0" width="14" height="10" rx="1.5"/><polyline class="nn-gly-s" points="350.0,82.5 357.0,87.0 364.0,82.5"/><text class="nn-t" x="373" y="89.4" data-en="Email" data-fr="Courriel">Email</text><circle class="nn-port" cx="340" cy="86" r="3.4"/></g><g class="int" data-i="app"><rect class="nn-bg" x="340" y="105" width="112" height="26" rx="8"/><rect class="nn-icon" x="347" y="108" width="20" height="20" rx="6"/><svg class="nn-gly" x="349.0" y="110.0" width="16" height="16" viewBox="0 0 200 196"><path d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/></svg><text class="nn-t" x="373" y="121.4" data-en="SerreVue app" data-fr="App SerreVue">SerreVue app</text><circle class="nn-port" cx="340" cy="118" r="3.4"/></g><g class="int" data-i="wh"><rect class="nn-bg" x="340" y="137" width="112" height="26" rx="8"/><rect class="nn-icon" x="347" y="140" width="20" height="20" rx="6"/><polyline class="nn-gly-s" points="355.0,146.0 351.0,150.0 355.0,154.0"/><polyline class="nn-gly-s" points="359.0,146.0 363.0,150.0 359.0,154.0"/><text class="nn-t" x="373" y="153.4">Webhooks</text><circle class="nn-port" cx="340" cy="150" r="3.4"/></g></svg>
-          </div>
-        </div>
+                
+        
+        
       </div>
     </div>
 
     <div class="bl">
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20demo" data-fr-href="mailto:bonjour@serrevue.com?subject=D%C3%A9mo%20SerreVue"><span data-en="Book a demo" data-fr="Réserver une démo">Book a demo</span> <span class="arw">&rarr;</span></a>
-        <a class="btn btn-ghost" href="#try" data-en="Try it live" data-fr="Essayez-le">Try it live</a>
+        <a class="btn btn-primary" href="mailto:hello@serrevue.com?subject=SerreVue%20AI%20demo" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20AI%20demo" data-fr-href="mailto:bonjour@serrevue.com?subject=D%C3%A9mo%20SerreVue%20AI"><span data-en="Book a demo" data-fr="Réserver une démo">Book a demo</span> <span class="arw">&rarr;</span></a>
+        <a class="btn btn-ghost" href="/suite" data-en="See the suite" data-fr="Voir la suite">See the suite</a>
       </div>
     </div>
     <div class="touch">
@@ -443,7 +382,7 @@
       document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var t=document.body.classList.contains('dark')?'light':'dark';saved=t;try{localStorage.setItem(KEY,t);}catch(e){}apply(t);});});
     })();
     (function(){
-      var initial='layout';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
+      var initial='ask';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
       function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
       document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
       window.svShowTab=show;show(initial);
@@ -537,7 +476,7 @@
       var chart=document.getElementById('climChart'); if(!chart)return;
       document.querySelectorAll('.mchip').forEach(function(c){c.addEventListener('click',function(){var m=c.getAttribute('data-m');c.classList.toggle('off');var disp=c.classList.contains('off')?'none':'';var g=chart.querySelector('.series[data-m="'+m+'"]');if(g)g.style.display=disp;document.querySelectorAll('.mk[data-m="'+m+'"],.ae[data-m="'+m+'"]').forEach(function(el){el.style.display=disp;});});});
     })();
-    (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('rules');});})();
+    (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('models');});})();
   </script>
 </body>
 </html>
