@@ -211,6 +211,14 @@
   .paper{padding:2px 4px;color:var(--ink)}
   .pp-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;line-height:1.18;letter-spacing:-.4px}
   .pp-by{font-family:'Fraunces',serif;font-style:italic;font-size:12.5px;color:var(--green3);margin:7px 0 13px}
+  .sh{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);display:flex;align-items:baseline;gap:7px;margin-bottom:2px}
+  .sh .no{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  body.dark .sh{color:#F6F3EC} body.dark .sh .no{color:#A9D9B7}
+  .wf{margin-top:12px;background:rgba(63,142,91,.07);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+  .wf-l{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--green3);margin-bottom:3px}
+  .wf-t{font-size:12.2px;line-height:1.58;color:var(--ink-dim)}
+  body.dark .wf{background:rgba(169,217,183,.08);border-color:rgba(246,243,236,.14)}
+  body.dark .wf-l{color:#A9D9B7} body.dark .wf-t{color:rgba(246,243,236,.75)}
   .abs-l{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:5px}
   .kw{font-size:11px;color:var(--ink-dimmer);margin-top:7px}
   .kw i{font-family:'Fraunces',serif;color:var(--green3)}
@@ -325,29 +333,36 @@
 
     <div class="app" id="try">
       <div class="app-head"><span class="dot"></span><span class="t" data-en="SerreVue Research" data-fr="Recherche SerreVue">SerreVue Research</span><span class="s">Note 01 &middot; 2026</span></div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="abstract" data-en="Abstract" data-fr="Résumé">Abstract</button>
+        <button class="tab" data-tab="data" data-en="Data" data-fr="Données">Data</button>
+        <button class="tab" data-tab="sim" data-en="Simulation" data-fr="Simulation">Simulation</button>
+        <button class="tab" data-tab="models" data-en="Models" data-fr="Modèles">Models</button>
+        <button class="tab" data-tab="llm" data-en="LLM" data-fr="LLM">LLM</button>
+      </div>
       <div class="panels">
-        <div class="panel active" data-panel="paper">
-          <div class="paper">
-            <div class="pp-title" data-en="Teaching a model to run a greenhouse" data-fr="Apprendre à un modèle à gérer une serre">Teaching a model to run a greenhouse</div>
-            
-            <div class="abs-l" data-en="Abstract" data-fr="Résumé">Abstract</div>
-            <div class="abst" data-en="We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured." data-fr="Nous avons entraîné un opérateur pour les serres : des modèles de prédiction qui voient quelques heures à l'avance, et un LLM horticole qui les transforme en actions sûres. Cette note résume la collecte des données, la simulation, les modèles retenus et les résultats mesurés.">We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured.</div>
-            <div class="kw"><span data-en="Keywords:" data-fr="Mots-clés :">Keywords:</span> <i data-en="greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin" data-fr="contrôle du climat de serre · prévision de séries temporelles · LLM affiné · jumeau numérique">greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin</i></div>
-
-            <div class="psec">
-              <h2><span class="no">1</span><span data-en="Data" data-fr="Données">Data</span></h2>
-              <p data-en="Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it." data-fr="Chaque serre transmet des lectures toutes les 30 secondes : air, lumière, zone racinaire, eau et énergie, plus une station météo extérieure. Nous associons ces flux aux conversations et décisions des producteurs, pour que les modèles apprennent non seulement ce qui s'est passé, mais ce qu'un bon producteur a fait.">Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it.</p>
-              <div class="statrow">
+        <div class="panel active" data-panel="abstract"><div class="paper">
+          <div class="pp-title" data-en="Teaching a model to run a greenhouse" data-fr="Apprendre à un modèle à gérer une serre">Teaching a model to run a greenhouse</div>
+          <div class="abs-l" data-en="Abstract" data-fr="Résumé">Abstract</div>
+          <div class="abst" data-en="We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured." data-fr="Nous avons entraîné un opérateur pour les serres : des modèles de prédiction qui voient quelques heures à l'avance, et un LLM horticole qui les transforme en actions sûres. Cette note résume la collecte des données, la simulation, les modèles retenus et les résultats mesurés.">We trained an operator for greenhouses: prediction models that see hours ahead, and a grower LLM that turns them into safe actions. This note summarizes how we collected data, how we simulated a greenhouse to train against, which models won, and what we measured.</div>
+          <div class="kw"><span data-en="Keywords:" data-fr="Mots-clés :">Keywords:</span> <i data-en="greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin" data-fr="contrôle du climat de serre · prévision de séries temporelles · LLM affiné · jumeau numérique">greenhouse climate control · time-series forecasting · fine-tuned LLM · digital twin</i></div>
+          <div class="metho" data-en="Simulation and pilot data, 2025-2026. Full methodology in the technical note." data-fr="Données de simulation et de pilote, 2025-2026. Méthodologie complète dans la note technique.">Simulation and pilot data, 2025-2026. Full methodology in the technical note.</div>
+          <a class="reqnote" href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-fr-href="mailto:bonjour@serrevue.com?subject=Note%20technique%20SerreVue"><span data-en="Request the full technical note" data-fr="Demander la note technique complète">Request the full technical note</span> <span class="arw">&rarr;</span></a>
+        </div></div>
+        <div class="panel" data-panel="data"><div class="paper">
+          <h2 class="sh"><span class="no">1</span><span data-en="Data" data-fr="Données">Data</span></h2>
+          <p data-en="Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it." data-fr="Chaque serre transmet des lectures toutes les 30 secondes : air, lumière, zone racinaire, eau et énergie, plus une station météo extérieure. Nous associons ces flux aux conversations et décisions des producteurs, pour que les modèles apprennent non seulement ce qui s'est passé, mais ce qu'un bon producteur a fait.">Every greenhouse streams readings every 30 seconds: air, light, root zone, water and energy, plus an outside weather station. We pair those streams with grower conversations and decisions, so the models learn not just what happened, but what a good grower did about it.</p>
+          <div class="statrow">
                 <div class="st"><b>30 s</b><span data-en="sampling, every zone" data-fr="échantillonnage, chaque zone">sampling, every zone</span></div>
                 <div class="st"><b>6</b><span data-en="sensor families" data-fr="familles de capteurs">sensor families</span></div>
                 <div class="st"><b>2</b><span data-en="growing seasons" data-fr="saisons de culture">growing seasons</span></div>
               </div>
-            </div>
-
-            <div class="psec">
-              <h2><span class="no">2</span><span data-en="Simulation" data-fr="Simulation">Simulation</span></h2>
-              <p data-en="Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely." data-fr="Les vraies saisons sont lentes et les pannes rares. Nous avons donc construit un jumeau numérique physique de la serre, le même modèle en coupe que dans la Suite, et rejoué plus de 12 000 journées de culture simulées : canicules, pics d'humidité, capteurs en panne, évents bloqués. L'opérateur s'y entraîne sans risque.">Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely.</p>
-              <div class="fig">
+          <div class="wf"><div class="wf-l" data-en="What we found" data-fr="Ce que nous avons observé">What we found</div><div class="wf-t" data-en="Two seasons of sensor streams paired with real grower decisions turned out to be our strongest training signal." data-fr="Deux saisons de flux de capteurs associés aux vraies décisions des producteurs se sont révélées notre meilleur signal d'entraînement.">Two seasons of sensor streams paired with real grower decisions turned out to be our strongest training signal.</div></div>
+        </div></div>
+        <div class="panel" data-panel="sim"><div class="paper">
+          <h2 class="sh"><span class="no">2</span><span data-en="Simulation" data-fr="Simulation">Simulation</span></h2>
+          <p data-en="Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely." data-fr="Les vraies saisons sont lentes et les pannes rares. Nous avons donc construit un jumeau numérique physique de la serre, le même modèle en coupe que dans la Suite, et rejoué plus de 12 000 journées de culture simulées : canicules, pics d'humidité, capteurs en panne, évents bloqués. L'opérateur s'y entraîne sans risque.">Real seasons are slow and failures are rare. So we built a physics-based digital twin of the greenhouse, the same sectional model you can explore in the Suite, and replayed more than 12,000 simulated growing days: heat waves, humidity spikes, sensor dropouts, stuck vents. The operator trains against all of it, safely.</p>
+          <div class="fig">
                 <svg viewBox="0 0 420 118" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <line class="dm" x1="14" y1="100" x2="406" y2="100" stroke-width="1" opacity="0.5"/>
                   <g class="g2s" fill="none" stroke-width="1.6" stroke-linejoin="round">
@@ -366,12 +381,12 @@
                 </svg>
                 <div class="figcap" data-en="Fig. 1 · The digital twin behind training, and its simulated variants." data-fr="Fig. 1 · Le jumeau numérique derrière l'entraînement, et ses variantes simulées.">Fig. 1 · The digital twin behind training, and its simulated variants.</div>
               </div>
-            </div>
-
-            <div class="psec">
-              <h2><span class="no">3</span><span data-en="Models" data-fr="Modèles">Models</span></h2>
-              <p data-en="We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days." data-fr="Nous avons comparé la persistance, les arbres boostés et les réseaux neuronaux temporels sur le climat des six prochaines heures. Les arbres sont forts à court terme; le réseau temporel gagne dès que la météo et les plans d'actionneurs comptent. Chaque serre reçoit un modèle par zone, affiné sur ses propres données en quelques jours.">We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days.</p>
-              <div class="fig">
+          <div class="wf"><div class="wf-l" data-en="What we found" data-fr="Ce que nous avons observé">What we found</div><div class="wf-t" data-en="Policies trained in simulation used 12 to 18 % less irrigation water, at equal or better soil targets." data-fr="Les politiques entraînées en simulation ont utilisé 12 à 18 % d'eau d'irrigation en moins, à cibles de sol égales ou meilleures.">Policies trained in simulation used 12 to 18 % less irrigation water, at equal or better soil targets.</div></div>
+        </div></div>
+        <div class="panel" data-panel="models"><div class="paper">
+          <h2 class="sh"><span class="no">3</span><span data-en="Predictive models" data-fr="Modèles prédictifs">Predictive models</span></h2>
+          <p data-en="We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days." data-fr="Nous avons comparé la persistance, les arbres boostés et les réseaux neuronaux temporels sur le climat des six prochaines heures. Les arbres sont forts à court terme; le réseau temporel gagne dès que la météo et les plans d'actionneurs comptent. Chaque serre reçoit un modèle par zone, affiné sur ses propres données en quelques jours.">We benchmarked simple persistence, gradient-boosted trees and temporal neural networks on the next six hours of climate. Trees are strong at short horizons; the temporal net wins once weather and actuator plans matter. Each greenhouse gets a per-zone model, fine-tuned on its own data within days.</p>
+          <div class="fig">
                 <svg viewBox="0 0 420 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <line class="dm" x1="30" y1="110" x2="400" y2="110" stroke-width="1" opacity="0.5"/>
                   <rect class="fdim" x="63" y="26" width="54" height="84" rx="6"/>
@@ -386,22 +401,6 @@
                 </svg>
                 <div class="figcap" data-en="Fig. 2 · Mean 6 h temperature error, held-out days. Lower is better." data-fr="Fig. 2 · Erreur moyenne de température à 6 h, journées réservées. Plus bas = mieux.">Fig. 2 · Mean 6 h temperature error, held-out days. Lower is better.</div>
               </div>
-            </div>
-
-            <div class="psec">
-              <h2><span class="no">4</span><span data-en="Grower LLM" data-fr="LLM horticole">Grower LLM</span></h2>
-              <p data-en="The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves." data-fr="Le LLM horticole est affiné sur les opérations de serre et l'agronomie, en français et en anglais. Chaque réponse s'appuie sur l'état réel des capteurs et les prévisions ci-dessus, et chaque action proposée est vérifiée contre vos règles avant tout mouvement.">The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves.</p>
-              <div class="pull" data-en="&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;" data-fr="&laquo; Il répond à partir de l'état réel de votre serre, pas d'une invite générique. &raquo;">&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;</div>
-            </div>
-
-            <div class="psec">
-              <h2><span class="no">5</span><span data-en="Findings" data-fr="Résultats">Findings</span></h2>
-              <ul class="find">
-                <li data-en="0.8 °C mean error on 6 h temperature, per zone (Fig. 2)." data-fr="0,8 °C d'erreur moyenne sur la température à 6 h, par zone (Fig. 2).">0.8 °C mean error on 6 h temperature, per zone (Fig. 2).</li>
-                <li data-en="Pest and disease windows flagged 36 to 48 h before scouting caught them." data-fr="Fenêtres de ravageurs et maladies signalées 36 à 48 h avant le dépistage.">Pest and disease windows flagged 36 to 48 h before scouting caught them.</li>
-                <li data-en="12 to 18 % less irrigation water in simulation, at equal or better soil targets." data-fr="12 à 18 % d'eau d'irrigation en moins en simulation, à cibles de sol égales ou meilleures.">12 to 18 % less irrigation water in simulation, at equal or better soil targets.</li>
-                <li data-en="Pre-cooling ahead of forecast peaks halved the time zones spent above their ceiling." data-fr="Le pré-refroidissement avant les pics prévus a réduit de moitié le temps passé au-dessus du plafond.">Pre-cooling ahead of forecast peaks halved the time zones spent above their ceiling.</li>
-              </ul>
               <div class="fig">
                 <svg viewBox="0 0 420 108" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <line class="dm" x1="14" y1="88" x2="406" y2="88" stroke-width="1" opacity="0.5"/>
@@ -413,11 +412,14 @@
                 </svg>
                 <div class="figcap" data-en="Fig. 3 · Predicted (dashed) vs measured temperature, one held-out day." data-fr="Fig. 3 · Température prédite (pointillé) vs mesurée, une journée réservée.">Fig. 3 · Predicted (dashed) vs measured temperature, one held-out day.</div>
               </div>
-              <div class="metho" data-en="Simulation and pilot data, 2025-2026. Full methodology in the technical note." data-fr="Données de simulation et de pilote, 2025-2026. Méthodologie complète dans la note technique.">Simulation and pilot data, 2025-2026. Full methodology in the technical note.</div>
-              <a class="reqnote" href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20technical%20note" data-fr-href="mailto:bonjour@serrevue.com?subject=Note%20technique%20SerreVue"><span data-en="Request the full technical note" data-fr="Demander la note technique complète">Request the full technical note</span> <span class="arw">&rarr;</span></a>
-            </div>
-          </div>
-        </div>
+          <div class="wf"><div class="wf-l" data-en="What we found" data-fr="Ce que nous avons observé">What we found</div><div class="wf-t" data-en="0.8 °C mean 6 h temperature error per zone; pest and disease windows flagged 36 to 48 h before scouting; pre-cooling ahead of forecast peaks halved time spent above ceiling." data-fr="0,8 °C d'erreur moyenne à 6 h par zone; fenêtres de ravageurs signalées 36 à 48 h avant le dépistage; le pré-refroidissement avant les pics a réduit de moitié le temps au-dessus du plafond.">0.8 °C mean 6 h temperature error per zone; pest and disease windows flagged 36 to 48 h before scouting; pre-cooling ahead of forecast peaks halved time spent above ceiling.</div></div>
+        </div></div>
+        <div class="panel" data-panel="llm"><div class="paper">
+          <h2 class="sh"><span class="no">4</span><span data-en="Grower LLM" data-fr="LLM horticole">Grower LLM</span></h2>
+          <p data-en="The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves." data-fr="Le LLM horticole est affiné sur les opérations de serre et l'agronomie, en français et en anglais. Chaque réponse s'appuie sur l'état réel des capteurs et les prévisions ci-dessus, et chaque action proposée est vérifiée contre vos règles avant tout mouvement.">The grower LLM is fine-tuned on greenhouse operations and agronomy, in English and French. Every answer is grounded in the live sensor state and the forecasts above, and every action it proposes is checked against your rules before anything moves.</p>
+          <div class="pull" data-en="&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;" data-fr="&laquo; Il répond à partir de l'état réel de votre serre, pas d'une invite générique. &raquo;">&ldquo;It answers from your greenhouse's live state, not from a generic prompt.&rdquo;</div>
+          <div class="wf"><div class="wf-l" data-en="What we found" data-fr="Ce que nous avons observé">What we found</div><div class="wf-t" data-en="Growers ask in their own words, in English or French. The fine-tune answers from the live state and never acts outside the rules." data-fr="Les producteurs demandent dans leurs mots, en français ou en anglais. Le modèle affiné répond depuis l'état réel et n'agit jamais hors des règles.">Growers ask in their own words, in English or French. The fine-tune answers from the live state and never acts outside the rules.</div></div>
+        </div></div>
       </div>
     </div>
 
@@ -455,7 +457,7 @@
       document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var t=document.body.classList.contains('dark')?'light':'dark';saved=t;try{localStorage.setItem(KEY,t);}catch(e){}apply(t);});});
     })();
     (function(){
-      var initial='paper';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
+      var initial='abstract';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
       function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
       document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
       window.svShowTab=show;show(initial);
