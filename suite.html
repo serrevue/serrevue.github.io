@@ -207,7 +207,10 @@
   .mchip.off{opacity:.5} .mchip.off .dot{background:var(--ink-dimmer)}
   body.dark .mchip{background:transparent;border-color:rgba(246,243,236,.22);color:rgba(246,243,236,.8)} body.dark .mchip .mval{color:#F6F3EC} body.dark .mchip.off{opacity:.6} body.dark .mchip.off .dot{background:rgba(246,243,236,.45)}
   .fczone{fill:#2C6B43;opacity:.06} body.dark .fczone{fill:#A9D9B7;opacity:.08}
-  .mkring{stroke:#3F8E5B;opacity:.28} body.dark .mkring{stroke:#A9D9B7;opacity:.4}
+  .mkring,.pinring{stroke:#3F8E5B;fill:none;stroke-width:1.1;transform-box:fill-box;transform-origin:center;animation:svring 2.4s ease-out infinite}
+  body.dark .mkring,body.dark .pinring{stroke:#A9D9B7}
+  @keyframes svring{0%{transform:scale(.85);opacity:.5}65%{transform:scale(1.5);opacity:0}100%{transform:scale(1.5);opacity:0}}
+  @media (prefers-reduced-motion:reduce){.mkring,.pinring{animation:none;opacity:.3}}
   .mhint{font-size:11px;color:var(--ink-dimmer);margin-top:8px} body.dark .mhint{color:rgba(246,243,236,.55)}
   .ae .chev{margin-left:auto;color:var(--ink-dimmer);font-size:15px;line-height:1;flex:none}
   .ae .ptag{margin-left:auto} .ae .ptag~.chev{margin-left:8px}
@@ -542,6 +545,22 @@
     (function(){
       var chart=document.getElementById('climChart'); if(!chart)return;
       document.querySelectorAll('.mchip').forEach(function(c){c.addEventListener('click',function(){var m=c.getAttribute('data-m');c.classList.toggle('off');var disp=c.classList.contains('off')?'none':'';var g=chart.querySelector('.series[data-m="'+m+'"]');if(g)g.style.display=disp;document.querySelectorAll('.mk[data-m="'+m+'"],.ae[data-m="'+m+'"]').forEach(function(el){el.style.display=disp;});});});
+    })();
+    (function(){
+      var i=0;
+      document.querySelectorAll('.pin').forEach(function(p){
+        var c=p.querySelectorAll('circle')[1]; if(!c) return;
+        var r=document.createElementNS('http://www.w3.org/2000/svg','circle');
+        r.setAttribute('cx',c.getAttribute('cx')); r.setAttribute('cy',c.getAttribute('cy'));
+        r.setAttribute('r',parseFloat(c.getAttribute('r'))+3.5);
+        r.setAttribute('class','pinring'); r.style.animationDelay=(i*0.28)+'s'; i++;
+        p.insertBefore(r,p.firstChild);
+      });
+      document.querySelectorAll('.mk .mkring').forEach(function(r,k){r.style.animationDelay=(k*0.28)+'s';});
+      document.addEventListener('click',function(e){
+        var g=e.target.closest&&e.target.closest('.pin,.mk');
+        if(g) g.querySelectorAll('.pinring,.mkring').forEach(function(r){r.remove();});
+      },true);
     })();
     (function(){document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.chip');if(c&&window.svShowTab)window.svShowTab('rules');});})();
   </script>
