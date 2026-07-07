@@ -1,0 +1,25 @@
+name: site-tests
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Static checks (i18n parity, brand identity, links, plumbing)
+        run: node tests/site-tests.mjs --static
+      - name: Install puppeteer
+        run: npm init -y >/dev/null && npm install --no-save puppeteer
+      - name: Rendered checks (JS errors, fonts, FR toggle, VPD content, mobile)
+        run: |
+          python3 -m http.server 8080 &
+          sleep 1
+          node tests/site-tests.mjs --rendered
+        env:
+          SITE_URL: http://127.0.0.1:8080
