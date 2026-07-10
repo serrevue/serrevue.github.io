@@ -134,9 +134,12 @@
         });
       }
       document.querySelectorAll('.lang-btn').forEach(function(b){
-        b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+        b.addEventListener('click', function(){ var l=b.getAttribute('data-lang'); try{localStorage.setItem('serrevue-lang',l);}catch(e){} setLang(l); });
       });
-      setLang((navigator.language||'en').slice(0,2) === 'fr' ? 'fr' : 'en');
+      var savedLang=null;try{savedLang=localStorage.getItem('serrevue-lang');}catch(e){}
+      var hashLang=location.hash==='#fr'?'fr':(location.hash==='#en'?'en':'');
+      var navLang=((navigator.language||'en').toLowerCase().indexOf('fr')===0)?'fr':'en';
+      setLang(hashLang||savedLang||navLang);
     })();
     (function(){
       var KEY='serrevue-theme';

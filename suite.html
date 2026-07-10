@@ -438,8 +438,11 @@
         document.querySelectorAll('[data-en-href]').forEach(function(a){var h=(l==='fr')?a.getAttribute('data-fr-href'):a.getAttribute('data-en-href');if(h!==null)a.setAttribute('href',h);});
         document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===l);});
       }
-      document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});});
-      setLang(location.hash==='#fr'?'fr':'en');
+      document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){var l=b.getAttribute('data-lang');try{localStorage.setItem('serrevue-lang',l);}catch(e){}setLang(l);});});
+      var savedLang=null;try{savedLang=localStorage.getItem('serrevue-lang');}catch(e){}
+      var hashLang=location.hash==='#fr'?'fr':(location.hash==='#en'?'en':'');
+      var navLang=((navigator.language||'en').toLowerCase().indexOf('fr')===0)?'fr':'en';
+      setLang(hashLang||savedLang||navLang);
     })();
     (function(){
       var KEY='serrevue-theme',saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
