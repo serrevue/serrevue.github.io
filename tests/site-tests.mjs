@@ -8,8 +8,8 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const PUBLIC_PAGES = ['index.html', 'suite.html', '404.html'];
-const I18N_PAGES = ['index.html', 'suite.html'];
+const PUBLIC_PAGES = ['index.html', 'suite.html', 'box.html', '404.html'];
+const I18N_PAGES = ['index.html', 'suite.html', 'box.html'];
 const BRAND_GREENS = ['#2C6B43', '#3F8E5B'];
 const FONTS = ['Space Grotesk', 'Fraunces', 'Inter'];
 
@@ -56,6 +56,11 @@ function staticTests() {
   for (const page of I18N_PAGES) {
     const html = read(page);
 
+    // language behaves like the theme: saved choice + browser default present
+    html.includes("localStorage.getItem('serrevue-lang')") ? ok(`${page}: reads saved language`) : fail(`${page}: reads saved language`);
+    html.includes("localStorage.setItem('serrevue-lang'") ? ok(`${page}: saves language choice`) : fail(`${page}: saves language choice`);
+    html.includes('navigator.language') ? ok(`${page}: browser-language default`) : fail(`${page}: browser-language default`);
+
     // brand identity present
     for (const f of FONTS) html.includes(f) ? ok(`${page}: font ${f}`) : fail(`${page}: font ${f}`);
     BRAND_GREENS.some(g => html.toLowerCase().includes(g.toLowerCase())) ? ok(`${page}: brand greens`) : fail(`${page}: brand greens`);
@@ -89,7 +94,7 @@ async function renderedTests() {
 
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   try {
-    for (const page of ['index.html', 'suite.html']) {
+    for (const page of ['index.html', 'suite.html', 'box.html']) {
       const p = await browser.newPage();
       const pageErrors = [], consoleErrors = [];
       p.on('pageerror', e => pageErrors.push(String(e)));
@@ -139,6 +144,45 @@ async function renderedTests() {
       const overflow = await p.evaluate(() => document.scrollingElement.scrollWidth - window.innerWidth);
       overflow <= 2 ? ok(`${page}: no horizontal overflow at 390px`) : warn(`${page}: horizontal overflow at 390px`, `${overflow}px`);
 
+      await p.close();
+    }
+
+    // language persistence journey (language behaves like the theme)
+    {
+      const p = await browser.newPage();
+      await p.evaluateOnNewDocument(() => {
+        Object.defineProperty(navigator, 'language', { get: () => 'fr-CA' });
+        Object.defineProperty(navigator, 'languages', { get: () => ['fr-CA', 'fr'] });
+      });
+      await p.goto(`${base}/index.html`, { waitUntil: 'networkidle2', timeout: 45000 });
+      await p.evaluate(() => localStorage.clear());
+      await p.reload({ waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      let lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'fr' ? ok('lang: FR browser defaults to French') : fail('lang: FR browser defaults to French', lang);
+
+      await p.click('.lang-btn[data-lang="en"]');
+      await new Promise(r => setTimeout(r, 300));
+      await p.goto(`${base}/box.html`, { waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'en' ? ok('lang: EN choice persists onto box.html') : fail('lang: EN choice persists onto box.html', lang);
+
+      await p.goto(`${base}/suite.html`, { waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'en' ? ok('lang: EN choice persists onto suite.html') : fail('lang: EN choice persists onto suite.html', lang);
+
+      // cross-page so the #fr deep link is a full navigation (hash-only changes do not reload)
+      await p.goto(`${base}/box.html#fr`, { waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'fr' ? ok('lang: #fr deep link overrides for the visit') : fail('lang: #fr deep link overrides for the visit', lang);
+
+      await p.goto(`${base}/index.html`, { waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'en' ? ok('lang: saved choice survives a deep-link visit') : fail('lang: saved choice survives a deep-link visit', lang);
       await p.close();
     }
   } finally { await browser.close(); }
