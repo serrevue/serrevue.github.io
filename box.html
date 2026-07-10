@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SerreVue Box · A greenhouse on your counter</title>
+<meta name="description" content="SerreVue Box grows real food on its own. It holds the climate, watches the grow, and messages you when it matters." />
+<meta name="theme-color" content="#F6F3EC" />
+<meta property="og:title" content="SerreVue Box · A greenhouse on your counter" />
+<meta property="og:description" content="A countertop grow box that runs itself: climate held, grow watched, you kept in the loop." />
+<link rel="canonical" href="https://serrevue.com/box" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SerreVue" />
+<meta property="og:url" content="https://serrevue.com/box" />
+<meta property="og:image" content="https://serrevue.com/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_CA" />
+<meta property="og:locale:alternate" content="fr_CA" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SerreVue Box · A greenhouse on your counter" />
+<meta name="twitter:description" content="A countertop grow box that runs itself: climate held, grow watched, you kept in the loop." />
+<meta name="twitter:image" content="https://serrevue.com/og.png" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,wght@1,400;1,500;1,600&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Fraunces:ital,wght@1,400;1,500;1,600&display=swap"></noscript>
+<style>
+  :root{--green1:#4FA86C;--green2:#3F8E5B;--green3:#2C6B43;--cream:#F6F3EC;--cream2:#EEE9DC;--card:#FCFBF7;--line:#E7E0D0;--ink:#1E2C24;--ink-dim:#5A6B62;--ink-dimmer:#8A968F;--nb:#E7E0D0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  a{color:inherit}
+
+  /* ===== shared SerreVue page shell (matches serrevue.com landing) ===== */
+  .stage{position:relative;width:100%;min-height:100vh;padding:54px 60px}
+  .brand{position:absolute;top:48px;left:60px;display:flex;align-items:center;gap:13px;text-decoration:none}
+  .brand .logo{width:38px;height:38px;display:block}
+  .brand .wm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.6px;color:var(--ink);line-height:1}
+  .brand .wm .vue{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  .topr{position:absolute;top:47px;right:60px;display:flex;align-items:center;gap:6px}
+  .lang{display:flex;align-items:center;gap:4px;font-family:'Space Grotesk',sans-serif}
+  .lang-btn{background:none;border:none;cursor:pointer;font:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink-dimmer);padding:5px 9px;border-radius:8px;transition:color .15s,background .15s}
+  .lang-btn:hover{color:var(--ink)} .lang-btn.active{color:var(--green3);background:rgba(44,107,67,.10)}
+  .lang-sep{color:var(--ink-dimmer);font-size:12px}
+  .theme-toggle{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;border-radius:9px;color:var(--ink-dimmer);transition:color .15s,background .15s;margin-left:2px}
+  .theme-toggle:hover{color:var(--ink);background:rgba(30,44,36,.06)} .theme-toggle svg{width:18px;height:18px}
+  .theme-toggle .sun{display:none} body.dark .theme-toggle .sun{display:block} body.dark .theme-toggle .moon{display:none}
+
+  .hero{position:absolute;left:60px;top:45%;transform:translateY(-54%);max-width:42.85vw}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:80px;line-height:1.02;letter-spacing:-2px;color:var(--ink)}
+  .hero h1 .g{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  .hero p.sub{margin-top:24px;font-size:17.5px;line-height:1.55;color:var(--ink-dim);max-width:42ch}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .bl{position:absolute;left:60px;bottom:48px;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+  .btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;text-decoration:none;border-radius:26px;padding:12px 22px;transition:.15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;border:none}
+  .btn-primary{background:var(--green3);color:var(--cream)} .btn-primary:hover{background:#235638;transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:none} .btn-ghost:hover{border-color:var(--green3);color:var(--green3)}
+  .back{font-size:14px;color:var(--ink-dim);text-decoration:none}
+  .back:hover{color:var(--green3)}
+  .touch{position:absolute;right:60px;bottom:48px;text-align:right}
+  .touch .fe{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:10px}
+  .touch a{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:var(--ink);text-decoration:none} .touch a:hover{color:var(--green3)} .touch a .arw{color:var(--green3)}
+
+  /* ===== interactive preview panel (page-specific, right side) ===== */
+  .app{position:absolute;right:60px;top:48%;transform:translateY(-50%);width:42.85vw;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 60px -30px rgba(30,44,36,.28);overflow:hidden;max-height:calc(96vh - 176px)}
+  .app-head{display:flex;align-items:center;gap:8px;padding:14px 16px 0}
+  .app-head .dot{width:7px;height:7px;border-radius:50%;background:var(--green2);box-shadow:0 0 0 3px rgba(63,142,91,.18)}
+  .app-head .t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px}
+  .app-head .s{font-size:12px;color:var(--ink-dimmer);margin-left:auto}
+  .tabs{display:flex;gap:2px;padding:12px 12px 0;overflow-x:auto;scrollbar-width:none} .tabs::-webkit-scrollbar{display:none}
+  .tab{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;color:var(--ink-dimmer);background:none;border:none;cursor:pointer;padding:8px 12px;border-radius:9px 9px 0 0;white-space:nowrap;position:relative;transition:color .15s}
+  .tab:hover{color:var(--ink)} .tab.active{color:var(--green3)}
+  .tab.active::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--green3);border-radius:2px}
+  .panels{border-top:1px solid var(--cream2);max-height:calc(96vh - 258px);overflow-y:auto;scrollbar-width:thin}
+  .panel{display:none;padding:16px;min-height:404px} .panel.active{display:block}
+
+  .pt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;margin-bottom:2px}
+  .psub{font-size:12.5px;color:var(--ink-dimmer);margin-bottom:12px}
+  .chart{width:100%;height:auto;display:block}
+  .stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .stat .s{flex:1;background:rgba(63,142,91,.06);border:1px solid var(--cream2);border-radius:12px;padding:10px 12px}
+  .stat .s b{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;display:block;letter-spacing:-.4px}
+  .stat .s span{font-size:11px;color:var(--ink-dimmer)}
+
+  .gh{position:relative;border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(63,142,91,.04)}
+  .gh-top{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:6px}
+  .ghsvg{width:100%;height:auto;display:block;color:var(--green3);margin:2px 0}
+  .mon{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:13px}
+  .mon .m{display:flex;gap:8px;align-items:baseline;font-size:11.5px;color:var(--ink-dim);line-height:1.35}
+  .mon .mn{flex:none;display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:rgba(44,107,67,.12);color:var(--green3);font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700}
+  .mon .m b{color:var(--ink);font-weight:600;font-family:'Space Grotesk',sans-serif;font-size:12px}
+  .mon-note{margin-top:12px;font-size:11.5px;color:var(--ink-dimmer)}
+  .fczone{fill:#2C6B43;opacity:.06} body.dark .fczone{fill:#A9D9B7;opacity:.08}
+  .pinring{stroke:#3F8E5B;fill:none;stroke-width:1.1;transform-box:fill-box;transform-origin:center;animation:svring 2.4s ease-out infinite}
+  body.dark .pinring{stroke:#A9D9B7}
+  @keyframes svring{0%{transform:scale(.85);opacity:.5}65%{transform:scale(1.5);opacity:0}100%{transform:scale(1.5);opacity:0}}
+  @media (prefers-reduced-motion:reduce){.pinring{animation:none;opacity:.3}}
+
+  .msg{display:flex;gap:10px;margin:10px 0} .msg.me{justify-content:flex-end}
+  .bubble{max-width:84%;padding:10px 13px;border-radius:15px;font-size:13.5px;line-height:1.5}
+  .msg.me .bubble{background:var(--cream2);color:var(--ink);border-bottom-right-radius:5px}
+  .msg.op .bubble{background:rgba(63,142,91,.10);color:#20402e;border-bottom-left-radius:5px}
+  .av{width:24px;height:24px;border-radius:7px;flex:none;margin-top:2px}
+  .chip{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green3);background:rgba(44,107,67,.09);border:1px solid rgba(44,107,67,.18);border-radius:20px;padding:4px 10px}
+
+  .alog{margin-top:15px;display:flex;flex-direction:column;gap:7px}
+  .alog .aeh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:2px}
+  .ae{display:flex;align-items:center;gap:9px;font-size:12px}
+  .ae .an{width:16px;height:16px;border-radius:50%;background:#3F8E5B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:9px;display:grid;place-items:center;flex:none}
+  .ae .at{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink);font-size:11.5px;flex:none;width:36px}
+  .ae .ax{color:var(--ink-dim)}
+  .ae.future .an{background:transparent;border:1.5px solid #3F8E5B;color:#3F8E5B;box-sizing:border-box}
+  .ae.future .ax{font-style:italic}
+  .ptag{margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green3);border:1px solid var(--line);border-radius:5px;padding:1px 5px;flex:none}
+
+  /* ===== dark ===== */
+  body.dark{background:radial-gradient(135% 120% at 50% 0%,#3C8757 0%,#2F7149 46%,#235235 100%);background-attachment:fixed;color:#F6F3EC;--nb:rgba(246,243,236,.16)}
+  body.dark .brand .wm{color:#F6F3EC} body.dark .brand .wm .vue{color:#CFE8D7}
+  body.dark .brand .logo rect{fill:#F6F3EC} body.dark .brand .logo path{fill:url(#g)} body.dark .brand .logo circle{fill:#F6F3EC}
+  body.dark .lang-btn{color:rgba(246,243,236,.6)} body.dark .lang-btn:hover{color:#F6F3EC}
+  body.dark .lang-btn.active{color:#234E36;background:rgba(246,243,236,.92)} body.dark .lang-sep{color:rgba(246,243,236,.45)}
+  body.dark .theme-toggle{color:rgba(246,243,236,.72)} body.dark .theme-toggle:hover{color:#F6F3EC;background:rgba(246,243,236,.12)}
+  body.dark .hero h1{color:#F6F3EC} body.dark .hero h1 .g{color:#A9D9B7}
+  body.dark .hero p.sub{color:rgba(246,243,236,.8)}
+  body.dark .btn-primary{background:#F6F3EC;color:#234E36} body.dark .btn-primary:hover{background:#fff}
+  body.dark .btn-ghost{border-color:rgba(246,243,236,.28);color:#F6F3EC} body.dark .btn-ghost:hover{border-color:#A9D9B7;color:#A9D9B7}
+  body.dark .back{color:rgba(246,243,236,.7)} body.dark .back:hover{color:#A9D9B7}
+  body.dark .touch .fe{color:rgba(246,243,236,.5)} body.dark .touch a{color:#F6F3EC} body.dark .touch a:hover{color:#A9D9B7} body.dark .touch a .arw{color:#A9D9B7}
+  body.dark .app{background:rgba(246,243,236,.05);border-color:rgba(246,243,236,.14);box-shadow:0 30px 70px -30px rgba(0,0,0,.5)}
+  body.dark .app-head .t{color:#F6F3EC} body.dark .app-head .s{color:rgba(246,243,236,.55)}
+  body.dark .tab{color:rgba(246,243,236,.6)} body.dark .tab:hover{color:#F6F3EC} body.dark .tab.active{color:#A9D9B7} body.dark .tab.active::after{background:#A9D9B7}
+  body.dark .panels{border-color:rgba(246,243,236,.12)}
+  body.dark .pt{color:#F6F3EC} body.dark .psub{color:rgba(246,243,236,.6)}
+  body.dark .stat .s{background:rgba(169,217,183,.08);border-color:rgba(246,243,236,.12)} body.dark .stat .s b{color:#F6F3EC} body.dark .stat .s span{color:rgba(246,243,236,.55)}
+  body.dark .gh{border-color:rgba(246,243,236,.14);background:rgba(169,217,183,.05)} body.dark .gh-top{color:rgba(246,243,236,.5)} body.dark .ghsvg{color:#A9D9B7}
+  body.dark .mon .m{color:rgba(246,243,236,.72)} body.dark .mon .mn{background:rgba(169,217,183,.16);color:#CFE8D7} body.dark .mon .m b{color:#F6F3EC} body.dark .mon-note{color:rgba(246,243,236,.5)}
+  body.dark .msg.me .bubble{background:rgba(246,243,236,.12);color:#F6F3EC} body.dark .msg.op .bubble{background:rgba(169,217,183,.16);color:#EAF6EE}
+  body.dark .chip{color:#BFE6CC;background:rgba(169,217,183,.12);border-color:rgba(169,217,183,.3)}
+  body.dark .alog .aeh{color:rgba(246,243,236,.5)} body.dark .ae .at{color:#F6F3EC} body.dark .ae .ax{color:rgba(246,243,236,.72)}
+  body.dark .ae.future .an{border-color:#A9D9B7;color:#A9D9B7}
+  body.dark .ptag{color:#A9D9B7;border-color:rgba(169,217,183,.3)}
+  body.dark .ghsvg .mushc{fill:#A9D9B7} body.dark .ghsvg .ledb{stroke:#A9D9B7}
+
+  /* ===== stacked (tablet/phone/short) ===== */
+  @media (max-width:1080px), (max-height:700px){
+    .stage{position:static;display:flex;flex-direction:column;min-height:100vh;padding:30px 24px 42px}
+    .brand{position:static}
+    .topr{top:30px;right:22px}
+    .hero{position:static;transform:none;max-width:100%;margin-top:52px}
+    .hero h1{font-size:clamp(38px,8vw,64px);letter-spacing:-1.4px;line-height:1.05}
+    .hero p.sub{max-width:52ch}
+    .app{position:static;transform:none;width:100%;max-width:540px;margin:40px 0 0;max-height:none}
+    .panels{max-height:none;overflow:visible}
+    .bl{position:static;margin-top:38px}
+    .touch{position:static;text-align:left;margin-top:26px}
+  }
+  @media (max-width:640px){
+    .stage{padding:26px 18px 40px}
+    .brand .logo{width:33px;height:33px} .brand .wm{font-size:23px}
+    .topr{right:18px;top:28px} .lang-btn{padding:4px 7px;font-size:12px}
+    .hero{margin-top:46px} .hero h1{font-size:clamp(34px,10.5vw,50px)} .hero p.sub{font-size:16px}
+    .cta-row .btn{font-size:14px;padding:11px 18px}
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <a class="brand" href="/">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="SerreVue">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FA86C"/><stop offset="0.55" stop-color="#3F8E5B"/><stop offset="1" stop-color="#2C6B43"/></linearGradient></defs>
+        <rect width="64" height="64" rx="14" fill="url(#g)"/>
+        <svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196" preserveAspectRatio="xMidYMid meet"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg>
+      </svg>
+      <span class="wm">Serre<span class="vue">Vue</span></span>
+    </a>
+    <div class="topr">
+      <div class="lang" role="group" aria-label="Language"><button class="lang-btn active" data-lang="en">EN</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="fr">FR</button></div>
+      <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+
+    <div class="hero">
+      <h1><span data-en="A greenhouse on your " data-fr="Une serre sur votre ">A greenhouse on your </span><span class="g" data-en="counter." data-fr="comptoir.">counter.</span></h1>
+      <p class="sub" data-en="SerreVue Box grows real food on its own. It holds the climate, watches the grow, and messages you when it matters. First edition: gourmet mushrooms." data-fr="SerreVue Box cultive de vrais aliments, toute seule. Elle tient le climat, surveille la culture et vous écrit quand ça compte. Première édition : champignons gourmets.">SerreVue Box grows real food on its own. It holds the climate, watches the grow, and messages you when it matters. First edition: gourmet mushrooms.</p>
+    </div>
+
+    <div class="app" id="peek">
+      <div class="app-head"><span class="dot"></span><span class="t" data-en="SerreVue Box" data-fr="SerreVue Box">SerreVue Box</span><span class="s" data-en="in development" data-fr="en développement">in development</span></div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="inside" data-en="Inside" data-fr="À l'intérieur">Inside</button>
+        <button class="tab" data-tab="climate" data-en="Climate" data-fr="Climat">Climate</button>
+        <button class="tab" data-tab="app" data-en="In the app" data-fr="Dans l'appli">In the app</button>
+      </div>
+      <div class="panels">
+        <div class="panel active" data-panel="inside">
+          <div class="pt" data-en="What's in the box" data-fr="Ce qu'il y a dans la boîte">What's in the box</div>
+          <div class="psub" data-en="Cross-section, and everything it runs by itself" data-fr="Vue en coupe, et tout ce qu'elle gère toute seule">Cross-section, and everything it runs by itself</div>
+          <div class="gh">
+            <div class="gh-top" data-en="Box · front view" data-fr="Boîte · vue de face">Box · front view</div>
+            <svg class="ghsvg" viewBox="0 0 460 236" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <ellipse cx="230" cy="216" rx="150" ry="12" fill="#2C6B43" opacity="0.06"/>
+              <!-- clear chamber -->
+              <rect x="130" y="32" width="200" height="112" rx="14" fill="#A9D9B7" opacity="0.09"/>
+              <rect x="130" y="32" width="200" height="112" rx="14" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55"/>
+              <!-- LED bar -->
+              <line class="ledb" x1="150" y1="46" x2="310" y2="46" stroke="#3F8E5B" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+              <!-- substrate block + mushrooms -->
+              <rect x="192" y="106" width="76" height="38" rx="5" fill="#3F8E5B" opacity="0.13"/>
+              <rect x="192" y="106" width="76" height="38" rx="5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+              <path d="M215,106 C215,96 215,92 215,88" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.75"/>
+              <path class="mushc" d="M203,88 C203,76 227,76 227,88 Z" fill="#3F8E5B" opacity="0.55"/>
+              <path d="M240,106 C240,99 240,96 240,93" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.75"/>
+              <path class="mushc" d="M231,93 C231,84 249,84 249,93 Z" fill="#3F8E5B" opacity="0.4"/>
+              <!-- mist -->
+              <circle class="mushc" cx="168" cy="92" r="5" fill="#3F8E5B" opacity="0.18"/>
+              <circle class="mushc" cx="176" cy="78" r="4" fill="#3F8E5B" opacity="0.13"/>
+              <circle class="mushc" cx="163" cy="66" r="3" fill="#3F8E5B" opacity="0.1"/>
+              <!-- camera -->
+              <rect x="306" y="40" width="16" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.7"/>
+              <circle class="mushc" cx="314" cy="46" r="2.6" fill="#3F8E5B" opacity="0.8"/>
+              <!-- base -->
+              <rect x="120" y="144" width="220" height="62" rx="12" fill="#FCFBF7" stroke="currentColor" stroke-width="1.6" opacity="0.9"/>
+              <!-- oled -->
+              <rect x="142" y="160" width="44" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.65"/>
+              <circle cx="152" cy="170" r="2.6" fill="#3F8E5B"/>
+              <!-- fan -->
+              <circle cx="312" cy="172" r="14" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+              <line x1="312" y1="161" x2="312" y2="183" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+              <line x1="301" y1="172" x2="323" y2="172" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+              <!-- reservoir drawer -->
+              <rect x="204" y="184" width="76" height="18" rx="5" fill="#5E9BC9" opacity="0.12"/>
+              <rect x="204" y="184" width="76" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+              <line x1="232" y1="193" x2="252" y2="193" stroke="currentColor" stroke-width="2" opacity="0.55" stroke-linecap="round"/>
+              <!-- louvers -->
+              <line x1="136" y1="192" x2="158" y2="192" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+              <line x1="136" y1="197" x2="158" y2="197" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+              <line x1="136" y1="202" x2="158" y2="202" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+              <!-- pin leader lines -->
+              <g stroke="#3F8E5B" stroke-width="1" opacity="0.55">
+                <line x1="230" y1="20" x2="230" y2="34"/>
+                <line x1="168" y1="104" x2="168" y2="116"/>
+                <line x1="336" y1="172" x2="326" y2="172"/>
+                <line x1="120" y1="46" x2="136" y2="46"/>
+                <line x1="242" y1="212" x2="242" y2="202"/>
+                <line x1="334" y1="34" x2="326" y2="42"/>
+              </g>
+              <g font-family="'Space Grotesk',sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
+                <g class="pin"><circle class="pinring" cx="230" cy="14" r="11"/><circle cx="230" cy="14" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="230" y="17.5" fill="#F6F3EC">1</text></g>
+                <g class="pin"><circle cx="168" cy="124" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="168" y="127.5" fill="#F6F3EC">2</text></g>
+                <g class="pin"><circle cx="344" cy="172" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="344" y="175.5" fill="#F6F3EC">3</text></g>
+                <g class="pin"><circle cx="112" cy="46" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="112" y="49.5" fill="#F6F3EC">4</text></g>
+                <g class="pin"><circle cx="242" cy="222" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="242" y="225.5" fill="#F6F3EC">5</text></g>
+                <g class="pin"><circle cx="342" cy="28" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="342" y="31.5" fill="#F6F3EC">6</text></g>
+              </g>
+            </svg>
+            <div class="mon">
+              <div class="m"><span class="mn">1</span><span><b data-en="Climate" data-fr="Climat">Climate</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
+              <div class="m"><span class="mn">2</span><span><b data-en="Mist" data-fr="Brume">Mist</b> <span data-en="· holds 85–95% humidity" data-fr="· tient 85–95 % d'humidité">· holds 85–95% humidity</span></span></div>
+              <div class="m"><span class="mn">3</span><span><b data-en="Fresh air" data-fr="Air frais">Fresh air</b> <span data-en="· quiet fan + louvers" data-fr="· ventilateur discret + persiennes">· quiet fan + louvers</span></span></div>
+              <div class="m"><span class="mn">4</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· gentle 12 h fruiting signal" data-fr="· signal doux de 12 h">· gentle 12 h fruiting signal</span></span></div>
+              <div class="m"><span class="mn">5</span><span><b data-en="Water" data-fr="Eau">Water</b> <span data-en="· 1 L drawer, days per refill" data-fr="· tiroir de 1 L, des jours par remplissage">· 1 L drawer, days per refill</span></span></div>
+              <div class="m"><span class="mn">6</span><span><b data-en="Camera" data-fr="Caméra">Camera</b> <span data-en="· watches the grow for you" data-fr="· surveille la culture pour vous">· watches the grow for you</span></span></div>
+            </div>
+            <div class="mon-note" data-en="Same operator, same app as the Greenhouse Suite. Just smaller glass." data-fr="Même opérateur, même appli que la Suite. Juste une serre plus petite.">Same operator, same app as the Greenhouse Suite. Just smaller glass.</div>
+          </div>
+        </div>
+        <div class="panel" data-panel="climate">
+          <div class="pt" data-en="What it holds, around the clock" data-fr="Ce qu'elle maintient, jour et nuit">What it holds, around the clock</div>
+          <div class="psub" data-en="Humidity · last 24 hours, target band shaded" data-fr="Humidité · 24 dernières heures, plage cible ombrée">Humidity · last 24 hours, target band shaded</div>
+          <svg class="chart" viewBox="0 0 460 168" xmlns="http://www.w3.org/2000/svg">
+            <rect class="fczone" x="50" y="38" width="395" height="42"/>
+            <text x="54" y="33" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" letter-spacing="0.09em" fill="#2C6B43" opacity="0.6" data-en="TARGET 85–95%" data-fr="CIBLE 85–95 %">TARGET 85–95%</text>
+            <line x1="50" y1="30" x2="445" y2="30" stroke="currentColor" opacity="0.07"/><line x1="50" y1="90" x2="445" y2="90" stroke="currentColor" opacity="0.07"/><line x1="50" y1="140" x2="445" y2="140" stroke="currentColor" opacity="0.12"/>
+            <polyline points="50,64 90,58 130,66 170,55 210,62 240,86 258,98 276,66 310,56 350,63 395,58 445,61" fill="none" stroke="#3F8E5B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <g><line x1="258" y1="38" x2="258" y2="140" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle class="pinring" cx="258" cy="22" r="11"/><circle cx="258" cy="22" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="258" y="25.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">1</text></g>
+            <text x="90" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="6am" data-fr="6 h">6am</text><text x="240" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="noon" data-fr="midi">noon</text><text x="395" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="6pm" data-fr="18 h">6pm</text>
+          </svg>
+          <div class="mon" style="margin-top:6px">
+            <div class="m"><span class="mn">1</span><span><b data-en="Door opened" data-fr="Porte ouverte">Door opened</b> <span data-en="· re-misted, back in band in 4 min" data-fr="· brume relancée, retour en plage en 4 min">· re-misted, back in band in 4 min</span></span></div>
+          </div>
+          <div class="stat">
+            <div class="s"><b>90%</b><span data-en="humidity · held day and night" data-fr="humidité · tenue jour et nuit">humidity · held day and night</span></div>
+            <div class="s"><b>&lt;800 ppm</b><span data-en="CO₂ · fresh-air cycles" data-fr="CO₂ · cycles d'air frais">CO₂ · fresh-air cycles</span></div>
+            <div class="s"><b>12 h / 12 h</b><span data-en="light · fruiting signal" data-fr="lumière · signal de fructification">light · fruiting signal</span></div>
+            <div class="s"><b>~4 <span style="font-size:13px">days</span></b><span data-en="per water refill · it asks first" data-fr="par remplissage · elle vous le demande">per water refill · it asks first</span></div>
+          </div>
+        </div>
+        <div class="panel" data-panel="app">
+          <div class="pt" data-en="It keeps you in the loop" data-fr="Elle vous tient au courant">It keeps you in the loop</div>
+          <div class="psub" data-en="The box reports to the same app as every SerreVue product" data-fr="La boîte parle à la même appli que tous les produits SerreVue">The box reports to the same app as every SerreVue product</div>
+          <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
+            <div><div class="bubble" data-en="Water is getting low, about a day left. Top up when you pass by." data-fr="L'eau est presque à sec, environ une journée restante. Remplissez en passant.">Water is getting low, about a day left. Top up when you pass by.</div></div>
+          </div>
+          <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
+            <div><div class="bubble" data-en="Your lion's mane looks ready in 2 to 3 days. I'll send a photo when it's picking time." data-fr="Votre crinière de lion sera prête dans 2 à 3 jours. Je vous envoie une photo au moment de la récolte.">Your lion's mane looks ready in 2 to 3 days. I'll send a photo when it's picking time.</div>
+            <span class="chip">&#10003; <span data-en="Watching, so you don't have to" data-fr="Elle veille, pour que vous n'ayez pas à le faire">Watching, so you don't have to</span></span></div>
+          </div>
+          <div class="alog">
+            <div class="aeh" data-en="The box today" data-fr="La boîte aujourd'hui">The box today</div>
+            <div class="ae"><span class="an">1</span><span class="at">06:10</span><span class="ax" data-en="Misted 20 s, humidity back to 90%" data-fr="Brume 20 s, humidité de retour à 90 %">Misted 20 s, humidity back to 90%</span></div>
+            <div class="ae"><span class="an">2</span><span class="at">09:40</span><span class="ax" data-en="Fresh-air cycle, CO₂ down to 640 ppm" data-fr="Cycle d'air frais, CO₂ à 640 ppm">Fresh-air cycle, CO₂ down to 640 ppm</span></div>
+            <div class="ae"><span class="an">3</span><span class="at">14:00</span><span class="ax" data-en="Photo check: healthy pinning, no contamination" data-fr="Photo : belle fructification, aucune contamination">Photo check: healthy pinning, no contamination</span></div>
+            <div class="ae future"><span class="an">4</span><span class="at">19:00</span><span class="ax" data-en="Lights off for the night cycle" data-fr="Extinction pour le cycle de nuit">Lights off for the night cycle</span><span class="ptag" data-en="planned" data-fr="prévu">planned</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bl">
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:hello@serrevue.com?subject=SerreVue%20Box" data-en-href="mailto:hello@serrevue.com?subject=SerreVue%20Box" data-fr-href="mailto:bonjour@serrevue.com?subject=SerreVue%20Box"><span data-en="Get early access" data-fr="Accès anticipé">Get early access</span> <span class="arw">&rarr;</span></a>
+        <a class="btn btn-ghost" href="suite.html" data-en="See the Suite" data-fr="Voir la Suite">See the Suite</a>
+      </div>
+      <a class="back" href="/" data-en="&larr; All products" data-fr="&larr; Tous les produits">&larr; All products</a>
+    </div>
+    <div class="touch">
+      <div class="fe" data-en="Get in touch" data-fr="Nous joindre">Get in touch</div>
+      <a href="mailto:hello@serrevue.com" data-en-href="mailto:hello@serrevue.com" data-fr-href="mailto:bonjour@serrevue.com"><span data-en="hello@serrevue.com" data-fr="bonjour@serrevue.com">hello@serrevue.com</span> <span class="arw">&rarr;</span></a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      function setLang(l){
+        document.documentElement.lang=l;
+        document.querySelectorAll('[data-en]').forEach(function(el){var v=(l==='fr')?el.getAttribute('data-fr'):el.getAttribute('data-en');if(v!==null)el.textContent=v;});
+        document.querySelectorAll('[data-en-href]').forEach(function(a){var h=(l==='fr')?a.getAttribute('data-fr-href'):a.getAttribute('data-en-href');if(h!==null)a.setAttribute('href',h);});
+        document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===l);});
+      }
+      document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});});
+      setLang(location.hash==='#fr'?'fr':'en');
+    })();
+    (function(){
+      var KEY='serrevue-theme',saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+      var q='';try{q=new URLSearchParams(location.search).get('theme')||'';}catch(e){}
+      var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+      function apply(t){document.body.classList.toggle('dark',t==='dark');}
+      function resolve(){if(q==='dark'||q==='light')return q;if(saved==='dark'||saved==='light')return saved;return (mq&&mq.matches)?'dark':'light';}
+      apply(resolve());
+      if(mq&&mq.addEventListener){mq.addEventListener('change',function(e){if(!saved&&!q)apply(e.matches?'dark':'light');});}
+      document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var t=document.body.classList.contains('dark')?'light':'dark';saved=t;try{localStorage.setItem(KEY,t);}catch(e){}apply(t);});});
+    })();
+    (function(){
+      var initial='inside';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
+      function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
+      document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
+      show(initial);
+    })();
+  </script>
+</body>
+</html>
