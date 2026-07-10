@@ -106,6 +106,13 @@
   .av{width:24px;height:24px;border-radius:7px;flex:none;margin-top:2px}
   .chip{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green3);background:rgba(44,107,67,.09);border:1px solid rgba(44,107,67,.18);border-radius:20px;padding:4px 10px}
 
+  .pin{cursor:pointer}
+  .mon .m[data-s]{cursor:pointer;border-radius:8px;transition:background .12s;padding:3px 5px;margin:-3px -5px}
+  .mon .m[data-s]:hover{background:rgba(44,107,67,.06)}
+  body.dark .mon .m[data-s]:hover{background:rgba(169,217,183,.1)}
+  .chat-body{max-height:300px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--cream2) transparent;padding-right:2px}
+  .chat-body::-webkit-scrollbar{width:6px} .chat-body::-webkit-scrollbar-thumb{background:var(--cream2);border-radius:3px}
+  body.dark .chat-body{scrollbar-color:rgba(246,243,236,.2) transparent}
   .alog{margin-top:15px;display:flex;flex-direction:column;gap:7px}
   .alog .aeh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:2px}
   .ae{display:flex;align-items:center;gap:9px;font-size:12px}
@@ -192,9 +199,9 @@
     <div class="app" id="peek">
       <div class="app-head"><span class="dot"></span><span class="t" data-en="SerreVue Box" data-fr="SerreVue Box">SerreVue Box</span><span class="s" data-en="in development" data-fr="en développement">in development</span></div>
       <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="inside" data-en="Inside" data-fr="À l'intérieur">Inside</button>
-        <button class="tab" data-tab="climate" data-en="Climate" data-fr="Climat">Climate</button>
-        <button class="tab" data-tab="app" data-en="In the app" data-fr="Dans l'appli">In the app</button>
+        <button class="tab active" data-tab="inside" data-en="View" data-fr="Vue">View</button>
+        <button class="tab" data-tab="climate" data-en="Monitor" data-fr="Suivi">Monitor</button>
+        <button class="tab" data-tab="app" data-en="Talk" data-fr="Parler">Talk</button>
       </div>
       <div class="panels">
         <div class="panel active" data-panel="inside">
@@ -250,21 +257,21 @@
                 <line x1="334" y1="34" x2="326" y2="42"/>
               </g>
               <g font-family="'Space Grotesk',sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
-                <g class="pin"><circle class="pinring" cx="230" cy="14" r="11"/><circle cx="230" cy="14" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="230" y="17.5" fill="#F6F3EC">1</text></g>
-                <g class="pin"><circle cx="168" cy="124" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="168" y="127.5" fill="#F6F3EC">2</text></g>
-                <g class="pin"><circle cx="344" cy="172" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="344" y="175.5" fill="#F6F3EC">3</text></g>
-                <g class="pin"><circle cx="112" cy="46" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="112" y="49.5" fill="#F6F3EC">4</text></g>
-                <g class="pin"><circle cx="242" cy="222" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="242" y="225.5" fill="#F6F3EC">5</text></g>
-                <g class="pin"><circle cx="342" cy="28" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="342" y="31.5" fill="#F6F3EC">6</text></g>
+                <g class="pin" data-s="1"><circle class="pinring" cx="230" cy="14" r="11"/><circle cx="230" cy="14" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="230" y="17.5" fill="#F6F3EC">1</text></g>
+                <g class="pin" data-s="2"><circle cx="168" cy="124" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="168" y="127.5" fill="#F6F3EC">2</text></g>
+                <g class="pin" data-s="3"><circle cx="344" cy="172" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="344" y="175.5" fill="#F6F3EC">3</text></g>
+                <g class="pin" data-s="4"><circle cx="112" cy="46" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="112" y="49.5" fill="#F6F3EC">4</text></g>
+                <g class="pin" data-s="5"><circle cx="242" cy="222" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="242" y="225.5" fill="#F6F3EC">5</text></g>
+                <g class="pin" data-s="6"><circle cx="342" cy="28" r="8.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.4"/><text x="342" y="31.5" fill="#F6F3EC">6</text></g>
               </g>
             </svg>
             <div class="mon">
-              <div class="m"><span class="mn">1</span><span><b data-en="Climate" data-fr="Climat">Climate</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
-              <div class="m"><span class="mn">2</span><span><b data-en="Mist" data-fr="Brume">Mist</b> <span data-en="· holds 85–95% humidity" data-fr="· tient 85–95 % d'humidité">· holds 85–95% humidity</span></span></div>
-              <div class="m"><span class="mn">3</span><span><b data-en="Fresh air" data-fr="Air frais">Fresh air</b> <span data-en="· quiet fan + louvers" data-fr="· ventilateur discret + persiennes">· quiet fan + louvers</span></span></div>
-              <div class="m"><span class="mn">4</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· gentle 12 h fruiting signal" data-fr="· signal doux de 12 h">· gentle 12 h fruiting signal</span></span></div>
-              <div class="m"><span class="mn">5</span><span><b data-en="Water" data-fr="Eau">Water</b> <span data-en="· 1 L drawer, days per refill" data-fr="· tiroir de 1 L, des jours par remplissage">· 1 L drawer, days per refill</span></span></div>
-              <div class="m"><span class="mn">6</span><span><b data-en="Camera" data-fr="Caméra">Camera</b> <span data-en="· watches the grow for you" data-fr="· surveille la culture pour vous">· watches the grow for you</span></span></div>
+              <div class="m" data-s="1"><span class="mn">1</span><span><b data-en="Climate" data-fr="Climat">Climate</b> <span data-en="· temp, humidity, CO₂" data-fr="· temp., humidité, CO₂">· temp, humidity, CO₂</span></span></div>
+              <div class="m" data-s="2"><span class="mn">2</span><span><b data-en="Mist" data-fr="Brume">Mist</b> <span data-en="· holds 85–95% humidity" data-fr="· tient 85–95 % d'humidité">· holds 85–95% humidity</span></span></div>
+              <div class="m" data-s="3"><span class="mn">3</span><span><b data-en="Fresh air" data-fr="Air frais">Fresh air</b> <span data-en="· quiet fan + louvers" data-fr="· ventilateur discret + persiennes">· quiet fan + louvers</span></span></div>
+              <div class="m" data-s="4"><span class="mn">4</span><span><b data-en="Light" data-fr="Lumière">Light</b> <span data-en="· gentle 12 h fruiting signal" data-fr="· signal doux de 12 h">· gentle 12 h fruiting signal</span></span></div>
+              <div class="m" data-s="5"><span class="mn">5</span><span><b data-en="Water" data-fr="Eau">Water</b> <span data-en="· 1 L drawer, days per refill" data-fr="· tiroir de 1 L, des jours par remplissage">· 1 L drawer, days per refill</span></span></div>
+              <div class="m" data-s="6"><span class="mn">6</span><span><b data-en="Camera" data-fr="Caméra">Camera</b> <span data-en="· watches the grow for you" data-fr="· surveille la culture pour vous">· watches the grow for you</span></span></div>
             </div>
             <div class="mon-note" data-en="Same operator, same app as the Greenhouse Suite. Just smaller glass." data-fr="Même opérateur, même appli que la Suite. Juste une serre plus petite.">Same operator, same app as the Greenhouse Suite. Just smaller glass.</div>
           </div>
@@ -277,11 +284,11 @@
             <text x="54" y="33" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" letter-spacing="0.09em" fill="#2C6B43" opacity="0.6" data-en="TARGET 85–95%" data-fr="CIBLE 85–95 %">TARGET 85–95%</text>
             <line x1="50" y1="30" x2="445" y2="30" stroke="currentColor" opacity="0.07"/><line x1="50" y1="90" x2="445" y2="90" stroke="currentColor" opacity="0.07"/><line x1="50" y1="140" x2="445" y2="140" stroke="currentColor" opacity="0.12"/>
             <polyline points="50,64 90,58 130,66 170,55 210,62 240,86 258,98 276,66 310,56 350,63 395,58 445,61" fill="none" stroke="#3F8E5B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-            <g><line x1="258" y1="38" x2="258" y2="140" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle class="pinring" cx="258" cy="22" r="11"/><circle cx="258" cy="22" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="258" y="25.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">1</text></g>
+            <g class="pin" data-s="door"><line x1="258" y1="38" x2="258" y2="140" stroke="#2C6B43" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/><circle class="pinring" cx="258" cy="22" r="11"/><circle cx="258" cy="22" r="7.5" fill="#3F8E5B" stroke="#F6F3EC" stroke-width="1.3"/><text x="258" y="25.2" fill="#F6F3EC" font-family="'Space Grotesk',sans-serif" font-size="9" font-weight="700" text-anchor="middle">1</text></g>
             <text x="90" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="6am" data-fr="6 h">6am</text><text x="240" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="noon" data-fr="midi">noon</text><text x="395" y="158" font-family="Inter" font-size="9" text-anchor="middle" fill="currentColor" opacity="0.5" data-en="6pm" data-fr="18 h">6pm</text>
           </svg>
           <div class="mon" style="margin-top:6px">
-            <div class="m"><span class="mn">1</span><span><b data-en="Door opened" data-fr="Porte ouverte">Door opened</b> <span data-en="· re-misted, back in band in 4 min" data-fr="· brume relancée, retour en plage en 4 min">· re-misted, back in band in 4 min</span></span></div>
+            <div class="m" data-s="door"><span class="mn">1</span><span><b data-en="Door opened" data-fr="Porte ouverte">Door opened</b> <span data-en="· re-misted, back in band in 4 min" data-fr="· brume relancée, retour en plage en 4 min">· re-misted, back in band in 4 min</span></span></div>
           </div>
           <div class="stat">
             <div class="s"><b>90%</b><span data-en="humidity · held day and night" data-fr="humidité · tenue jour et nuit">humidity · held day and night</span></div>
@@ -293,12 +300,14 @@
         <div class="panel" data-panel="app">
           <div class="pt" data-en="It keeps you in the loop" data-fr="Elle vous tient au courant">It keeps you in the loop</div>
           <div class="psub" data-en="The box reports to the same app as every SerreVue product" data-fr="La boîte parle à la même appli que tous les produits SerreVue">The box reports to the same app as every SerreVue product</div>
+          <div class="chat-body" id="chatBody">
           <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
             <div><div class="bubble" data-en="Water is getting low, about a day left. Top up when you pass by." data-fr="L'eau est presque à sec, environ une journée restante. Remplissez en passant.">Water is getting low, about a day left. Top up when you pass by.</div></div>
           </div>
           <div class="msg op"><svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>
             <div><div class="bubble" data-en="Your lion's mane looks ready in 2 to 3 days. I'll send a photo when it's picking time." data-fr="Votre crinière de lion sera prête dans 2 à 3 jours. Je vous envoie une photo au moment de la récolte.">Your lion's mane looks ready in 2 to 3 days. I'll send a photo when it's picking time.</div>
             <span class="chip">&#10003; <span data-en="Watching, so you don't have to" data-fr="Elle veille, pour que vous n'ayez pas à le faire">Watching, so you don't have to</span></span></div>
+          </div>
           </div>
           <div class="alog">
             <div class="aeh" data-en="The box today" data-fr="La boîte aujourd'hui">The box today</div>
@@ -349,7 +358,35 @@
       var initial='inside';try{var t=new URLSearchParams(location.search).get('tab');if(t)initial=t;}catch(e){}
       function show(name){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===name);});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===name);});}
       document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'));});});
-      show(initial);
+      window.svShowTab=show;show(initial);
+    })();
+    (function(){
+      var LEAF='<svg class="av" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g)"/><svg x="11" y="10.5" width="42" height="42" viewBox="0 0 200 196"><path fill="#F6F3EC" d="M 140 10 C 166 40, 182 70, 176 108 C 170 142, 144 162, 108 158 C 99 159, 90 157, 82 153 C 76 162, 65 173, 55 181 C 51 184, 45 183, 46 177 C 48 169, 57 159, 67 150 C 50 140, 30 116, 27 86 C 23 50, 58 22, 96 16 C 112 13, 128 12, 140 10 Z"/><circle fill="#2C6B43" cx="72" cy="90" r="13"/><circle fill="#2C6B43" cx="102" cy="90" r="13"/><circle fill="#2C6B43" cx="132" cy="90" r="13"/></svg></svg>';
+      var QA={
+        "1":{q:{en:"What does the box measure?",fr:"Que mesure la boîte ?"},a:{en:"Temperature, humidity and CO\u2082, checked every few seconds. I hold the air at 90% humidity and keep the CO\u2082 under 800 ppm.",fr:"Température, humidité et CO\u2082, vérifiés toutes les quelques secondes. Je tiens l'air à 90 % d'humidité et le CO\u2082 sous 800 ppm."}},
+        "2":{q:{en:"How does the misting work?",fr:"Comment fonctionne la brume ?"},a:{en:"An ultrasonic fogger in the base pulses whenever humidity drifts low. Twenty seconds of mist usually brings it back to 90%.",fr:"Un brumisateur à ultrasons dans la base s'active dès que l'humidité baisse. Vingt secondes de brume la ramènent à 90 %."}},
+        "3":{q:{en:"Where does fresh air come in?",fr:"D'où vient l'air frais ?"},a:{en:"A quiet fan pulls fresh air through, and the heavier CO\u2082 falls out the louvers low on the base. I run a cycle whenever it builds up.",fr:"Un ventilateur discret fait entrer l'air frais, et le CO\u2082, plus lourd, sort par les persiennes du bas. Je lance un cycle dès qu'il s'accumule."}},
+        "4":{q:{en:"What is the light for?",fr:"À quoi sert la lumière ?"},a:{en:"Plants and mushrooms read light as a signal. A gentle 12 hour cycle tells the grow which way to face and when to fruit.",fr:"Les plantes et champignons lisent la lumière comme un signal. Un cycle doux de 12 heures indique à la culture où pousser et quand fructifier."}},
+        "5":{q:{en:"How often do I refill the water?",fr:"À quelle fréquence remplir l'eau ?"},a:{en:"The 1 L drawer lasts for days. I watch the level and message you well before it runs low.",fr:"Le tiroir de 1 L dure des jours. Je surveille le niveau et je vous écris bien avant qu'il soit bas."}},
+        "6":{q:{en:"What does the camera watch?",fr:"Que surveille la caméra ?"},a:{en:"The grow itself. I check progress and any sign of contamination, and I send you a photo when it is picking time.",fr:"La culture elle-même. Je vérifie la progression et tout signe de contamination, et je vous envoie une photo au moment de la récolte."}},
+        "door":{q:{en:"What happened at noon?",fr:"Que s'est-il passé à midi ?"},a:{en:"The door opened and humidity dipped out of the band. I re-misted, and it was back to 90% in four minutes.",fr:"La porte s'est ouverte et l'humidité est sortie de la plage. J'ai relancé la brume, retour à 90 % en quatre minutes."}}
+      };
+      var body=document.getElementById('chatBody');
+      function lang(){return document.documentElement.lang==='fr'?'fr':'en';}
+      function bubble(cls,en,fr,withAv){
+        var d=document.createElement('div'); d.className='msg '+cls;
+        var b=document.createElement('div'); b.className='bubble'; b.setAttribute('data-en',en); b.setAttribute('data-fr',fr); b.textContent=(lang()==='fr'?fr:en);
+        if(withAv){ d.innerHTML=LEAF; var w=document.createElement('div'); w.appendChild(b); d.appendChild(w); } else { d.appendChild(b); }
+        body.appendChild(d); body.scrollTop=body.scrollHeight;
+      }
+      var last=null;
+      function ask(k){ var qa=QA[k]; if(!qa) return;
+        if(window.svShowTab) window.svShowTab('app');
+        if(last===k){ body.scrollTop=body.scrollHeight; return; } last=k;
+        bubble('me', qa.q.en, qa.q.fr, false);
+        bubble('op', qa.a.en, qa.a.fr, true);
+      }
+      document.querySelectorAll('[data-s]').forEach(function(el){ el.addEventListener('click', function(){ ask(el.getAttribute('data-s')); }); });
     })();
   </script>
 </body>
