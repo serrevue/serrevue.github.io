@@ -8,8 +8,8 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const PUBLIC_PAGES = ['index.html', 'suite.html', 'box.html', '404.html'];
-const I18N_PAGES = ['index.html', 'suite.html', 'box.html'];
+const PUBLIC_PAGES = ['index.html', 'suite.html', '404.html'];
+const I18N_PAGES = ['index.html', 'suite.html'];
 const BRAND_GREENS = ['#2C6B43', '#3F8E5B'];
 const FONTS = ['Space Grotesk', 'Fraunces', 'Inter'];
 
@@ -94,7 +94,7 @@ async function renderedTests() {
 
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   try {
-    for (const page of ['index.html', 'suite.html', 'box.html']) {
+    for (const page of ['index.html', 'suite.html']) {
       const p = await browser.newPage();
       const pageErrors = [], consoleErrors = [];
       p.on('pageerror', e => pageErrors.push(String(e)));
@@ -163,18 +163,18 @@ async function renderedTests() {
 
       await p.click('.lang-btn[data-lang="en"]');
       await new Promise(r => setTimeout(r, 300));
-      await p.goto(`${base}/box.html`, { waitUntil: 'networkidle2' });
-      await new Promise(r => setTimeout(r, 600));
-      lang = await p.evaluate(() => document.documentElement.lang);
-      lang === 'en' ? ok('lang: EN choice persists onto box.html') : fail('lang: EN choice persists onto box.html', lang);
-
       await p.goto(`${base}/suite.html`, { waitUntil: 'networkidle2' });
       await new Promise(r => setTimeout(r, 600));
       lang = await p.evaluate(() => document.documentElement.lang);
       lang === 'en' ? ok('lang: EN choice persists onto suite.html') : fail('lang: EN choice persists onto suite.html', lang);
 
+      await p.goto(`${base}/404.html`, { waitUntil: 'networkidle2' });
+      await new Promise(r => setTimeout(r, 600));
+      lang = await p.evaluate(() => document.documentElement.lang);
+      lang === 'en' ? ok('lang: EN choice persists onto 404.html') : fail('lang: EN choice persists onto 404.html', lang);
+
       // cross-page so the #fr deep link is a full navigation (hash-only changes do not reload)
-      await p.goto(`${base}/box.html#fr`, { waitUntil: 'networkidle2' });
+      await p.goto(`${base}/suite.html#fr`, { waitUntil: 'networkidle2' });
       await new Promise(r => setTimeout(r, 600));
       lang = await p.evaluate(() => document.documentElement.lang);
       lang === 'fr' ? ok('lang: #fr deep link overrides for the visit') : fail('lang: #fr deep link overrides for the visit', lang);
