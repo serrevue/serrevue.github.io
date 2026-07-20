@@ -119,9 +119,45 @@
   .social a:hover{color:var(--green3);border-color:rgba(44,107,67,.4);background:rgba(44,107,67,.07)}
   .social svg{width:18px;height:18px;display:block}
 
+  /* ---- shared scroll-section bands ---- */
+  .band{padding:96px 60px}
+  .band .inner{max-width:1080px;margin:0 auto}
+  .band.cream{background:var(--cream)}
+  .band.cream2{background:var(--cream2)}
+  .band h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;line-height:1.12;letter-spacing:-1px;color:var(--ink);max-width:22ch}
+  .band h2 .g{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  .band .lede{margin-top:20px;font-size:17px;line-height:1.62;color:var(--ink-dim);max-width:60ch}
+  .band .src{margin-top:26px;font-size:12.5px;letter-spacing:.01em;color:var(--ink-dimmer)}
+
+  /* problem stat grid */
+  .statgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:52px}
+  .sc{background:var(--cream2);border:1px solid rgba(30,44,36,.09);border-radius:14px;padding:22px 18px 20px}
+  .band.cream2 .sc{background:var(--cream)}
+  .sc .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;line-height:1;letter-spacing:-1.5px;color:var(--green3)}
+  .sc .big .u{font-size:19px;letter-spacing:-.4px}
+  .sc .lb{margin-top:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+  .sc .d{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--ink-dim)}
+  .closer{margin-top:36px;font-size:19px;line-height:1.5;color:var(--ink);max-width:62ch}
+  .closer b{color:var(--green3)}
+
+  /* product suite cards */
+  .suite{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+  .pcard{background:var(--cream2);border:1px solid rgba(30,44,36,.1);border-radius:18px;padding:30px 28px}
+  .band.cream2 .pcard{background:var(--cream)}
+  .pcard .pt{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .pcard h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;color:var(--ink)}
+  .tag{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 9px}
+  .tag.on{background:var(--green3);color:var(--cream)}
+  .tag.soon{border:1px solid rgba(44,107,67,.4);color:var(--green3)}
+  .pcard p{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--ink-dim)}
+  /* contact band: facts sit right under the eyebrow, no top rule */
+  #contact .facts{margin-top:26px;padding-top:0;border-top:none}
+
   /* ---- tablet ---- */
   @media (max-width: 900px) and (min-width: 701px){
     .about{padding:88px 42px 96px}
+    .band{padding:80px 42px}
+    .statgrid{grid-template-columns:repeat(3,1fr)}
     .steps{gap:22px}
     .facts{grid-template-columns:repeat(2,1fr);gap:24px 30px}
     .hero{max-width:62%}
@@ -153,6 +189,13 @@
     .facts{grid-template-columns:1fr;gap:22px;margin-top:42px}
     .book{margin-top:40px;gap:14px}
     .social{margin-left:0;width:100%;margin-top:4px}
+    .band{padding:60px 24px}
+    .band h2{font-size:29px;letter-spacing:-.6px;max-width:100%}
+    .band .lede{font-size:16px;max-width:100%}
+    .statgrid{grid-template-columns:1fr 1fr;gap:12px;margin-top:38px}
+    .sc .big{font-size:34px}
+    .closer{font-size:17px;margin-top:28px}
+    .suite{grid-template-columns:1fr;gap:16px;margin-top:38px}
   }
 
   /* theme toggle button */
@@ -211,6 +254,22 @@
   body.dark .book .note{color:rgba(246,243,236,.6)}
   body.dark .social a{color:rgba(246,243,236,.72);border-color:rgba(246,243,236,.2)}
   body.dark .social a:hover{color:#A9D9B7;border-color:rgba(169,217,183,.5);background:rgba(246,243,236,.08)}
+  body.dark .band.cream, body.dark .band.cream2{background:#22513A}
+  body.dark .band h2{color:#F6F3EC}
+  body.dark .band h2 .g{color:#A9D9B7}
+  body.dark .band .lede{color:rgba(246,243,236,.8)}
+  body.dark .band .src{color:rgba(246,243,236,.5)}
+  body.dark .sc, body.dark .band.cream2 .sc{background:rgba(246,243,236,.06);border-color:rgba(246,243,236,.14)}
+  body.dark .sc .big{color:#A9D9B7}
+  body.dark .sc .lb{color:#F6F3EC}
+  body.dark .sc .d{color:rgba(246,243,236,.76)}
+  body.dark .closer{color:#F6F3EC}
+  body.dark .closer b{color:#A9D9B7}
+  body.dark .pcard, body.dark .band.cream2 .pcard{background:rgba(246,243,236,.06);border-color:rgba(246,243,236,.14)}
+  body.dark .pcard h3{color:#F6F3EC}
+  body.dark .pcard p{color:rgba(246,243,236,.76)}
+  body.dark .tag.on{background:#F6F3EC;color:#234E36}
+  body.dark .tag.soon{color:#A9D9B7;border-color:rgba(169,217,183,.45)}
 
   /* mobile: theme toggle above the greenhouses (must come after the desktop rule to win) */
   @media (max-width: 700px), (max-height: 520px){ .theme-toggle{top:96px;right:22px;bottom:auto} }
@@ -327,6 +386,58 @@
           <p data-en="It moves vents, shade, fans, lights and irrigation through a mandatory policy gate. Every action stays inside your rules, and every action is logged for you to review." data-fr="Il actionne aérations, ombrage, ventilateurs, éclairage et irrigation via une barrière de politique obligatoire. Chaque action reste dans vos règles, et chaque action est journalisée pour révision.">It moves vents, shade, fans, lights and irrigation through a mandatory policy gate. Every action stays inside your rules, and every action is logged for you to review.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- the problem: why a greenhouse needs an operator on watch -->
+  <section class="band cream" id="problem">
+    <div class="inner">
+      <div class="eyebrow" data-en="The problem" data-fr="Le problème">The problem</div>
+      <h2><span data-en="A crop can go in a " data-fr="Une culture peut partir en ">A crop can go in a </span><span class="g" data-en="single night." data-fr="une seule nuit.">single night.</span></h2>
+      <p class="lede" data-en="Greenhouse conditions turn faster than a person can watch them. These are thresholds every grower already knows, and the hours you get to catch them." data-fr="Les conditions d'une serre changent plus vite qu'une personne ne peut les surveiller. Voici des seuils que chaque producteur connaît déjà, et le temps qu'il reste pour réagir.">Greenhouse conditions turn faster than a person can watch them. These are thresholds every grower already knows, and the hours you get to catch them.</p>
+      <div class="statgrid">
+        <div class="sc"><div class="big">1 <span class="u">night</span></div><div class="lb" data-en="Freeze" data-fr="Gel">Freeze</div><div class="d" data-en="A boiler failing overnight in deep winter, with no backup, can take a whole crop before morning." data-fr="Une chaudière qui lâche la nuit en plein hiver, sans relève, peut emporter toute une culture avant le matin.">A boiler failing overnight in deep winter, with no backup, can take a whole crop before morning.</div></div>
+        <div class="sc"><div class="big">8-12 <span class="u">h</span></div><div class="lb" data-en="Botrytis" data-fr="Botrytis">Botrytis</div><div class="d" data-en="Continuous leaf wetness above 93% RH is all Botrytis needs to infect and take a house." data-fr="Une humectation continue au-dessus de 93% HR suffit au Botrytis pour infecter et gagner toute la serre.">Continuous leaf wetness above 93% RH is all Botrytis needs to infect and take a house.</div></div>
+        <div class="sc"><div class="big">72 <span class="u">h</span></div><div class="lb" data-en="Powdery mildew" data-fr="Oïdium">Powdery mildew</div><div class="d" data-en="Mildew can reproduce in as little as three days, so a missed lesion becomes an epidemic." data-fr="L'oïdium peut se reproduire en trois jours à peine, donc une lésion manquée devient une épidémie.">Mildew can reproduce in as little as three days, so a missed lesion becomes an epidemic.</div></div>
+        <div class="sc"><div class="big">1000<span class="u">x</span></div><div class="lb" data-en="pH drift" data-fr="Dérive du pH">pH drift</div><div class="d" data-en="A media pH drop from 6.0 to 5.0 raises iron and manganese solubility roughly a thousandfold." data-fr="Une baisse de pH du substrat de 6,0 à 5,0 multiplie la solubilité du fer et du manganèse par mille environ.">A media pH drop from 6.0 to 5.0 raises iron and manganese solubility roughly a thousandfold.</div></div>
+        <div class="sc"><div class="big">1 <span class="u">thrip</span></div><div class="lb" data-en="Tospovirus" data-fr="Tospovirus">Tospovirus</div><div class="d" data-en="When tospovirus is present the action threshold falls from about fifteen per card to a single insect." data-fr="En présence de tospovirus, le seuil d'intervention passe d'environ quinze par piège à un seul insecte.">When tospovirus is present the action threshold falls from about fifteen per card to a single insect.</div></div>
+      </div>
+      <div class="closer" data-en="None of these wait for business hours. SerreVue watches every zone continuously and acts before a threshold becomes a loss, always inside the rules you set." data-fr="Aucun de ces risques n'attend les heures d'ouverture. SerreVue surveille chaque zone en continu et agit avant qu'un seuil ne devienne une perte, toujours selon les règles que vous fixez."><b>None of these wait for business hours.</b> SerreVue watches every zone continuously and acts before a threshold becomes a loss, always inside the rules you set.</div>
+      <div class="src" data-en="Sources: Alabama, MSU, UMass, NC State, PNW, UGA, OSU, Rutgers and USU Extension." data-fr="Sources : services de vulgarisation Alabama, MSU, UMass, NC State, PNW, UGA, OSU, Rutgers et USU.">Sources: Alabama, MSU, UMass, NC State, PNW, UGA, OSU, Rutgers and USU Extension.</div>
+    </div>
+  </section>
+
+  <!-- what SerreVue provides: more than software -->
+  <section class="band cream2" id="platform">
+    <div class="inner">
+      <div class="eyebrow" data-en="What we provide" data-fr="Ce que nous offrons">What we provide</div>
+      <h2><span data-en="The software layer is where we " data-fr="La couche logicielle est notre ">The software layer is where we </span><span class="g" data-en="start." data-fr="point de départ.">start.</span></h2>
+      <p class="lede" data-en="SerreVue is more than an app. One operator, built across the full stack of a modern greenhouse, from the hardware on the wall to the model in the cloud." data-fr="SerreVue est plus qu'une application. Un seul opérateur, bâti sur toute la pile d'une serre moderne, du matériel sur le mur au modèle dans l'infonuagique.">SerreVue is more than an app. One operator, built across the full stack of a modern greenhouse, from the hardware on the wall to the model in the cloud.</p>
+      <div class="suite">
+        <div class="pcard">
+          <div class="pt"><h3 data-en="Greenhouse Suite" data-fr="Suite pour serre">Greenhouse Suite</h3><span class="tag on" data-en="Available" data-fr="Disponible">Available</span></div>
+          <p data-en="The platform and mobile app: a live digital twin, monitoring and alerts, automations, and the conversational operator that answers like a grower and acts within your rules." data-fr="La plateforme et l'appli mobile : un jumeau numérique en direct, la surveillance et les alertes, les automatisations, et l'opérateur conversationnel qui répond comme un producteur et agit selon vos règles.">The platform and mobile app: a live digital twin, monitoring and alerts, automations, and the conversational operator that answers like a grower and acts within your rules.</p>
+        </div>
+        <div class="pcard">
+          <div class="pt"><h3 data-en="Sensing &amp; integration" data-fr="Captation et intégration">Sensing &amp; integration</h3><span class="tag on" data-en="Available" data-fr="Disponible">Available</span></div>
+          <p data-en="Connects the sensors, cameras, climate computers and irrigation you already own. It auto-discovers across device families and reads and acts at the device layer, so there is no rip and replace." data-fr="Se connecte aux capteurs, caméras, ordinateurs climatiques et systèmes d'irrigation que vous possédez déjà. Découverte automatique des appareils, lecture et action au niveau du matériel, sans tout remplacer.">Connects the sensors, cameras, climate computers and irrigation you already own. It auto-discovers across device families and reads and acts at the device layer, so there is no rip and replace.</p>
+        </div>
+        <div class="pcard">
+          <div class="pt"><h3 data-en="AI &amp; cloud" data-fr="IA et infonuagique">AI &amp; cloud</h3><span class="tag soon" data-en="In development" data-fr="En développement">In development</span></div>
+          <p data-en="A specialized agriculture-operations model that learns each greenhouse and runs on the clouds growers already trust. Today the reasoning runs on a frontier model inside our guardrails; the proprietary model is training on the data the platform already collects." data-fr="Un modèle spécialisé en exploitation agricole qui apprend chaque serre et tourne sur les infonuagiques auxquels les producteurs font déjà confiance. Aujourd'hui le raisonnement s'appuie sur un modèle de pointe dans nos garde-fous ; le modèle propriétaire s'entraîne sur les données que la plateforme collecte déjà.">A specialized agriculture-operations model that learns each greenhouse and runs on the clouds growers already trust. Today the reasoning runs on a frontier model inside our guardrails; the proprietary model is training on the data the platform already collects.</p>
+        </div>
+        <div class="pcard">
+          <div class="pt"><h3 data-en="Robotics" data-fr="Robotique">Robotics</h3><span class="tag soon" data-en="In development" data-fr="En développement">In development</span></div>
+          <p data-en="Rail-mounted sensing and actuation that gives the operator hands of its own, for the greenhouses that want the labour gone, not just the guesswork." data-fr="Captation et actionnement montés sur rail qui donnent des mains à l'opérateur, pour les serres qui veulent supprimer la main-d'œuvre, pas seulement l'incertitude.">Rail-mounted sensing and actuation that gives the operator hands of its own, for the greenhouses that want the labour gone, not just the guesswork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- company + contact -->
+  <section class="band cream" id="contact">
+    <div class="inner">
+      <div class="eyebrow" data-en="The company" data-fr="L'entreprise">The company</div>
 
       <div class="facts">
         <div class="fact">
