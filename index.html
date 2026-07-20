@@ -34,8 +34,9 @@
     --ink:#1E2C24; --ink-dim:#5A6B62; --ink-dimmer:#8A968F;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:100%;height:100%;overflow:hidden}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  /* the splash is one full screen, but the company section below it scrolls */
+  html,body{width:100%;min-height:100%}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--cream)}
   .stage{position:relative;width:100vw;height:100vh;padding:54px 60px;background:var(--cream)}
 
   /* brand lockup: leaf logo + wordmark, top-left */
@@ -79,8 +80,50 @@
   .touch a:hover{color:var(--green3)}
   .touch a .arw{color:var(--green3)}
 
+  /* scroll cue, centred at the foot of the splash */
+  .cue{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:var(--ink-dimmer);transition:color .15s}
+  .cue:hover{color:var(--green3)}
+  .cue span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+  .cue svg{width:16px;height:16px;animation:nudge 2.4s ease-in-out infinite}
+  @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+  @media (prefers-reduced-motion: reduce){ .cue svg{animation:none} }
+
+  /* ---- company section (below the fold) ---- */
+  .about{background:var(--cream2);padding:104px 60px 112px}
+  .about .inner{max-width:1080px;margin:0 auto}
+  .about h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;line-height:1.12;letter-spacing:-1px;color:var(--ink);max-width:20ch}
+  .about h2 .g{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--green3)}
+  .about .lede{margin-top:22px;font-size:17px;line-height:1.62;color:var(--ink-dim);max-width:62ch}
+  .about .lede + .lede{margin-top:15px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:58px}
+  .step{background:var(--cream);border:1px solid rgba(30,44,36,.09);border-radius:16px;padding:26px 24px 28px}
+  .step .no{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.16em;color:var(--green3)}
+  .step h3{margin-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:var(--ink)}
+  .step p{margin-top:9px;font-size:14.5px;line-height:1.58;color:var(--ink-dim)}
+
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:56px;padding-top:34px;border-top:1px solid rgba(30,44,36,.11)}
+  .fact .k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dimmer)}
+  .fact .v{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--ink)}
+  .fact .v a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(44,107,67,.35)}
+  .fact .v a:hover{color:var(--green3)}
+
+  .book{margin-top:52px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .btn-book{display:inline-flex;align-items:center;gap:9px;background:var(--green3);color:var(--cream);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:11px;transition:background .15s,transform .15s}
+  .btn-book:hover{background:var(--green2);transform:translateY(-1px)}
+  .book .note{font-size:13px;color:var(--ink-dimmer)}
+
+  /* social links, right of the booking CTA on desktop */
+  .social{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .social a{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid rgba(30,44,36,.13);color:var(--ink-dim);transition:color .15s,border-color .15s,background .15s}
+  .social a:hover{color:var(--green3);border-color:rgba(44,107,67,.4);background:rgba(44,107,67,.07)}
+  .social svg{width:18px;height:18px;display:block}
+
   /* ---- tablet ---- */
   @media (max-width: 900px) and (min-width: 701px){
+    .about{padding:88px 42px 96px}
+    .steps{gap:22px}
+    .facts{grid-template-columns:repeat(2,1fr);gap:24px 30px}
     .hero{max-width:62%}
     .hero h1{font-size:60px}
     .art{width:320px;height:165px;right:42px;bottom:140px}
@@ -101,6 +144,15 @@
     .touch{position:static;right:auto;bottom:auto;text-align:left;margin-top:32px}
     .touch a{font-size:20px}
     .theme-toggle{top:92px;right:24px;bottom:auto}
+    .cue{position:static;transform:none;flex-direction:row;gap:9px;margin-top:38px;align-self:flex-start}
+    .cue svg{animation:none}
+    .about{padding:64px 24px 76px}
+    .about h2{font-size:29px;letter-spacing:-.6px;max-width:100%}
+    .about .lede{font-size:16px;max-width:100%}
+    .steps{grid-template-columns:1fr;gap:16px;margin-top:40px}
+    .facts{grid-template-columns:1fr;gap:22px;margin-top:42px}
+    .book{margin-top:40px;gap:14px}
+    .social{margin-left:0;width:100%;margin-top:4px}
   }
 
   /* theme toggle button */
@@ -138,6 +190,27 @@
   body.dark .touch a:hover{color:#A9D9B7}
   body.dark .touch a .arw{color:#A9D9B7}
   body.dark .art{color:rgba(175,214,186,.5)}
+  body.dark{background:#22513A}
+  body.dark .cue{color:rgba(246,243,236,.6)}
+  body.dark .cue:hover{color:#A9D9B7}
+  body.dark .about{background:#22513A}
+  body.dark .about h2{color:#F6F3EC}
+  body.dark .about h2 .g{color:#A9D9B7}
+  body.dark .about .lede{color:rgba(246,243,236,.8)}
+  body.dark .step{background:rgba(246,243,236,.06);border-color:rgba(246,243,236,.14)}
+  body.dark .step .no{color:#A9D9B7}
+  body.dark .step h3{color:#F6F3EC}
+  body.dark .step p{color:rgba(246,243,236,.76)}
+  body.dark .facts{border-top-color:rgba(246,243,236,.18)}
+  body.dark .fact .k{color:rgba(246,243,236,.55)}
+  body.dark .fact .v{color:#F6F3EC}
+  body.dark .fact .v a{color:#F6F3EC;border-bottom-color:rgba(169,217,183,.5)}
+  body.dark .fact .v a:hover{color:#A9D9B7}
+  body.dark .btn-book{background:#F6F3EC;color:#234E36}
+  body.dark .btn-book:hover{background:#CFE8D7}
+  body.dark .book .note{color:rgba(246,243,236,.6)}
+  body.dark .social a{color:rgba(246,243,236,.72);border-color:rgba(246,243,236,.2)}
+  body.dark .social a:hover{color:#A9D9B7;border-color:rgba(169,217,183,.5);background:rgba(246,243,236,.08)}
 
   /* mobile: theme toggle above the greenhouses (must come after the desktop rule to win) */
   @media (max-width: 700px), (max-height: 520px){ .theme-toggle{top:96px;right:22px;bottom:auto} }
@@ -219,7 +292,80 @@
       <div class="eyebrow" data-en="Get in touch" data-fr="Nous joindre">Get in touch</div>
       <a class="mail-link" href="mailto:hello@serrevue.com" data-en-href="mailto:hello@serrevue.com" data-fr-href="mailto:bonjour@serrevue.com"><span class="mail" data-en="hello@serrevue.com" data-fr="bonjour@serrevue.com">hello@serrevue.com</span> <span class="arw">&rarr;</span></a>
     </div>
+
+    <!-- scroll cue down to the company section -->
+    <a class="cue" href="#about">
+      <span data-en="About SerreVue" data-fr="À propos de SerreVue">About SerreVue</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </div>
+
+  <!-- company + product detail: this is the substance a first-time visitor needs -->
+  <section class="about" id="about">
+    <div class="inner">
+      <div class="eyebrow" data-en="About SerreVue" data-fr="À propos de SerreVue">About SerreVue</div>
+      <h2><span data-en="The software layer that " data-fr="La couche logicielle qui ">The software layer that </span><span class="g" data-en="runs a greenhouse." data-fr="fait tourner une serre.">runs a greenhouse.</span></h2>
+
+      <p class="lede" data-en="SerreVue is an AI operator for commercial greenhouses. It connects to the sensors, cameras, climate computers and irrigation you already run, builds a live digital twin of the greenhouse, and lets a grower manage the whole operation by talking to it in plain language, in English or in French." data-fr="SerreVue est un opérateur IA pour les serres commerciales. Il se connecte aux capteurs, caméras, ordinateurs climatiques et systèmes d'irrigation que vous utilisez déjà, construit un jumeau numérique en direct de la serre, et permet au producteur de gérer toute l'exploitation en lui parlant en langage courant, en français ou en anglais.">SerreVue is an AI operator for commercial greenhouses. It connects to the sensors, cameras, climate computers and irrigation you already run, builds a live digital twin of the greenhouse, and lets a grower manage the whole operation by talking to it in plain language, in English or in French.</p>
+
+      <p class="lede" data-en="A grower spends hours every week on decisions a machine can make continuously and better: when to vent, when to shade, when to irrigate, when a pest or disease risk is building. SerreVue takes that load, keeps every action inside the limits the grower sets, and writes down what it did and why." data-fr="Un producteur consacre des heures chaque semaine à des décisions qu'une machine peut prendre en continu et mieux : quand aérer, quand ombrager, quand irriguer, quand un risque de ravageur ou de maladie s'installe. SerreVue prend cette charge, garde chaque action à l'intérieur des limites fixées par le producteur, et consigne ce qu'il a fait et pourquoi.">A grower spends hours every week on decisions a machine can make continuously and better: when to vent, when to shade, when to irrigate, when a pest or disease risk is building. SerreVue takes that load, keeps every action inside the limits the grower sets, and writes down what it did and why.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="no">01</div>
+          <h3 data-en="Sense" data-fr="Détecter">Sense</h3>
+          <p data-en="We pull live climate, soil, water and camera data out of the hardware you already own into one live model of the greenhouse. No rip and replace." data-fr="Nous rassemblons les données de climat, de sol, d'eau et de caméras du matériel que vous possédez déjà dans un seul modèle vivant de la serre. Sans tout remplacer.">We pull live climate, soil, water and camera data out of the hardware you already own into one live model of the greenhouse. No rip and replace.</p>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <h3 data-en="Reason" data-fr="Raisonner">Reason</h3>
+          <p data-en="The AI operator reads that data against your crop plan and the weather ahead, explains what it is seeing in plain language, and proposes the next move." data-fr="L'opérateur IA analyse ces données selon votre plan de culture et les prévisions météo, explique en langage courant ce qu'il observe, et propose la prochaine action.">The AI operator reads that data against your crop plan and the weather ahead, explains what it is seeing in plain language, and proposes the next move.</p>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <h3 data-en="Act" data-fr="Agir">Act</h3>
+          <p data-en="It moves vents, shade, fans, lights and irrigation through a mandatory policy gate. Every action stays inside your rules, and every action is logged for you to review." data-fr="Il actionne aérations, ombrage, ventilateurs, éclairage et irrigation via une barrière de politique obligatoire. Chaque action reste dans vos règles, et chaque action est journalisée pour révision.">It moves vents, shade, fans, lights and irrigation through a mandatory policy gate. Every action stays inside your rules, and every action is logged for you to review.</p>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="k" data-en="Company" data-fr="Entreprise">Company</div>
+          <div class="v" data-en="SerreVue, an agtech company building greenhouse automation software." data-fr="SerreVue, entreprise agtech qui développe des logiciels d'automatisation pour les serres.">SerreVue, an agtech company building greenhouse automation software.</div>
+        </div>
+        <div class="fact">
+          <div class="k" data-en="Where" data-fr="Où">Where</div>
+          <div class="v" data-en="Montréal, Québec, Canada. Founded 2026." data-fr="Montréal, Québec, Canada. Fondée en 2026.">Montréal, Québec, Canada. Founded 2026.</div>
+        </div>
+        <div class="fact">
+          <div class="k" data-en="Team" data-fr="Équipe">Team</div>
+          <div class="v" data-en="A founding team spanning plant biology, commercial greenhouse operations, AI and IoT, and software engineering." data-fr="Une équipe fondatrice réunissant biologie végétale, exploitation de serres commerciales, IA et IdO, et génie logiciel.">A founding team spanning plant biology, commercial greenhouse operations, AI and IoT, and software engineering.</div>
+        </div>
+        <div class="fact">
+          <div class="k" data-en="Contact" data-fr="Contact">Contact</div>
+          <div class="v"><a href="mailto:hello@serrevue.com" data-en-href="mailto:hello@serrevue.com" data-fr-href="mailto:bonjour@serrevue.com" data-en="hello@serrevue.com" data-fr="bonjour@serrevue.com">hello@serrevue.com</a></div>
+        </div>
+      </div>
+
+      <div class="book">
+        <a class="btn-book" href="https://calendar.app.google/aX7jawWDwkJX6Het7" target="_blank" rel="noopener noreferrer">
+          <span data-en="Book a call" data-fr="Réserver un appel">Book a call</span>
+          <span class="arw">&rarr;</span>
+        </a>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/serrevue" target="_blank" rel="noopener noreferrer" aria-label="SerreVue on LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.76-1.95C21.6 8.69 22 11.1 22 14.24V21h-4v-6c0-1.43-.03-3.28-2-3.28-2 0-2.3 1.56-2.3 3.17V21h-4V9z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@SerreVue" target="_blank" rel="noopener noreferrer" aria-label="SerreVue on YouTube" title="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.1.5-5.1s0-3.2-.5-5.1zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/serrevue" target="_blank" rel="noopener noreferrer" aria-label="SerreVue on Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     (function(){
